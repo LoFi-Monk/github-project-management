@@ -45,17 +45,14 @@
 ```json
 {
   "scripts": {
-    "dev": "concurrently 'pnpm --filter server dev' 'pnpm --filter web dev'",
-    "dev:server": "pnpm --filter server dev",
-    "dev:web": "pnpm --filter web dev",
-    "dev:cli": "pnpm --filter cli dev",
-    "dev:mcp": "pnpm --filter mcp dev",
     "build": "pnpm -r build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "typecheck": "tsc -b --noEmit",
+    "format": "biome format --write .",
+    "typecheck": "pnpm -r typecheck",
     "prepare": "husky"
   }
 }
@@ -65,13 +62,13 @@
 
 ```yaml
 pre-commit:
-  biome check --write          # format + lint, auto-fix staged files
-  vitest run --changed         # tests for changed files only
+  pnpm lint-staged             # biome check --write + vitest run --related
 
 commit-msg:
-  conventional commits lint    # enforces feat/fix/chore/docs/etc. prefix
+  npx commitlint --edit        # enforces conventional commits prefix
 
 pre-push:
-  vitest run                   # full suite
-  tsc -b --noEmit              # type check all packages
+  pnpm lint                    # full lint check
+  pnpm typecheck               # full type check across all packages
+  pnpm test                    # full test suite run
 ```
