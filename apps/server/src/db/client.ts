@@ -11,6 +11,7 @@ import { type Client, createClient } from '@libsql/client';
  * before initialization.
  */
 let dbInstance: Client | null = null;
+let initializedDbPath: string | null = null;
 
 export interface DbOptions {
   path?: string;
@@ -23,14 +24,20 @@ export interface DbOptions {
  *
  * Guarantees: Returns an initialized LibSQL Client. Defaults to local 'data/kanban.db' if no path provided.
  *
- * Constraints: Concurrent calls will return the same instance once initialized.
+ * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
 export function getDb(options: DbOptions = {}): Client {
+  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+
   if (dbInstance) {
+    if (initializedDbPath && initializedDbPath !== dbPath) {
+      throw new Error(
+        `Database already initialized with ${initializedDbPath}. Cannot change to ${dbPath}.`,
+      );
+    }
     return dbInstance;
   }
 
-  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
   let url = '';
 
   if (dbPath === ':memory:') {
@@ -47,6 +54,11 @@ export function getDb(options: DbOptions = {}): Client {
   dbInstance = createClient({
     url,
   });
+  initializedDbPath = dbPath;
+
+  // Enable foreign keys and WAL mode for better concurrency and integrity
+  dbInstance.execute('PRAGMA foreign_keys = ON;');
+  dbInstance.execute('PRAGMA journal_mode = WAL;');
 
   return dbInstance;
 }

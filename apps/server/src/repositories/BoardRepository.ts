@@ -1,5 +1,5 @@
 import type { Client } from '@libsql/client';
-import { Board, type BoardId, type Column, type ColumnId } from '@lofi-pm/core';
+import { Board, type BoardId, Card, type Column, type ColumnId } from '@lofi-pm/core';
 
 /**
  * Repository for Board entity using @libsql/client.
@@ -27,7 +27,15 @@ export class BoardRepository {
       },
     ];
 
-    Object.values(board.columns).forEach((column, index) => {
+    // Sort columns by position or use a deterministic order (e.g. enum order)
+    const sortedColumns = Object.values(board.columns).sort((a, b) => {
+      // If we had a position field in core, we'd use it.
+      // For now, we'll use a reliable set order based on the ColumnId enum
+      const order = ['backlog', 'todo', 'in_progress', 'review', 'done'];
+      return order.indexOf(a.id) - order.indexOf(b.id);
+    });
+
+    sortedColumns.forEach((column, index) => {
       stmts.push({
         sql: 'INSERT INTO columns (id, board_id, title, position) VALUES (?, ?, ?, ?)',
         args: [column.id, board.id, column.title, index] as (string | number)[],
@@ -57,8 +65,13 @@ export class BoardRepository {
       args: [id],
     });
 
+    const cardResult = await this.db.execute({
+      sql: 'SELECT * FROM cards WHERE board_id = ? ORDER BY position',
+      args: [id],
+    });
+
     const columns: Record<string, Column> = {};
-    columnResult.rows.forEach((row) => {
+    columnResult.rows.forEach((row: any) => {
       columns[row.id as string] = {
         id: row.id as ColumnId,
         title: row.title as string,
@@ -66,11 +79,38 @@ export class BoardRepository {
       };
     });
 
+    const cards: Record<string, typeof Card._type> = {};
+    cardResult.rows.forEach((row: any) => {
+      const card = this.mapCardRow(row);
+      cards[card.id] = card;
+      if (columns[card.status as string]) {
+        columns[card.status as string].cards.push(card.id);
+      }
+    });
+
     return Board.parse({
       id: boardRow.id,
       title: boardRow.title,
       columns,
-      cards: {},
+      cards,
+    });
+  }
+
+  private mapCardRow(row: any): typeof Card._type {
+    return Card.parse({
+      id: row.id,
+      title: row.title,
+      description: row.description ?? undefined,
+      status: row.status as ColumnId,
+      priority: row.priority,
+      labels: JSON.parse(row.labels),
+      assignees: JSON.parse(row.assignees),
+      position: Number(row.position),
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+      dirtyFields: row.dirty_fields ? JSON.parse(row.dirty_fields) : undefined,
+      syncSnapshot: row.sync_snapshot ? JSON.parse(row.sync_snapshot) : undefined,
+      syncStatus: row.sync_status || undefined,
     });
   }
 
@@ -82,10 +122,16 @@ export class BoardRepository {
    * Guarantees: Updates the 'title' column for the matching Board ID.
    */
   async update(board: typeof Board._type): Promise<void> {
-    await this.db.execute({
-      sql: 'UPDATE boards SET title = ? WHERE id = ?',
-      args: [board.title, board.id],
-    });
+    const stmts = [
+      {
+        sql: 'UPDATE boards SET title = ? WHERE id = ?',
+        args: [board.title, board.id],
+      },
+    ];
+
+    // Note: This simple update only handles title for now, similar to previous version
+    // but we accept full board for consistency. Future implementation can handle columns.
+    await this.db.batch(stmts, 'write');
   }
 
   /**

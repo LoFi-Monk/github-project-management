@@ -66,7 +66,7 @@ describe('Repositories', () => {
         updatedAt: new Date().toISOString(),
       });
 
-      await cardRepo.create(card);
+      await cardRepo.create(card, board.id);
       const found = await cardRepo.findById(card.id);
 
       expect(found).toBeDefined();

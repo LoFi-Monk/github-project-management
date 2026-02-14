@@ -51,9 +51,9 @@ async function main() {
 
   const existing = await cardRepo.findById(cardId);
   if (existing) {
-    await cardRepo.update(card);
+    await cardRepo.update(card, boardId);
   } else {
-    await cardRepo.create(card);
+    await cardRepo.create(card, boardId);
   }
 
   console.log('Retrieving card...');

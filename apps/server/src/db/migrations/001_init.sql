@@ -14,17 +14,19 @@ CREATE TABLE IF NOT EXISTS boards (
 );
 
 CREATE TABLE IF NOT EXISTS columns (
-  id TEXT PRIMARY KEY,
+  id TEXT NOT NULL,
   board_id TEXT NOT NULL,
   title TEXT NOT NULL,
   position INTEGER NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id, board_id),
   FOREIGN KEY (board_id) REFERENCES boards(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS cards (
   id TEXT PRIMARY KEY,
+  board_id TEXT NOT NULL,
   title TEXT NOT NULL,
   description TEXT,
   status TEXT NOT NULL, -- ColumnId
@@ -40,5 +42,6 @@ CREATE TABLE IF NOT EXISTS cards (
   sync_snapshot TEXT, -- JSON object
   sync_status TEXT, -- synced, dirty, conflict, local
   
-  FOREIGN KEY (status) REFERENCES columns(id)
+  FOREIGN KEY (board_id) REFERENCES boards(id) ON DELETE CASCADE,
+  FOREIGN KEY (status, board_id) REFERENCES columns(id, board_id) ON DELETE CASCADE
 );

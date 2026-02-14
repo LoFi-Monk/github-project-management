@@ -1,0 +1,190 @@
+build	Set up job	﻿2026-02-14T20:16:52.3397177Z Current runner version: '2.331.0'
+build	Set up job	2026-02-14T20:16:52.3420741Z ##[group]Runner Image Provisioner
+build	Set up job	2026-02-14T20:16:52.3421895Z Hosted Compute Agent
+build	Set up job	2026-02-14T20:16:52.3422409Z Version: 20260123.484
+build	Set up job	2026-02-14T20:16:52.3422967Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+build	Set up job	2026-02-14T20:16:52.3423638Z Build Date: 2026-01-23T19:41:17Z
+build	Set up job	2026-02-14T20:16:52.3424211Z Worker ID: {a82e3c94-4d0e-4d22-9b05-db167b77c580}
+build	Set up job	2026-02-14T20:16:52.3424839Z Azure Region: northcentralus
+build	Set up job	2026-02-14T20:16:52.3425330Z ##[endgroup]
+build	Set up job	2026-02-14T20:16:52.3426710Z ##[group]Operating System
+build	Set up job	2026-02-14T20:16:52.3427217Z Ubuntu
+build	Set up job	2026-02-14T20:16:52.3427662Z 24.04.3
+build	Set up job	2026-02-14T20:16:52.3428105Z LTS
+build	Set up job	2026-02-14T20:16:52.3428525Z ##[endgroup]
+build	Set up job	2026-02-14T20:16:52.3428984Z ##[group]Runner Image
+build	Set up job	2026-02-14T20:16:52.3429516Z Image: ubuntu-24.04
+build	Set up job	2026-02-14T20:16:52.3429982Z Version: 20260209.23.1
+build	Set up job	2026-02-14T20:16:52.3431028Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260209.23/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-02-14T20:16:52.3432631Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260209.23
+build	Set up job	2026-02-14T20:16:52.3433403Z ##[endgroup]
+build	Set up job	2026-02-14T20:16:52.3434401Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-02-14T20:16:52.3436235Z Contents: read
+build	Set up job	2026-02-14T20:16:52.3436734Z Metadata: read
+build	Set up job	2026-02-14T20:16:52.3437201Z Packages: read
+build	Set up job	2026-02-14T20:16:52.3437620Z ##[endgroup]
+build	Set up job	2026-02-14T20:16:52.3439594Z Secret source: Actions
+build	Set up job	2026-02-14T20:16:52.3440200Z Prepare workflow directory
+build	Set up job	2026-02-14T20:16:52.3754639Z Prepare all required actions
+build	Set up job	2026-02-14T20:16:52.3793447Z Getting action download info
+build	Set up job	2026-02-14T20:16:52.7038080Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build	Set up job	2026-02-14T20:16:52.8087270Z Download action repository 'pnpm/action-setup@v4' (SHA:41ff72655975bd51cab0327fa583b6e92b6d3061)
+build	Set up job	2026-02-14T20:16:53.2988215Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+build	Set up job	2026-02-14T20:16:53.4658539Z Complete job name: build
+build	Run actions/checkout@v4	﻿2026-02-14T20:16:53.5467534Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5468405Z with:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5468918Z   repository: LoFi-Monk/github-project-management
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5469768Z   token: ***
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5470181Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5470613Z   ssh-user: git
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5471503Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5471996Z   clean: true
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5472433Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5472950Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5473371Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5473801Z   show-progress: true
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5474242Z   lfs: false
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5474664Z   submodules: false
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5475133Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-02-14T20:16:53.5475909Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6499109Z Syncing repository: LoFi-Monk/github-project-management
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6501933Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6502907Z Working directory is '/home/runner/work/github-project-management/github-project-management'
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6504289Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6504801Z git version 2.52.0
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6523630Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6536920Z Temporarily overriding HOME='/home/runner/work/_temp/92e6da47-6275-4359-83f2-e16d4c7a50d3' before making global git config changes
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6538328Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6542446Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/github-project-management/github-project-management
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6577545Z Deleting the contents of '/home/runner/work/github-project-management/github-project-management'
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6580467Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6584810Z [command]/usr/bin/git init /home/runner/work/github-project-management/github-project-management
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6662040Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6663398Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6664715Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6665666Z hint: call:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6666062Z hint:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6666598Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6667189Z hint:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6667758Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6668665Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6669897Z hint:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6670316Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6670793Z hint:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6672243Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6673649Z Initialized empty Git repository in /home/runner/work/github-project-management/github-project-management/.git/
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6676198Z [command]/usr/bin/git remote add origin https://github.com/LoFi-Monk/github-project-management
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6705332Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6706188Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6708737Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6734230Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6735660Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6741652Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-02-14T20:16:53.6769007Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7046652Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7077429Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7260245Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7286587Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7468623Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7498795Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7500534Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-02-14T20:16:53.7508401Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +29fe8e9bc842559db07afd559858616303ef3813:refs/remotes/pull/7/merge
+build	Run actions/checkout@v4	2026-02-14T20:16:53.9977744Z From https://github.com/LoFi-Monk/github-project-management
+build	Run actions/checkout@v4	2026-02-14T20:16:53.9979819Z  * [new ref]         29fe8e9bc842559db07afd559858616303ef3813 -> pull/7/merge
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0006081Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0007669Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0009378Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0014076Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0048960Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0070726Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0075326Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/7/merge
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0141725Z Note: switching to 'refs/remotes/pull/7/merge'.
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0142706Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0143430Z You are in 'detached HEAD' state. You can look around, make experimental
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0144366Z changes and commit them, and you can discard any commits you make in this
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0145243Z state without impacting any branches by switching back to a branch.
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0145766Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0146111Z If you want to create a new branch to retain commits you create, you may
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0147882Z do so (now or later) by using -c with the switch command. Example:
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0148844Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0149128Z   git switch -c <new-branch-name>
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0149477Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0149683Z Or undo this operation with:
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0149999Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0150177Z   git switch -
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0150428Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0150809Z Turn off this advice by setting config variable advice.detachedHead to false
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0151570Z 
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0152198Z HEAD is now at 29fe8e9 Merge 4d24e5819c5676177d4c90dc0eff3f20208de721 into 4441363d5ef286e0fc9102a3852eda3c04791da6
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0154129Z ##[endgroup]
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0178314Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-02-14T20:16:54.0198655Z 29fe8e9bc842559db07afd559858616303ef3813
+build	Install pnpm	﻿2026-02-14T20:16:54.0385389Z ##[group]Run pnpm/action-setup@v4
+build	Install pnpm	2026-02-14T20:16:54.0385976Z with:
+build	Install pnpm	2026-02-14T20:16:54.0386368Z   dest: ~/setup-pnpm
+build	Install pnpm	2026-02-14T20:16:54.0386823Z   run_install: null
+build	Install pnpm	2026-02-14T20:16:54.0387268Z   package_json_file: package.json
+build	Install pnpm	2026-02-14T20:16:54.0387769Z   standalone: false
+build	Install pnpm	2026-02-14T20:16:54.0388174Z ##[endgroup]
+build	Install pnpm	2026-02-14T20:16:54.0895823Z ##[group]Running self-installer...
+build	Install pnpm	2026-02-14T20:16:54.5835649Z Progress: resolved 1, reused 0, downloaded 0, added 0
+build	Install pnpm	2026-02-14T20:16:54.5913930Z Packages: +1
+build	Install pnpm	2026-02-14T20:16:54.5915214Z +
+build	Install pnpm	2026-02-14T20:16:55.0145137Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+build	Install pnpm	2026-02-14T20:16:55.0385976Z 
+build	Install pnpm	2026-02-14T20:16:55.0386944Z dependencies:
+build	Install pnpm	2026-02-14T20:16:55.0388342Z + pnpm 9.1.1 (10.29.3 is available)
+build	Install pnpm	2026-02-14T20:16:55.0389466Z 
+build	Install pnpm	2026-02-14T20:16:55.0415886Z Done in 787ms
+build	Install pnpm	2026-02-14T20:16:55.0540174Z ##[endgroup]
+build	Install pnpm	2026-02-14T20:16:55.0545074Z Installation Completed!
+build	Set up Node.js	﻿2026-02-14T20:16:55.0786067Z ##[group]Run actions/setup-node@v4
+build	Set up Node.js	2026-02-14T20:16:55.0787127Z with:
+build	Set up Node.js	2026-02-14T20:16:55.0787864Z   node-version: 20
+build	Set up Node.js	2026-02-14T20:16:55.0788663Z   cache: pnpm
+build	Set up Node.js	2026-02-14T20:16:55.0789467Z   always-auth: false
+build	Set up Node.js	2026-02-14T20:16:55.0790324Z   check-latest: false
+build	Set up Node.js	2026-02-14T20:16:55.0791597Z   token: ***
+build	Set up Node.js	2026-02-14T20:16:55.0792346Z env:
+build	Set up Node.js	2026-02-14T20:16:55.0793265Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Set up Node.js	2026-02-14T20:16:55.0794480Z ##[endgroup]
+build	Set up Node.js	2026-02-14T20:16:55.2538368Z Found in cache @ /opt/hostedtoolcache/node/20.20.0/x64
+build	Set up Node.js	2026-02-14T20:16:55.2543919Z ##[group]Environment details
+build	Set up Node.js	2026-02-14T20:16:55.5838562Z node: v20.20.0
+build	Set up Node.js	2026-02-14T20:16:55.5840088Z npm: 10.8.2
+build	Set up Node.js	2026-02-14T20:16:55.5841427Z yarn: 1.22.22
+build	Set up Node.js	2026-02-14T20:16:55.5843599Z ##[endgroup]
+build	Set up Node.js	2026-02-14T20:16:55.5863744Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+build	Set up Node.js	2026-02-14T20:16:55.9563308Z /home/runner/setup-pnpm/node_modules/.bin/store/v3
+build	Set up Node.js	2026-02-14T20:16:56.1826811Z pnpm cache is not found
+build	Install dependencies	﻿2026-02-14T20:16:56.1931422Z ##[group]Run pnpm install
+build	Install dependencies	2026-02-14T20:16:56.1931892Z [36;1mpnpm install[0m
+build	Install dependencies	2026-02-14T20:16:56.1971651Z shell: /usr/bin/bash -e {0}
+build	Install dependencies	2026-02-14T20:16:56.1971976Z env:
+build	Install dependencies	2026-02-14T20:16:56.1972217Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Install dependencies	2026-02-14T20:16:56.1972507Z ##[endgroup]
+build	Install dependencies	2026-02-14T20:16:56.5925369Z Scope: all 3 workspace projects
+build	Install dependencies	2026-02-14T20:16:56.6380985Z  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with apps/server/package.json
+build	Install dependencies	2026-02-14T20:16:56.6381686Z 
+build	Install dependencies	2026-02-14T20:16:56.6382297Z Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+build	Install dependencies	2026-02-14T20:16:56.6382801Z 
+build	Install dependencies	2026-02-14T20:16:56.6382915Z     Failure reason:
+build	Install dependencies	2026-02-14T20:16:56.6384298Z     specifiers in the lockfile ({"@lofi-pm/core":"workspace:*","dotenv":"^16.4.5","zod":"^3.23.8","@types/node":"^20.14.11","tsx":"^4.16.2","typescript":"^5.5.4","vitest":"^2.0.5"}) don't match specs in package.json ({"@types/node":"^20.14.11","tsx":"^4.16.2","typescript":"^5.5.4","vitest":"^2.0.5","@lofi-pm/core":"workspace:*","@libsql/client":"^0.14.0","dotenv":"^16.4.5","zod":"^3.23.8"})
+build	Install dependencies	2026-02-14T20:16:56.6537097Z ##[error]Process completed with exit code 1.
+build	Post Install pnpm	﻿2026-02-14T20:16:56.6614407Z Post job cleanup.
+build	Post Install pnpm	2026-02-14T20:16:56.7114860Z Pruning is unnecessary.
+build	Post Run actions/checkout@v4	﻿2026-02-14T20:16:56.7225091Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8123714Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8166014Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8204687Z Temporarily overriding HOME='/home/runner/work/_temp/156f40f9-d560-4562-830f-244e4f5aa223' before making global git config changes
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8206276Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8210092Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/github-project-management/github-project-management
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8242824Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8273462Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8463311Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8482483Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8493839Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8520604Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8703006Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8730668Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-02-14T20:16:56.9008574Z Cleaning up orphan processes

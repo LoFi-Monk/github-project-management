@@ -19,18 +19,19 @@ export class CardRepository {
    *
    * Guarantees: Inserts a row into the 'cards' table. Serializes complex objects to JSON strings.
    */
-  async create(card: typeof Card._type): Promise<void> {
+  async create(card: typeof Card._type, boardId: string): Promise<void> {
     await this.db.execute({
       sql: `
         INSERT INTO cards (
-          id, title, description, status, priority, labels, assignees, position, created_at, updated_at,
+          id, board_id, title, description, status, priority, labels, assignees, position, created_at, updated_at,
           dirty_fields, sync_snapshot, sync_status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `,
       args: [
         card.id,
+        boardId,
         card.title,
-        card.description || null,
+        card.description ?? null,
         card.status,
         card.priority,
         JSON.stringify(card.labels),
@@ -71,10 +72,10 @@ export class CardRepository {
    *
    * Guarantees: Returns an array of parsed Card objects, sorted by 'position' ascending.
    */
-  async findByColumn(columnId: ColumnId): Promise<(typeof Card._type)[]> {
+  async findByColumn(columnId: ColumnId, boardId: string): Promise<(typeof Card._type)[]> {
     const result = await this.db.execute({
-      sql: 'SELECT * FROM cards WHERE status = ? ORDER BY position',
-      args: [columnId],
+      sql: 'SELECT * FROM cards WHERE status = ? AND board_id = ? ORDER BY position',
+      args: [columnId, boardId],
     });
     return result.rows.map((row: any) => this.mapRow(row));
   }
@@ -86,17 +87,17 @@ export class CardRepository {
    *
    * Guarantees: Replaces existing row values with current object state based on Card ID.
    */
-  async update(card: typeof Card._type): Promise<void> {
+  async update(card: typeof Card._type, boardId: string): Promise<void> {
     await this.db.execute({
       sql: `
         UPDATE cards SET
           title = ?, description = ?, status = ?, priority = ?, labels = ?, assignees = ?, 
           position = ?, updated_at = ?, dirty_fields = ?, sync_snapshot = ?, sync_status = ?
-        WHERE id = ?
+        WHERE id = ? AND board_id = ?
       `,
       args: [
         card.title,
-        card.description || null,
+        card.description ?? null,
         card.status,
         card.priority,
         JSON.stringify(card.labels),
@@ -107,6 +108,7 @@ export class CardRepository {
         card.syncSnapshot ? JSON.stringify(card.syncSnapshot) : null,
         card.syncStatus || null,
         card.id,
+        boardId,
       ],
     });
   }
@@ -129,7 +131,7 @@ export class CardRepository {
     return Card.parse({
       id: row.id,
       title: row.title,
-      description: row.description || undefined,
+      description: row.description ?? undefined,
       status: row.status,
       priority: row.priority,
       labels: JSON.parse(row.labels),

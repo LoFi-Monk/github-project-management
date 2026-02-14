@@ -38,13 +38,19 @@ export async function runMigrations(db: Client): Promise<void> {
     console.log(`Applying migration: ${file}`);
     const sql = fs.readFileSync(path.join(migrationsDir, file), 'utf8');
 
-    // LibSQL doesn't support complex transaction blocks via .execute for multiple statements easily
-    // We execute the migration SQL (which might contain multiple statements) and then record it.
-    // Note: Most migrations should be wrapped in BEGIN/COMMIT if they contain multiple statements.
-    await db.executeMultiple(sql);
-    await db.execute({
+    // Wrap migration execution and recording in a transaction for atomicity
+    // We split the SQL by semicolons to execute as individual statements in a batch
+    const statements: { sql: string; args: any[] }[] = sql
+      .split(';')
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0)
+      .map((s) => ({ sql: s, args: [] }));
+
+    statements.push({
       sql: 'INSERT INTO migrations (name) VALUES (?)',
       args: [file],
     });
+
+    await db.batch(statements, 'write');
   }
 }
