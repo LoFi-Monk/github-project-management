@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { add } from './index';
+import * as Core from './index';
 
-describe('add', () => {
-  it('should add two numbers correctly', () => {
-    expect(add(1, 2)).toBe(3);
+describe('Core Exports', () => {
+  it('should export Card schema', () => {
+    expect(Core.Card).toBeDefined();
+  });
+  it('should export mergeCards function', () => {
+    expect(Core.mergeCards).toBeDefined();
   });
 });

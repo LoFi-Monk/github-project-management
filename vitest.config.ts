@@ -8,7 +8,14 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      // Thresholds moved to Issue 2 per user request
+      thresholds: {
+        global: {
+          statements: 90,
+          branches: 90,
+          functions: 90,
+          lines: 90,
+        },
+      },
     },
   },
 });
