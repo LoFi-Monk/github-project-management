@@ -30,7 +30,7 @@ export class BoardRepository {
     Object.values(board.columns).forEach((column, index) => {
       stmts.push({
         sql: 'INSERT INTO columns (id, board_id, title, position) VALUES (?, ?, ?, ?)',
-        args: [column.id, board.id, column.title, index],
+        args: [column.id, board.id, column.title, index] as (string | number)[],
       });
     });
 
