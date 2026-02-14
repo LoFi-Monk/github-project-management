@@ -1,190 +1,523 @@
-build	Set up job	﻿2026-02-14T20:16:52.3397177Z Current runner version: '2.331.0'
-build	Set up job	2026-02-14T20:16:52.3420741Z ##[group]Runner Image Provisioner
-build	Set up job	2026-02-14T20:16:52.3421895Z Hosted Compute Agent
-build	Set up job	2026-02-14T20:16:52.3422409Z Version: 20260123.484
-build	Set up job	2026-02-14T20:16:52.3422967Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
-build	Set up job	2026-02-14T20:16:52.3423638Z Build Date: 2026-01-23T19:41:17Z
-build	Set up job	2026-02-14T20:16:52.3424211Z Worker ID: {a82e3c94-4d0e-4d22-9b05-db167b77c580}
-build	Set up job	2026-02-14T20:16:52.3424839Z Azure Region: northcentralus
-build	Set up job	2026-02-14T20:16:52.3425330Z ##[endgroup]
-build	Set up job	2026-02-14T20:16:52.3426710Z ##[group]Operating System
-build	Set up job	2026-02-14T20:16:52.3427217Z Ubuntu
-build	Set up job	2026-02-14T20:16:52.3427662Z 24.04.3
-build	Set up job	2026-02-14T20:16:52.3428105Z LTS
-build	Set up job	2026-02-14T20:16:52.3428525Z ##[endgroup]
-build	Set up job	2026-02-14T20:16:52.3428984Z ##[group]Runner Image
-build	Set up job	2026-02-14T20:16:52.3429516Z Image: ubuntu-24.04
-build	Set up job	2026-02-14T20:16:52.3429982Z Version: 20260209.23.1
-build	Set up job	2026-02-14T20:16:52.3431028Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260209.23/images/ubuntu/Ubuntu2404-Readme.md
-build	Set up job	2026-02-14T20:16:52.3432631Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260209.23
-build	Set up job	2026-02-14T20:16:52.3433403Z ##[endgroup]
-build	Set up job	2026-02-14T20:16:52.3434401Z ##[group]GITHUB_TOKEN Permissions
-build	Set up job	2026-02-14T20:16:52.3436235Z Contents: read
-build	Set up job	2026-02-14T20:16:52.3436734Z Metadata: read
-build	Set up job	2026-02-14T20:16:52.3437201Z Packages: read
-build	Set up job	2026-02-14T20:16:52.3437620Z ##[endgroup]
-build	Set up job	2026-02-14T20:16:52.3439594Z Secret source: Actions
-build	Set up job	2026-02-14T20:16:52.3440200Z Prepare workflow directory
-build	Set up job	2026-02-14T20:16:52.3754639Z Prepare all required actions
-build	Set up job	2026-02-14T20:16:52.3793447Z Getting action download info
-build	Set up job	2026-02-14T20:16:52.7038080Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-build	Set up job	2026-02-14T20:16:52.8087270Z Download action repository 'pnpm/action-setup@v4' (SHA:41ff72655975bd51cab0327fa583b6e92b6d3061)
-build	Set up job	2026-02-14T20:16:53.2988215Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
-build	Set up job	2026-02-14T20:16:53.4658539Z Complete job name: build
-build	Run actions/checkout@v4	﻿2026-02-14T20:16:53.5467534Z ##[group]Run actions/checkout@v4
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5468405Z with:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5468918Z   repository: LoFi-Monk/github-project-management
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5469768Z   token: ***
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5470181Z   ssh-strict: true
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5470613Z   ssh-user: git
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5471503Z   persist-credentials: true
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5471996Z   clean: true
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5472433Z   sparse-checkout-cone-mode: true
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5472950Z   fetch-depth: 1
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5473371Z   fetch-tags: false
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5473801Z   show-progress: true
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5474242Z   lfs: false
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5474664Z   submodules: false
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5475133Z   set-safe-directory: true
-build	Run actions/checkout@v4	2026-02-14T20:16:53.5475909Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6499109Z Syncing repository: LoFi-Monk/github-project-management
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6501933Z ##[group]Getting Git version info
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6502907Z Working directory is '/home/runner/work/github-project-management/github-project-management'
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6504289Z [command]/usr/bin/git version
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6504801Z git version 2.52.0
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6523630Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6536920Z Temporarily overriding HOME='/home/runner/work/_temp/92e6da47-6275-4359-83f2-e16d4c7a50d3' before making global git config changes
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6538328Z Adding repository directory to the temporary git global config as a safe directory
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6542446Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/github-project-management/github-project-management
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6577545Z Deleting the contents of '/home/runner/work/github-project-management/github-project-management'
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6580467Z ##[group]Initializing the repository
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6584810Z [command]/usr/bin/git init /home/runner/work/github-project-management/github-project-management
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6662040Z hint: Using 'master' as the name for the initial branch. This default branch name
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6663398Z hint: will change to "main" in Git 3.0. To configure the initial branch name
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6664715Z hint: to use in all of your new repositories, which will suppress this warning,
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6665666Z hint: call:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6666062Z hint:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6666598Z hint: 	git config --global init.defaultBranch <name>
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6667189Z hint:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6667758Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6668665Z hint: 'development'. The just-created branch can be renamed via this command:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6669897Z hint:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6670316Z hint: 	git branch -m <name>
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6670793Z hint:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6672243Z hint: Disable this message with "git config set advice.defaultBranchName false"
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6673649Z Initialized empty Git repository in /home/runner/work/github-project-management/github-project-management/.git/
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6676198Z [command]/usr/bin/git remote add origin https://github.com/LoFi-Monk/github-project-management
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6705332Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6706188Z ##[group]Disabling automatic garbage collection
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6708737Z [command]/usr/bin/git config --local gc.auto 0
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6734230Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6735660Z ##[group]Setting up auth
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6741652Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-build	Run actions/checkout@v4	2026-02-14T20:16:53.6769007Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7046652Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7077429Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7260245Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7286587Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7468623Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7498795Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7500534Z ##[group]Fetching the repository
-build	Run actions/checkout@v4	2026-02-14T20:16:53.7508401Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +29fe8e9bc842559db07afd559858616303ef3813:refs/remotes/pull/7/merge
-build	Run actions/checkout@v4	2026-02-14T20:16:53.9977744Z From https://github.com/LoFi-Monk/github-project-management
-build	Run actions/checkout@v4	2026-02-14T20:16:53.9979819Z  * [new ref]         29fe8e9bc842559db07afd559858616303ef3813 -> pull/7/merge
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0006081Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0007669Z ##[group]Determining the checkout info
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0009378Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0014076Z [command]/usr/bin/git sparse-checkout disable
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0048960Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0070726Z ##[group]Checking out the ref
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0075326Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/7/merge
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0141725Z Note: switching to 'refs/remotes/pull/7/merge'.
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0142706Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0143430Z You are in 'detached HEAD' state. You can look around, make experimental
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0144366Z changes and commit them, and you can discard any commits you make in this
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0145243Z state without impacting any branches by switching back to a branch.
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0145766Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0146111Z If you want to create a new branch to retain commits you create, you may
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0147882Z do so (now or later) by using -c with the switch command. Example:
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0148844Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0149128Z   git switch -c <new-branch-name>
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0149477Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0149683Z Or undo this operation with:
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0149999Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0150177Z   git switch -
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0150428Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0150809Z Turn off this advice by setting config variable advice.detachedHead to false
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0151570Z 
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0152198Z HEAD is now at 29fe8e9 Merge 4d24e5819c5676177d4c90dc0eff3f20208de721 into 4441363d5ef286e0fc9102a3852eda3c04791da6
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0154129Z ##[endgroup]
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0178314Z [command]/usr/bin/git log -1 --format=%H
-build	Run actions/checkout@v4	2026-02-14T20:16:54.0198655Z 29fe8e9bc842559db07afd559858616303ef3813
-build	Install pnpm	﻿2026-02-14T20:16:54.0385389Z ##[group]Run pnpm/action-setup@v4
-build	Install pnpm	2026-02-14T20:16:54.0385976Z with:
-build	Install pnpm	2026-02-14T20:16:54.0386368Z   dest: ~/setup-pnpm
-build	Install pnpm	2026-02-14T20:16:54.0386823Z   run_install: null
-build	Install pnpm	2026-02-14T20:16:54.0387268Z   package_json_file: package.json
-build	Install pnpm	2026-02-14T20:16:54.0387769Z   standalone: false
-build	Install pnpm	2026-02-14T20:16:54.0388174Z ##[endgroup]
-build	Install pnpm	2026-02-14T20:16:54.0895823Z ##[group]Running self-installer...
-build	Install pnpm	2026-02-14T20:16:54.5835649Z Progress: resolved 1, reused 0, downloaded 0, added 0
-build	Install pnpm	2026-02-14T20:16:54.5913930Z Packages: +1
-build	Install pnpm	2026-02-14T20:16:54.5915214Z +
-build	Install pnpm	2026-02-14T20:16:55.0145137Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
-build	Install pnpm	2026-02-14T20:16:55.0385976Z 
-build	Install pnpm	2026-02-14T20:16:55.0386944Z dependencies:
-build	Install pnpm	2026-02-14T20:16:55.0388342Z + pnpm 9.1.1 (10.29.3 is available)
-build	Install pnpm	2026-02-14T20:16:55.0389466Z 
-build	Install pnpm	2026-02-14T20:16:55.0415886Z Done in 787ms
-build	Install pnpm	2026-02-14T20:16:55.0540174Z ##[endgroup]
-build	Install pnpm	2026-02-14T20:16:55.0545074Z Installation Completed!
-build	Set up Node.js	﻿2026-02-14T20:16:55.0786067Z ##[group]Run actions/setup-node@v4
-build	Set up Node.js	2026-02-14T20:16:55.0787127Z with:
-build	Set up Node.js	2026-02-14T20:16:55.0787864Z   node-version: 20
-build	Set up Node.js	2026-02-14T20:16:55.0788663Z   cache: pnpm
-build	Set up Node.js	2026-02-14T20:16:55.0789467Z   always-auth: false
-build	Set up Node.js	2026-02-14T20:16:55.0790324Z   check-latest: false
-build	Set up Node.js	2026-02-14T20:16:55.0791597Z   token: ***
-build	Set up Node.js	2026-02-14T20:16:55.0792346Z env:
-build	Set up Node.js	2026-02-14T20:16:55.0793265Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
-build	Set up Node.js	2026-02-14T20:16:55.0794480Z ##[endgroup]
-build	Set up Node.js	2026-02-14T20:16:55.2538368Z Found in cache @ /opt/hostedtoolcache/node/20.20.0/x64
-build	Set up Node.js	2026-02-14T20:16:55.2543919Z ##[group]Environment details
-build	Set up Node.js	2026-02-14T20:16:55.5838562Z node: v20.20.0
-build	Set up Node.js	2026-02-14T20:16:55.5840088Z npm: 10.8.2
-build	Set up Node.js	2026-02-14T20:16:55.5841427Z yarn: 1.22.22
-build	Set up Node.js	2026-02-14T20:16:55.5843599Z ##[endgroup]
-build	Set up Node.js	2026-02-14T20:16:55.5863744Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
-build	Set up Node.js	2026-02-14T20:16:55.9563308Z /home/runner/setup-pnpm/node_modules/.bin/store/v3
-build	Set up Node.js	2026-02-14T20:16:56.1826811Z pnpm cache is not found
-build	Install dependencies	﻿2026-02-14T20:16:56.1931422Z ##[group]Run pnpm install
-build	Install dependencies	2026-02-14T20:16:56.1931892Z [36;1mpnpm install[0m
-build	Install dependencies	2026-02-14T20:16:56.1971651Z shell: /usr/bin/bash -e {0}
-build	Install dependencies	2026-02-14T20:16:56.1971976Z env:
-build	Install dependencies	2026-02-14T20:16:56.1972217Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
-build	Install dependencies	2026-02-14T20:16:56.1972507Z ##[endgroup]
-build	Install dependencies	2026-02-14T20:16:56.5925369Z Scope: all 3 workspace projects
-build	Install dependencies	2026-02-14T20:16:56.6380985Z  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with apps/server/package.json
-build	Install dependencies	2026-02-14T20:16:56.6381686Z 
-build	Install dependencies	2026-02-14T20:16:56.6382297Z Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
-build	Install dependencies	2026-02-14T20:16:56.6382801Z 
-build	Install dependencies	2026-02-14T20:16:56.6382915Z     Failure reason:
-build	Install dependencies	2026-02-14T20:16:56.6384298Z     specifiers in the lockfile ({"@lofi-pm/core":"workspace:*","dotenv":"^16.4.5","zod":"^3.23.8","@types/node":"^20.14.11","tsx":"^4.16.2","typescript":"^5.5.4","vitest":"^2.0.5"}) don't match specs in package.json ({"@types/node":"^20.14.11","tsx":"^4.16.2","typescript":"^5.5.4","vitest":"^2.0.5","@lofi-pm/core":"workspace:*","@libsql/client":"^0.14.0","dotenv":"^16.4.5","zod":"^3.23.8"})
-build	Install dependencies	2026-02-14T20:16:56.6537097Z ##[error]Process completed with exit code 1.
-build	Post Install pnpm	﻿2026-02-14T20:16:56.6614407Z Post job cleanup.
-build	Post Install pnpm	2026-02-14T20:16:56.7114860Z Pruning is unnecessary.
-build	Post Run actions/checkout@v4	﻿2026-02-14T20:16:56.7225091Z Post job cleanup.
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8123714Z [command]/usr/bin/git version
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8166014Z git version 2.52.0
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8204687Z Temporarily overriding HOME='/home/runner/work/_temp/156f40f9-d560-4562-830f-244e4f5aa223' before making global git config changes
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8206276Z Adding repository directory to the temporary git global config as a safe directory
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8210092Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/github-project-management/github-project-management
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8242824Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8273462Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8463311Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8482483Z http.https://github.com/.extraheader
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8493839Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8520604Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8703006Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-build	Post Run actions/checkout@v4	2026-02-14T20:16:56.8730668Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-build	Complete job	﻿2026-02-14T20:16:56.9008574Z Cleaning up orphan processes
+﻿2026-02-14T21:08:51.9465553Z Current runner version: '2.331.0'
+2026-02-14T21:08:51.9497359Z ##[group]Runner Image Provisioner
+2026-02-14T21:08:51.9498602Z Hosted Compute Agent
+2026-02-14T21:08:51.9500394Z Version: 20260123.484
+2026-02-14T21:08:51.9501447Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+2026-02-14T21:08:51.9502649Z Build Date: 2026-01-23T19:41:17Z
+2026-02-14T21:08:51.9503906Z Worker ID: {63f8f674-d3f0-4af6-a49a-51deefa5285f}
+2026-02-14T21:08:51.9505163Z Azure Region: eastus
+2026-02-14T21:08:51.9505959Z ##[endgroup]
+2026-02-14T21:08:51.9508265Z ##[group]Operating System
+2026-02-14T21:08:51.9509214Z Ubuntu
+2026-02-14T21:08:51.9510030Z 24.04.3
+2026-02-14T21:08:51.9510724Z LTS
+2026-02-14T21:08:51.9511693Z ##[endgroup]
+2026-02-14T21:08:51.9512499Z ##[group]Runner Image
+2026-02-14T21:08:51.9513556Z Image: ubuntu-24.04
+2026-02-14T21:08:51.9514540Z Version: 20260209.23.1
+2026-02-14T21:08:51.9516507Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260209.23/images/ubuntu/Ubuntu2404-Readme.md
+2026-02-14T21:08:51.9519050Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260209.23
+2026-02-14T21:08:51.9520663Z ##[endgroup]
+2026-02-14T21:08:51.9522493Z ##[group]GITHUB_TOKEN Permissions
+2026-02-14T21:08:51.9525223Z Contents: read
+2026-02-14T21:08:51.9526017Z Metadata: read
+2026-02-14T21:08:51.9526916Z Packages: read
+2026-02-14T21:08:51.9527694Z ##[endgroup]
+2026-02-14T21:08:51.9530950Z Secret source: Actions
+2026-02-14T21:08:51.9532221Z Prepare workflow directory
+2026-02-14T21:08:51.9987083Z Prepare all required actions
+2026-02-14T21:08:52.0041412Z Getting action download info
+2026-02-14T21:08:52.2930043Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-02-14T21:08:52.4368506Z Download action repository 'pnpm/action-setup@v4' (SHA:41ff72655975bd51cab0327fa583b6e92b6d3061)
+2026-02-14T21:08:52.6911982Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-02-14T21:08:52.8809312Z Complete job name: build
+2026-02-14T21:08:52.9512165Z ##[group]Run actions/checkout@v4
+2026-02-14T21:08:52.9513240Z with:
+2026-02-14T21:08:52.9513709Z   repository: LoFi-Monk/github-project-management
+2026-02-14T21:08:52.9514429Z   token: ***
+2026-02-14T21:08:52.9514795Z   ssh-strict: true
+2026-02-14T21:08:52.9515166Z   ssh-user: git
+2026-02-14T21:08:52.9515560Z   persist-credentials: true
+2026-02-14T21:08:52.9515987Z   clean: true
+2026-02-14T21:08:52.9516375Z   sparse-checkout-cone-mode: true
+2026-02-14T21:08:52.9516833Z   fetch-depth: 1
+2026-02-14T21:08:52.9517196Z   fetch-tags: false
+2026-02-14T21:08:52.9517575Z   show-progress: true
+2026-02-14T21:08:52.9517958Z   lfs: false
+2026-02-14T21:08:52.9518316Z   submodules: false
+2026-02-14T21:08:52.9518699Z   set-safe-directory: true
+2026-02-14T21:08:52.9519371Z ##[endgroup]
+2026-02-14T21:08:53.0600002Z Syncing repository: LoFi-Monk/github-project-management
+2026-02-14T21:08:53.0601719Z ##[group]Getting Git version info
+2026-02-14T21:08:53.0602649Z Working directory is '/home/runner/work/github-project-management/github-project-management'
+2026-02-14T21:08:53.0603951Z [command]/usr/bin/git version
+2026-02-14T21:08:53.0619726Z git version 2.52.0
+2026-02-14T21:08:53.0645695Z ##[endgroup]
+2026-02-14T21:08:53.0659818Z Temporarily overriding HOME='/home/runner/work/_temp/bd154552-9c32-4142-a620-583146283700' before making global git config changes
+2026-02-14T21:08:53.0661134Z Adding repository directory to the temporary git global config as a safe directory
+2026-02-14T21:08:53.0665522Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/github-project-management/github-project-management
+2026-02-14T21:08:53.0703245Z Deleting the contents of '/home/runner/work/github-project-management/github-project-management'
+2026-02-14T21:08:53.0706610Z ##[group]Initializing the repository
+2026-02-14T21:08:53.0710677Z [command]/usr/bin/git init /home/runner/work/github-project-management/github-project-management
+2026-02-14T21:08:53.0813529Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-02-14T21:08:53.0814900Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-02-14T21:08:53.0815780Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-02-14T21:08:53.0816455Z hint: call:
+2026-02-14T21:08:53.0816811Z hint:
+2026-02-14T21:08:53.0817630Z hint: 	git config --global init.defaultBranch <name>
+2026-02-14T21:08:53.0818623Z hint:
+2026-02-14T21:08:53.0819254Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-02-14T21:08:53.0820106Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-02-14T21:08:53.0820764Z hint:
+2026-02-14T21:08:53.0821127Z hint: 	git branch -m <name>
+2026-02-14T21:08:53.0821538Z hint:
+2026-02-14T21:08:53.0822090Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-02-14T21:08:53.0823829Z Initialized empty Git repository in /home/runner/work/github-project-management/github-project-management/.git/
+2026-02-14T21:08:53.0829222Z [command]/usr/bin/git remote add origin https://github.com/LoFi-Monk/github-project-management
+2026-02-14T21:08:53.0864303Z ##[endgroup]
+2026-02-14T21:08:53.0865490Z ##[group]Disabling automatic garbage collection
+2026-02-14T21:08:53.0869274Z [command]/usr/bin/git config --local gc.auto 0
+2026-02-14T21:08:53.0899284Z ##[endgroup]
+2026-02-14T21:08:53.0900470Z ##[group]Setting up auth
+2026-02-14T21:08:53.0907501Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-02-14T21:08:53.0939920Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-02-14T21:08:53.1284956Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-02-14T21:08:53.1314876Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-02-14T21:08:53.1552036Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-02-14T21:08:53.1582411Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-02-14T21:08:53.1816593Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-02-14T21:08:53.1850564Z ##[endgroup]
+2026-02-14T21:08:53.1851326Z ##[group]Fetching the repository
+2026-02-14T21:08:53.1860708Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +df7cdc713d604daa33e426256015d4f04d17ee7e:refs/remotes/pull/7/merge
+2026-02-14T21:08:53.3431560Z From https://github.com/LoFi-Monk/github-project-management
+2026-02-14T21:08:53.3433588Z  * [new ref]         df7cdc713d604daa33e426256015d4f04d17ee7e -> pull/7/merge
+2026-02-14T21:08:53.3467748Z ##[endgroup]
+2026-02-14T21:08:53.3468997Z ##[group]Determining the checkout info
+2026-02-14T21:08:53.3472511Z ##[endgroup]
+2026-02-14T21:08:53.3477261Z [command]/usr/bin/git sparse-checkout disable
+2026-02-14T21:08:53.3522673Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-02-14T21:08:53.3552133Z ##[group]Checking out the ref
+2026-02-14T21:08:53.3557006Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/7/merge
+2026-02-14T21:08:53.3653877Z Note: switching to 'refs/remotes/pull/7/merge'.
+2026-02-14T21:08:53.3656257Z 
+2026-02-14T21:08:53.3657317Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-02-14T21:08:53.3659623Z changes and commit them, and you can discard any commits you make in this
+2026-02-14T21:08:53.3661112Z state without impacting any branches by switching back to a branch.
+2026-02-14T21:08:53.3662000Z 
+2026-02-14T21:08:53.3662987Z If you want to create a new branch to retain commits you create, you may
+2026-02-14T21:08:53.3664547Z do so (now or later) by using -c with the switch command. Example:
+2026-02-14T21:08:53.3665244Z 
+2026-02-14T21:08:53.3665532Z   git switch -c <new-branch-name>
+2026-02-14T21:08:53.3666047Z 
+2026-02-14T21:08:53.3666326Z Or undo this operation with:
+2026-02-14T21:08:53.3666986Z 
+2026-02-14T21:08:53.3667234Z   git switch -
+2026-02-14T21:08:53.3667596Z 
+2026-02-14T21:08:53.3668188Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-02-14T21:08:53.3669118Z 
+2026-02-14T21:08:53.3670192Z HEAD is now at df7cdc7 Merge 9157ea8400a97f3835120633b65161257580f844 into 4441363d5ef286e0fc9102a3852eda3c04791da6
+2026-02-14T21:08:53.3673696Z ##[endgroup]
+2026-02-14T21:08:53.3700750Z [command]/usr/bin/git log -1 --format=%H
+2026-02-14T21:08:53.3723473Z df7cdc713d604daa33e426256015d4f04d17ee7e
+2026-02-14T21:08:53.3987108Z ##[group]Run pnpm/action-setup@v4
+2026-02-14T21:08:53.3988290Z with:
+2026-02-14T21:08:53.3989055Z   dest: ~/setup-pnpm
+2026-02-14T21:08:53.3989919Z   run_install: null
+2026-02-14T21:08:53.3990867Z   package_json_file: package.json
+2026-02-14T21:08:53.3991905Z   standalone: false
+2026-02-14T21:08:53.3992705Z ##[endgroup]
+2026-02-14T21:08:53.4551294Z ##[group]Running self-installer...
+2026-02-14T21:08:53.9954562Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-02-14T21:08:54.0047392Z Packages: +1
+2026-02-14T21:08:54.0048799Z +
+2026-02-14T21:08:54.3833574Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-02-14T21:08:54.4095114Z 
+2026-02-14T21:08:54.4095681Z dependencies:
+2026-02-14T21:08:54.4096615Z + pnpm 9.1.1 (10.29.3 is available)
+2026-02-14T21:08:54.4097366Z 
+2026-02-14T21:08:54.4126335Z Done in 794ms
+2026-02-14T21:08:54.4324648Z ##[endgroup]
+2026-02-14T21:08:54.4328103Z Installation Completed!
+2026-02-14T21:08:54.4587091Z ##[group]Run actions/setup-node@v4
+2026-02-14T21:08:54.4587400Z with:
+2026-02-14T21:08:54.4587603Z   node-version: 20
+2026-02-14T21:08:54.4587847Z   cache: pnpm
+2026-02-14T21:08:54.4588084Z   always-auth: false
+2026-02-14T21:08:54.4588329Z   check-latest: false
+2026-02-14T21:08:54.4588689Z   token: ***
+2026-02-14T21:08:54.4588909Z env:
+2026-02-14T21:08:54.4589192Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-02-14T21:08:54.4589515Z ##[endgroup]
+2026-02-14T21:08:54.6349653Z Found in cache @ /opt/hostedtoolcache/node/20.20.0/x64
+2026-02-14T21:08:54.6355993Z ##[group]Environment details
+2026-02-14T21:08:56.7665948Z node: v20.20.0
+2026-02-14T21:08:56.7666408Z npm: 10.8.2
+2026-02-14T21:08:56.7666875Z yarn: 1.22.22
+2026-02-14T21:08:56.7667844Z ##[endgroup]
+2026-02-14T21:08:56.7694067Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2026-02-14T21:08:57.2705069Z /home/runner/setup-pnpm/node_modules/.bin/store/v3
+2026-02-14T21:08:57.3576813Z Cache hit for: node-cache-Linux-x64-pnpm-0184b80b901936aaab4334732d36be12c42976d685dd50d5c240635bf5bd7c24
+2026-02-14T21:08:57.8160980Z Received 61440260 of 61440260 (100.0%), 147.2 MBs/sec
+2026-02-14T21:08:57.8164320Z Cache Size: ~59 MB (61440260 B)
+2026-02-14T21:08:57.8288224Z [command]/usr/bin/tar -xf /home/runner/work/_temp/c37bcff5-4c91-4500-9007-19e87ccb4a65/cache.tzst -P -C /home/runner/work/github-project-management/github-project-management --use-compress-program unzstd
+2026-02-14T21:08:58.2535541Z Cache restored successfully
+2026-02-14T21:08:58.2676156Z Cache restored from key: node-cache-Linux-x64-pnpm-0184b80b901936aaab4334732d36be12c42976d685dd50d5c240635bf5bd7c24
+2026-02-14T21:08:58.2832685Z ##[group]Run pnpm install
+2026-02-14T21:08:58.2833328Z [36;1mpnpm install[0m
+2026-02-14T21:08:58.2893606Z shell: /usr/bin/bash -e {0}
+2026-02-14T21:08:58.2893853Z env:
+2026-02-14T21:08:58.2894089Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-02-14T21:08:58.2894387Z ##[endgroup]
+2026-02-14T21:08:58.7119927Z Scope: all 3 workspace projects
+2026-02-14T21:08:58.7588015Z Lockfile is up to date, resolution step is skipped
+2026-02-14T21:08:58.7921118Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-02-14T21:08:58.8343739Z Packages: +166
+2026-02-14T21:08:58.8344891Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-02-14T21:08:59.0945677Z Progress: resolved 166, reused 166, downloaded 0, added 166, done
+2026-02-14T21:08:59.4439480Z 
+2026-02-14T21:08:59.4441206Z devDependencies:
+2026-02-14T21:08:59.4441735Z + @biomejs/biome 2.3.15
+2026-02-14T21:08:59.4442232Z + @vitest/coverage-v8 2.1.9
+2026-02-14T21:08:59.4442758Z + husky 9.1.7
+2026-02-14T21:08:59.4443395Z + lint-staged 16.2.7
+2026-02-14T21:08:59.4443832Z + typescript 5.9.3
+2026-02-14T21:08:59.4444197Z + vitest 2.1.9
+2026-02-14T21:08:59.4444428Z 
+2026-02-14T21:08:59.4521448Z . prepare$ husky
+2026-02-14T21:08:59.5006896Z . prepare: Done
+2026-02-14T21:08:59.5086365Z Done in 1.1s
+2026-02-14T21:08:59.5332101Z ##[group]Run pnpm lint
+2026-02-14T21:08:59.5332365Z [36;1mpnpm lint[0m
+2026-02-14T21:08:59.5382726Z shell: /usr/bin/bash -e {0}
+2026-02-14T21:08:59.5383058Z env:
+2026-02-14T21:08:59.5383299Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-02-14T21:08:59.5383619Z ##[endgroup]
+2026-02-14T21:08:59.9365283Z 
+2026-02-14T21:08:59.9366377Z > lofi-project-management@ lint /home/runner/work/github-project-management/github-project-management
+2026-02-14T21:08:59.9367345Z > biome check .
+2026-02-14T21:08:59.9367555Z 
+2026-02-14T21:09:00.0051656Z apps/server/src/db/migrator.ts:43:44 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0055583Z 
+2026-02-14T21:09:00.0055899Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0056378Z   
+2026-02-14T21:09:00.0057892Z     41 │     // Wrap migration execution and recording in a transaction for atomicity
+2026-02-14T21:09:00.0059236Z     42 │     // We split the SQL by semicolons to execute as individual statements in a batch
+2026-02-14T21:09:00.0060273Z   > 43 │     const statements: { sql: string; args: any[] }[] = sql
+2026-02-14T21:09:00.0061007Z        │                                            ^^^
+2026-02-14T21:09:00.0061552Z     44 │       .split(';')
+2026-02-14T21:09:00.0062101Z     45 │       .map((s) => s.trim())
+2026-02-14T21:09:00.0062499Z   
+2026-02-14T21:09:00.0063251Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0063827Z   
+2026-02-14T21:09:00.0063976Z 
+2026-02-14T21:09:00.0064919Z apps/server/src/repositories/BoardRepository.ts:74:37 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0065647Z 
+2026-02-14T21:09:00.0067122Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0067558Z   
+2026-02-14T21:09:00.0068091Z     73 │     const columns: Record<string, Column> = {};
+2026-02-14T21:09:00.0068768Z   > 74 │     columnResult.rows.forEach((row: any) => {
+2026-02-14T21:09:00.0069384Z        │                                     ^^^
+2026-02-14T21:09:00.0069955Z     75 │       columns[row.id as string] = {
+2026-02-14T21:09:00.0070531Z     76 │         id: row.id as ColumnId,
+2026-02-14T21:09:00.0070930Z   
+2026-02-14T21:09:00.0071509Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0072104Z   
+2026-02-14T21:09:00.0072250Z 
+2026-02-14T21:09:00.0073334Z apps/server/src/repositories/BoardRepository.ts:83:35 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0074041Z 
+2026-02-14T21:09:00.0074285Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0074720Z   
+2026-02-14T21:09:00.0075282Z     82 │     const cards: Record<string, typeof Card._type> = {};
+2026-02-14T21:09:00.0076019Z   > 83 │     cardResult.rows.forEach((row: any) => {
+2026-02-14T21:09:00.0076633Z        │                                   ^^^
+2026-02-14T21:09:00.0077224Z     84 │       const card = this.mapCardRow(row);
+2026-02-14T21:09:00.0078412Z     85 │       cards[card.id] = card;
+2026-02-14T21:09:00.0078804Z   
+2026-02-14T21:09:00.0079338Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0079906Z   
+2026-02-14T21:09:00.0080049Z 
+2026-02-14T21:09:00.0080931Z apps/server/src/repositories/BoardRepository.ts:99:27 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0081925Z 
+2026-02-14T21:09:00.0082169Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0082611Z   
+2026-02-14T21:09:00.0083923Z      97 │   }
+2026-02-14T21:09:00.0084280Z      98 │ 
+2026-02-14T21:09:00.0084827Z    > 99 │   private mapCardRow(row: any): typeof Card._type {
+2026-02-14T21:09:00.0085468Z         │                           ^^^
+2026-02-14T21:09:00.0085984Z     100 │     return Card.parse({
+2026-02-14T21:09:00.0086446Z     101 │       id: row.id,
+2026-02-14T21:09:00.0086793Z   
+2026-02-14T21:09:00.0087304Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0087862Z   
+2026-02-14T21:09:00.0088014Z 
+2026-02-14T21:09:00.0089167Z apps/server/src/repositories/CardRepository.ts:80:34 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0089907Z 
+2026-02-14T21:09:00.0090162Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0090633Z   
+2026-02-14T21:09:00.0091074Z     78 │       args: [columnId, boardId],
+2026-02-14T21:09:00.0091564Z     79 │     });
+2026-02-14T21:09:00.0092208Z   > 80 │     return result.rows.map((row: any) => this.mapRow(row));
+2026-02-14T21:09:00.0093211Z        │                                  ^^^
+2026-02-14T21:09:00.0093729Z     81 │   }
+2026-02-14T21:09:00.0094072Z     82 │ 
+2026-02-14T21:09:00.0094347Z   
+2026-02-14T21:09:00.0094875Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0095446Z   
+2026-02-14T21:09:00.0095607Z 
+2026-02-14T21:09:00.0096365Z apps/server/src/repositories/CardRepository.ts:130:23 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0096763Z 
+2026-02-14T21:09:00.0096919Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0097176Z   
+2026-02-14T21:09:00.0097381Z     128 │   }
+2026-02-14T21:09:00.0097566Z     129 │ 
+2026-02-14T21:09:00.0097896Z   > 130 │   private mapRow(row: any): typeof Card._type {
+2026-02-14T21:09:00.0098323Z         │                       ^^^
+2026-02-14T21:09:00.0098632Z     131 │     return Card.parse({
+2026-02-14T21:09:00.0098911Z     132 │       id: row.id,
+2026-02-14T21:09:00.0099169Z   
+2026-02-14T21:09:00.0099713Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0100272Z   
+2026-02-14T21:09:00.0100361Z 
+2026-02-14T21:09:00.0100885Z packages/core/src/merge.ts:44:18 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0101252Z 
+2026-02-14T21:09:00.0101393Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0101643Z   
+2026-02-14T21:09:00.0101919Z     42 │       // CASE: Local is clean, Remote changed.
+2026-02-14T21:09:00.0102390Z     43 │       // Action: Accept GitHub value (Automation or other user).
+2026-02-14T21:09:00.0103011Z   > 44 │       (result as any)[field] = remoteValue;
+2026-02-14T21:09:00.0103392Z        │                  ^^^
+2026-02-14T21:09:00.0103705Z     45 │       remoteChangedAny = true;
+2026-02-14T21:09:00.0104089Z     46 │     } else if (isDirty && remoteChanged) {
+2026-02-14T21:09:00.0104349Z   
+2026-02-14T21:09:00.0104640Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0104961Z   
+2026-02-14T21:09:00.0105054Z 
+2026-02-14T21:09:00.0105537Z packages/core/src/schema.test.ts:2:17 lint/correctness/noUnusedImports  FIXABLE  ━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0105920Z 
+2026-02-14T21:09:00.0106052Z   ! Several of these imports are unused.
+2026-02-14T21:09:00.0106291Z   
+2026-02-14T21:09:00.0106569Z     1 │ import { describe, expect, it } from 'vitest';
+2026-02-14T21:09:00.0107086Z   > 2 │ import { Board, BoardId, Card, CardId, Column, ColumnId } from './schema';
+2026-02-14T21:09:00.0107593Z       │                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-14T21:09:00.0107897Z     3 │ 
+2026-02-14T21:09:00.0108158Z     4 │ describe('Schema Validation', () => {
+2026-02-14T21:09:00.0108410Z   
+2026-02-14T21:09:00.0108714Z   i Unused imports might be the result of an incomplete refactoring.
+2026-02-14T21:09:00.0109224Z   
+2026-02-14T21:09:00.0109432Z   i Unsafe fix: Remove the unused imports.
+2026-02-14T21:09:00.0109676Z   
+2026-02-14T21:09:00.0110380Z     2 │ import·{·Board,·BoardId,·Card,·CardId,·Column,·ColumnId·}·from·'./schema';
+2026-02-14T21:09:00.0110993Z       │                 ---------      -------------------------                  
+2026-02-14T21:09:00.0111227Z 
+2026-02-14T21:09:00.0111716Z packages/core/src/schema.ts:85:35 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0112087Z 
+2026-02-14T21:09:00.0112225Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0112477Z   
+2026-02-14T21:09:00.0113163Z     83 │  * (handling JSON serialization artifacts).
+2026-02-14T21:09:00.0113567Z     84 │  */
+2026-02-14T21:09:00.0113937Z   > 85 │ export function areValuesEqual(a: any, b: any): boolean {
+2026-02-14T21:09:00.0114347Z        │                                   ^^^
+2026-02-14T21:09:00.0114981Z     86 │   // Treat null and undefined as equal
+2026-02-14T21:09:00.0115472Z     87 │   if ((a === null || a === undefined) && (b === null || b === undefined)) {
+2026-02-14T21:09:00.0115802Z   
+2026-02-14T21:09:00.0116103Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0116426Z   
+2026-02-14T21:09:00.0116517Z 
+2026-02-14T21:09:00.0117002Z packages/core/src/schema.ts:85:43 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0117380Z 
+2026-02-14T21:09:00.0117524Z   ! Unexpected any. Specify a different type.
+2026-02-14T21:09:00.0117781Z   
+2026-02-14T21:09:00.0118072Z     83 │  * (handling JSON serialization artifacts).
+2026-02-14T21:09:00.0118376Z     84 │  */
+2026-02-14T21:09:00.0118743Z   > 85 │ export function areValuesEqual(a: any, b: any): boolean {
+2026-02-14T21:09:00.0119149Z        │                                           ^^^
+2026-02-14T21:09:00.0119501Z     86 │   // Treat null and undefined as equal
+2026-02-14T21:09:00.0121454Z     87 │   if ((a === null || a === undefined) && (b === null || b === undefined)) {
+2026-02-14T21:09:00.0122777Z   
+2026-02-14T21:09:00.0123515Z   i any disables many type checking rules. Its use should be avoided.
+2026-02-14T21:09:00.0124090Z   
+2026-02-14T21:09:00.0124189Z 
+2026-02-14T21:09:00.0124666Z pr_comments.json format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.0124977Z 
+2026-02-14T21:09:00.0350093Z   × Formatter would have printed the following content:
+2026-02-14T21:09:00.0350631Z   
+2026-02-14T21:09:00.1754143Z     1     │ - [{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916892","pull_request_review_id":3802640830,"id":2807916892,"node_id":"PRRC_kwDORP6kLM6nXWlc","diff_hunk":"@@·-0,0·+1,44·@@\n+--·Initial·schema·for·Kanban·system\n+\n+CREATE·TABLE·IF·NOT·EXISTS·migrations·(\n+··id·INTEGER·PRIMARY·KEY·AUTOINCREMENT,\n+··name·TEXT·NOT·NULL·UNIQUE,\n+··applied_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·boards·(\n+··id·TEXT·PRIMARY·KEY,·--·Branded·string·from·core\n+··title·TEXT·NOT·NULL,\n+··created_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n+··updated_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·columns·(\n+··id·TEXT·PRIMARY·KEY,","path":"apps/server/src/db/migrations/001_init.sql","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"BUG_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0001\",·\"file_path\":·\"apps/server/src/db/migrations/001_init.sql\",·\"start_line\":·17,·\"end_line\":·17,·\"side\":·\"RIGHT\"}·-->\n\n🔴·**Columns·table·PRIMARY·KEY·prevents·multiple·boards·from·having·the·same·column·type**\n\nThe·`columns`·table·uses·`id·TEXT·PRIMARY·KEY`·(`apps/server/src/db/migrations/001_init.sql:17`),·but·`ColumnId`·is·a·fixed·enum·of·values·like·`'todo'`,·`'backlog'`,·`'in_progress'`,·etc.·(`packages/core/src/schema.ts:6-12`).·This·means·only·one·row·with·`id·=·'todo'`·can·ever·exist·in·the·entire·`columns`·table.\n\n<details>\n<summary>Root·Cause·and·Impact</summary>\n\nWhen·`BoardRepository.create()`·inserts·columns·(`apps/server/src/repositories/BoardRepository.ts:30-35`),·it·uses·the·`ColumnId`·enum·value·(e.g.,·`'todo'`)·as·the·column's·`id`.·Since·`id`·is·the·PRIMARY·KEY,·creating·a·second·board·with·any·overlapping·column·type·will·fail·with·a·UNIQUE·constraint·violation:\n\n```sql\n--·Board·1·creates:·INSERT·INTO·columns·(id,·board_id,·...)·VALUES·('todo',·'board-1',·...)\n--·Board·2·tries:···INSERT·INTO·columns·(id,·board_id,·...)·VALUES·('todo',·'board-2',·...)\n--·FAILS:·UNIQUE·constraint·failed:·columns.id\n```\n\n**Impact:**·The·application·can·only·ever·have·one·board,·or·multiple·boards·that·use·completely·disjoint·column·types·—·which·is·impossible·given·the·fixed·enum.·This·is·a·fundamental·schema·design·flaw·that·breaks·multi-board·support.\n\nThe·fix·should·use·a·composite·primary·key·`PRIMARY·KEY·(id,·board_id)`·or·a·surrogate·key.\n\n</details>\n\n<details>\n<summary>Prompt·for·agents</summary>\n\n```\nIn·apps/server/src/db/migrations/001_init.sql,·change·the·columns·table·to·use·a·composite·primary·key·instead·of·just·the·column·id.·Replace·line·17·(id·TEXT·PRIMARY·KEY,)·with·(id·TEXT·NOT·NULL,)·and·add·a·composite·primary·key·constraint:·PRIMARY·KEY·(id,·board_id).·The·full·CREATE·TABLE·should·look·like:\n\nCREATE·TABLE·IF·NOT·EXISTS·columns·(\n··id·TEXT·NOT·NULL,\n··board_id·TEXT·NOT·NULL,\n··title·TEXT·NOT·NULL,\n··position·INTEGER·NOT·NULL,\n··created_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n··updated_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n··PRIMARY·KEY·(id,·board_id),\n··FOREIGN·KEY·(board_id)·REFERENCES·boards(id)·ON·DELETE·CASCADE\n);\n\nAlso·update·the·FOREIGN·KEY·on·the·cards·table·(line·43)·to·reference·the·composite·key,·or·change·it·to·just·reference·the·column·id·without·a·foreign·key·constraint·since·the·column·id·is·no·longer·globally·unique.\n```\n\n</details>\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:00Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916892","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916892"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916892"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916892/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":null,"original_start_line":null,"start_side":null,"line":17,"original_line":17,"side":"RIGHT","author_association":"NONE","original_position":17,"position":17,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916915","pull_request_review_id":3802640830,"id":2807916915,"node_id":"PRRC_kwDORP6kLM6nXWlz","diff_hunk":"@@·-0,0·+1,66·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·{·type·Client,·createClient·}·from·'@libsql/client';\n+\n+/**\n+·*·Database·client·management·using·@libsql/client.\n+·*\n+·*·Intent:·Provides·a·single·point·of·access·to·the·SQLite·database·instance·for·the·server.\n+·*\n+·*·Guarantees:·Supports·local·file·and·in-memory·databases.·Ensures·the·data·directory·exists\n+·*·before·initialization.\n+·*/\n+let·dbInstance:·Client·|·null·=·null;\n+\n+export·interface·DbOptions·{\n+··path?:·string;\n+}\n+\n+/**\n+·*·Retrieve·the·singleton·database·instance.\n+·*\n+·*·Intent:·Ensure·all·database·operations·use·a·consistent,·configured·connection.\n+·*\n+·*·Guarantees:·Returns·an·initialized·LibSQL·Client.·Defaults·to·local·'data/kanban.db'·if·no·path·provided.\n+·*\n+·*·Constraints:·Concurrent·calls·will·return·the·same·instance·once·initialized.\n+·*/\n+export·function·getDb(options:·DbOptions·=·{}):·Client·{\n+··if·(dbInstance)·{\n+····return·dbInstance;\n+··}\n+\n+··const·dbPath·=·options.path·||·process.env.DATABASE_URL·||·'data/kanban.db';\n+··let·url·=·'';\n+\n+··if·(dbPath·===·':memory:')·{\n+····url·=·'file::memory:';\n+··}·else·{\n+····const·absolutePath·=·path.resolve(dbPath);\n+····const·dir·=·path.dirname(absolutePath);\n+····if·(!fs.existsSync(dir))·{\n+······fs.mkdirSync(dir,·{·recursive:·true·});\n+····}\n+····url·=·`file:${absolutePath}`;\n+··}\n+\n+··dbInstance·=·createClient({\n+····url,\n+··});","path":"apps/server/src/db/client.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"BUG_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0002\",·\"file_path\":·\"apps/server/src/db/client.ts\",·\"start_line\":·47,·\"end_line\":·49,·\"side\":·\"RIGHT\"}·-->\n\n🔴·**Foreign·keys·not·enabled·—·CASCADE·deletes·and·referential·integrity·silently·don't·work**\n\nSQLite·has·foreign·key·enforcement·**disabled·by·default**.·The·schema·defines·`ON·DELETE·CASCADE`·on·`columns.board_id`·(`apps/server/src/db/migrations/001_init.sql:23`)·and·a·foreign·key·on·`cards.status`·(line·43),·but·`PRAGMA·foreign_keys·=·ON`·is·never·executed·anywhere·in·the·codebase.\n\n<details>\n<summary>Root·Cause·and·Impact</summary>\n\nSQLite·requires·`PRAGMA·foreign_keys·=·ON`·to·be·set·**per·connection**·for·foreign·key·constraints·to·be·enforced.·Neither·`client.ts`·nor·`migrator.ts`·sets·this·pragma.\n\nThe·`BoardRepository.delete()`·method·(`apps/server/src/repositories/BoardRepository.ts:96-102`)·documents·that·\"Cascading·deletes·via·foreign·keys·handle·associated·columns·and·cards,\"·but·this·guarantee·is·false.·Deleting·a·board·will:\n1.·Delete·only·the·board·row\n2.·Leave·orphaned·column·rows·in·the·`columns`·table\n3.·Leave·orphaned·card·rows·(if·the·cards·FK·were·working)\n\nAdditionally,·cards·can·be·inserted·with·a·`status`·value·that·doesn't·match·any·existing·column,·silently·violating·referential·integrity.\n\n**Impact:**·Data·integrity·violations·—·orphaned·rows·accumulate·and·referential·constraints·are·not·enforced.\n\n</details>\n\n```suggestion\n··dbInstance·=·createClient({\n····url,\n··});\n\n··//·SQLite·requires·this·pragma·per-connection·for·FK·constraints·and·CASCADE·to·work\n··dbInstance.execute('PRAGMA·foreign_keys·=·ON;');\n\n```\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:01Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916915","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916915"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916915"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916915/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":47,"original_start_line":47,"start_side":"RIGHT","line":49,"original_line":49,"side":"RIGHT","author_association":"NONE","original_position":49,"position":49,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916931","pull_request_review_id":3802640830,"id":2807916931,"node_id":"PRRC_kwDORP6kLM6nXWmD","diff_hunk":"@@·-0,0·+1,50·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·type·{·Client·}·from·'@libsql/client';\n+\n+/**\n+·*·Migration·runner·for·SQLite·using·@libsql/client.\n+·*\n+·*·Intent:·Scans·the·migrations·directory·for·SQL·files·and·applies·them·in·order·to·ensure·the\n+·*·database·schema·is·up-to-date·and·consistent.\n+·*\n+·*·Guarantees:·Idempotent.·Tracks·applied·migrations·in·a·'migrations'·table·and·skips·those\n+·*·already·applied.\n+·*\n+·*·Constraints:·Migrations·are·applied·in·alphabetical·order·based·on·filename.\n+·*/\n+export·async·function·runMigrations(db:·Client):·Promise<void>·{\n+··//·Ensure·migrations·table·exists\n+··await·db.execute(`\n+····CREATE·TABLE·IF·NOT·EXISTS·migrations·(\n+······id·INTEGER·PRIMARY·KEY·AUTOINCREMENT,\n+······name·TEXT·NOT·NULL·UNIQUE,\n+······applied_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+····);\n+··`);\n+\n+··const·migrationsDir·=·path.join(__dirname,·'migrations');\n+··const·files·=·fs\n+····.readdirSync(migrationsDir)\n+····.filter((f)·=>·f.endsWith('.sql'))\n+····.sort();\n+\n+··const·appliedResult·=·await·db.execute('SELECT·name·FROM·migrations');\n+··const·appliedNames·=·new·Set(appliedResult.rows.map((m)·=>·m.name·as·string));\n+\n+··for·(const·file·of·files)·{\n+····if·(appliedNames.has(file))·continue;\n+\n+····console.log(`Applying·migration:·${file}`);\n+····const·sql·=·fs.readFileSync(path.join(migrationsDir,·file),·'utf8');\n+\n+····//·LibSQL·doesn't·support·complex·transaction·blocks·via·.execute·for·multiple·statements·easily\n+····//·We·execute·the·migration·SQL·(which·might·contain·multiple·statements)·and·then·record·it.\n+····//·Note:·Most·migrations·should·be·wrapped·in·BEGIN/COMMIT·if·they·contain·multiple·statements.\n+····await·db.executeMultiple(sql);\n+····await·db.execute({\n+······sql:·'INSERT·INTO·migrations·(name)·VALUES·(?)',\n+······args:·[file],\n+····});","path":"apps/server/src/db/migrator.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"BUG_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0003\",·\"file_path\":·\"apps/server/src/db/migrator.ts\",·\"start_line\":·44,·\"end_line\":·48,·\"side\":·\"RIGHT\"}·-->\n\n🟡·**Migration·execution·and·recording·are·not·atomic·—·crash·between·them·causes·inconsistent·state**\n\nIn·`apps/server/src/db/migrator.ts:44-48`,·the·migration·SQL·is·executed·via·`executeMultiple`,·and·then·the·migration·name·is·recorded·in·a·separate·`execute`·call.·These·two·operations·are·not·wrapped·in·a·transaction.\n\n<details>\n<summary>Root·Cause·and·Impact</summary>\n\nIf·the·process·crashes·or·the·database·connection·is·lost·after·`executeMultiple`·succeeds·but·before·the·`INSERT·INTO·migrations`·completes,·the·migration·will·have·been·applied·to·the·schema·but·not·recorded.·On·the·next·startup,·`runMigrations`·will·attempt·to·re-apply·the·same·migration.\n\nFor·the·current·`001_init.sql`·migration,·this·is·partially·mitigated·by·`CREATE·TABLE·IF·NOT·EXISTS`.·However,·future·migrations·that·contain·`ALTER·TABLE`,·`INSERT`,·or·`CREATE·TABLE`·(without·`IF·NOT·EXISTS`)·would·fail·or·cause·data·duplication·on·re-application.\n\nThe·comment·on·line·43·acknowledges·this·limitation·but·doesn't·address·it.·The·`executeMultiple`·call·and·the·`INSERT·INTO·migrations`·should·be·wrapped·together,·or·the·migration·SQL·itself·should·include·the·recording·statement.\n\n**Impact:**·Future·migrations·risk·being·partially·applied·and·then·failing·on·re-run,·potentially·leaving·the·database·in·a·broken·state.\n\n</details>\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:02Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916931","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916931"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916931"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916931/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":44,"original_start_line":44,"start_side":"RIGHT","line":48,"original_line":48,"side":"RIGHT","author_association":"NONE","original_position":48,"position":48,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916951","pull_request_review_id":3802640830,"id":2807916951,"node_id":"PRRC_kwDORP6kLM6nXWmX","diff_hunk":"@@·-0,0·+1,66·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·{·type·Client,·createClient·}·from·'@libsql/client';\n+\n+/**\n+·*·Database·client·management·using·@libsql/client.\n+·*\n+·*·Intent:·Provides·a·single·point·of·access·to·the·SQLite·database·instance·for·the·server.\n+·*\n+·*·Guarantees:·Supports·local·file·and·in-memory·databases.·Ensures·the·data·directory·exists\n+·*·before·initialization.\n+·*/\n+let·dbInstance:·Client·|·null·=·null;\n+\n+export·interface·DbOptions·{\n+··path?:·string;\n+}\n+\n+/**\n+·*·Retrieve·the·singleton·database·instance.\n+·*\n+·*·Intent:·Ensure·all·database·operations·use·a·consistent,·configured·connection.\n+·*\n+·*·Guarantees:·Returns·an·initialized·LibSQL·Client.·Defaults·to·local·'data/kanban.db'·if·no·path·provided.\n+·*\n+·*·Constraints:·Concurrent·calls·will·return·the·same·instance·once·initialized.\n+·*/\n+export·function·getDb(options:·DbOptions·=·{}):·Client·{\n+··if·(dbInstance)·{\n+····return·dbInstance;\n+··}\n+\n+··const·dbPath·=·options.path·||·process.env.DATABASE_URL·||·'data/kanban.db';\n+··let·url·=·'';\n+\n+··if·(dbPath·===·':memory:')·{\n+····url·=·'file::memory:';\n+··}·else·{\n+····const·absolutePath·=·path.resolve(dbPath);\n+····const·dir·=·path.dirname(absolutePath);\n+····if·(!fs.existsSync(dir))·{\n+······fs.mkdirSync(dir,·{·recursive:·true·});\n+····}\n+····url·=·`file:${absolutePath}`;\n+··}\n+\n+··dbInstance·=·createClient({\n+····url,\n+··});\n+\n+··return·dbInstance;","path":"apps/server/src/db/client.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0001\",·\"file_path\":·\"apps/server/src/db/client.ts\",·\"start_line\":·47,·\"end_line\":·51,·\"side\":·\"RIGHT\"}·-->\n\n🚩·**WAL·mode·is·never·enabled·despite·PR·description·claiming·it**\n\nThe·PR·description·states·the·implementation·includes·\"A·database·client·with·WAL·mode·and·foreign·key·support,\"·but·neither·`PRAGMA·journal_mode=WAL`·nor·`PRAGMA·foreign_keys=ON`·is·executed·anywhere·in·the·codebase.·The·foreign·keys·issue·was·reported·as·a·bug.·WAL·mode·is·similarly·missing·—·SQLite·defaults·to·`journal_mode=DELETE`.·WAL·mode·provides·better·concurrency·(readers·don't·block·writers)·and·is·important·if·the·server·ever·handles·concurrent·requests.·Without·it,·the·database·uses·the·default·rollback·journal,·which·is·less·performant·under·concurrent·access.·The·`getDb`·function·at·`apps/server/src/db/client.ts:47-49`·should·execute·both·pragmas·after·creating·the·client.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:03Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916951","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916951"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916951"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916951/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":47,"original_start_line":47,"start_side":"RIGHT","line":51,"original_line":51,"side":"RIGHT","author_association":"NONE","original_position":51,"position":51,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916960","pull_request_review_id":3802640830,"id":2807916960,"node_id":"PRRC_kwDORP6kLM6nXWmg","diff_hunk":"@@·-0,0·+1,66·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·{·type·Client,·createClient·}·from·'@libsql/client';\n+\n+/**\n+·*·Database·client·management·using·@libsql/client.\n+·*\n+·*·Intent:·Provides·a·single·point·of·access·to·the·SQLite·database·instance·for·the·server.\n+·*\n+·*·Guarantees:·Supports·local·file·and·in-memory·databases.·Ensures·the·data·directory·exists\n+·*·before·initialization.\n+·*/\n+let·dbInstance:·Client·|·null·=·null;\n+\n+export·interface·DbOptions·{\n+··path?:·string;\n+}\n+\n+/**\n+·*·Retrieve·the·singleton·database·instance.\n+·*\n+·*·Intent:·Ensure·all·database·operations·use·a·consistent,·configured·connection.\n+·*\n+·*·Guarantees:·Returns·an·initialized·LibSQL·Client.·Defaults·to·local·'data/kanban.db'·if·no·path·provided.\n+·*\n+·*·Constraints:·Concurrent·calls·will·return·the·same·instance·once·initialized.\n+·*/\n+export·function·getDb(options:·DbOptions·=·{}):·Client·{\n+··if·(dbInstance)·{\n+····return·dbInstance;\n+··}","path":"apps/server/src/db/client.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0002\",·\"file_path\":·\"apps/server/src/db/client.ts\",·\"start_line\":·28,·\"end_line\":·31,·\"side\":·\"RIGHT\"}·-->\n\n📝·**Info:·Singleton·getDb·silently·ignores·options·on·subsequent·calls**\n\nIf·`getDb({·path:·'data/test.db'·})`·is·called·first,·then·later·`getDb({·path:·'data/production.db'·})`·is·called,·the·second·call·silently·returns·the·test·database·instance·because·the·singleton·is·already·initialized·(`apps/server/src/db/client.ts:29-31`).·The·`options`·argument·is·completely·ignored·after·the·first·initialization.·This·is·a·footgun·in·testing·or·multi-context·scenarios.·Currently·only·one·callsite·exists·(`apps/server/src/index.ts:10`),·but·as·the·server·grows,·a·second·caller·passing·different·options·would·get·the·wrong·database·with·no·warning.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:04Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916960","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916960"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916960"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916960/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":28,"original_start_line":28,"start_side":"RIGHT","line":31,"original_line":31,"side":"RIGHT","author_association":"NONE","original_position":31,"position":31,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916988","pull_request_review_id":3802640830,"id":2807916988,"node_id":"PRRC_kwDORP6kLM6nXWm8","diff_hunk":"@@·-0,0·+1,50·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·type·{·Client·}·from·'@libsql/client';\n+\n+/**\n+·*·Migration·runner·for·SQLite·using·@libsql/client.\n+·*\n+·*·Intent:·Scans·the·migrations·directory·for·SQL·files·and·applies·them·in·order·to·ensure·the\n+·*·database·schema·is·up-to-date·and·consistent.\n+·*\n+·*·Guarantees:·Idempotent.·Tracks·applied·migrations·in·a·'migrations'·table·and·skips·those\n+·*·already·applied.\n+·*\n+·*·Constraints:·Migrations·are·applied·in·alphabetical·order·based·on·filename.\n+·*/\n+export·async·function·runMigrations(db:·Client):·Promise<void>·{\n+··//·Ensure·migrations·table·exists\n+··await·db.execute(`\n+····CREATE·TABLE·IF·NOT·EXISTS·migrations·(\n+······id·INTEGER·PRIMARY·KEY·AUTOINCREMENT,\n+······name·TEXT·NOT·NULL·UNIQUE,\n+······applied_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+····);\n+··`);\n+\n+··const·migrationsDir·=·path.join(__dirname,·'migrations');","path":"apps/server/src/db/migrator.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0003\",·\"file_path\":·\"apps/server/src/db/migrator.ts\",·\"start_line\":·26,·\"end_line\":·26,·\"side\":·\"RIGHT\"}·-->\n\n📝·**Info:·`__dirname`·may·not·resolve·correctly·under·ESM·or·bundled·execution**\n\nThe·migrator·uses·`path.join(__dirname,·'migrations')`·at·`apps/server/src/db/migrator.ts:26`·to·locate·SQL·files.·The·server's·tsconfig·uses·`\"module\":·\"NodeNext\"`·and·`\"moduleResolution\":·\"NodeNext\"`·(`apps/server/tsconfig.json:6-7`),·which·can·emit·ESM·depending·on·the·package.json·`type`·field.·Currently·the·package.json·at·`apps/server/package.json`·has·no·`\"type\"`·field,·so·Node·defaults·to·CJS·where·`__dirname`·works.·However,·if·`\"type\":·\"module\"`·is·ever·added,·or·if·a·bundler·is·introduced,·`__dirname`·will·be·undefined.·The·dev·script·uses·`tsx`·which·handles·this·transparently,·but·this·is·fragile.·It's·worth·noting·as·a·maintenance·concern·—·`import.meta.dirname`·(Node·21.2+)·or·`import.meta.url`·with·`fileURLToPath`·would·be·more·robust.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:05Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916988","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916988"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916988"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916988/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":null,"original_start_line":null,"start_side":null,"line":26,"original_line":26,"side":"RIGHT","author_association":"NONE","original_position":26,"position":26,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917000","pull_request_review_id":3802640830,"id":2807917000,"node_id":"PRRC_kwDORP6kLM6nXWnI","diff_hunk":"@@·-0,0·+1,44·@@\n+--·Initial·schema·for·Kanban·system\n+\n+CREATE·TABLE·IF·NOT·EXISTS·migrations·(\n+··id·INTEGER·PRIMARY·KEY·AUTOINCREMENT,\n+··name·TEXT·NOT·NULL·UNIQUE,\n+··applied_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·boards·(\n+··id·TEXT·PRIMARY·KEY,·--·Branded·string·from·core\n+··title·TEXT·NOT·NULL,\n+··created_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n+··updated_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·columns·(\n+··id·TEXT·PRIMARY·KEY,\n+··board_id·TEXT·NOT·NULL,\n+··title·TEXT·NOT·NULL,\n+··position·INTEGER·NOT·NULL,\n+··created_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n+··updated_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n+··FOREIGN·KEY·(board_id)·REFERENCES·boards(id)·ON·DELETE·CASCADE\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·cards·(\n+··id·TEXT·PRIMARY·KEY,\n+··title·TEXT·NOT·NULL,\n+··description·TEXT,\n+··status·TEXT·NOT·NULL,·--·ColumnId\n+··priority·TEXT·NOT·NULL,·--·low,·medium,·high,·critical\n+··labels·TEXT·NOT·NULL,·--·JSON·array\n+··assignees·TEXT·NOT·NULL,·--·JSON·array\n+··position·INTEGER·NOT·NULL,","path":"apps/server/src/db/migrations/001_init.sql","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0004\",·\"file_path\":·\"apps/server/src/db/migrations/001_init.sql\",·\"start_line\":·34,·\"end_line\":·34,·\"side\":·\"RIGHT\"}·-->\n\n📝·**Info:·`position`·column·is·INTEGER·but·the·domain·model·uses·`z.number()`·which·allows·floats**\n\nThe·`cards.position`·column·is·declared·as·`INTEGER·NOT·NULL`·in·the·schema·(`apps/server/src/db/migrations/001_init.sql:34`),·but·the·Zod·schema·defines·it·as·`z.number()`·(`packages/core/src/schema.ts:47`)·which·permits·floating-point·values.·Fractional·positioning·(e.g.,·inserting·between·position·1·and·2·by·assigning·1.5)·is·a·common·pattern·for·reorderable·lists.·SQLite's·`INTEGER`·affinity·would·store·a·float·like·`1.5`·correctly·(SQLite·is·dynamically·typed),·but·`@libsql/client`·may·coerce·it.·The·`mapRow`·at·`apps/server/src/repositories/CardRepository.ts:137`·uses·`Number(row.position)`·which·would·preserve·any·float.·The·manual·test·at·`apps/server/src/index.ts:47`·uses·`Date.now()`·as·position,·which·is·a·large·integer·—·so·it·works·today,·but·worth·confirming·that·the·INTEGER·type·won't·truncate·if·fractional·positioning·is·adopted·later.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:05Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917000","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917000"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917000"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917000/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":null,"original_start_line":null,"start_side":null,"line":34,"original_line":34,"side":"RIGHT","author_association":"NONE","original_position":34,"position":34,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917011","pull_request_review_id":3802640830,"id":2807917011,"node_id":"PRRC_kwDORP6kLM6nXWnT","diff_hunk":"@@·-0,0·+1,145·@@\n+import·type·{·Client·}·from·'@libsql/client';\n+import·{·Card,·type·CardId,·type·ColumnId·}·from·'@lofi-pm/core';\n+\n+/**\n+·*·Repository·for·Card·entity·using·@libsql/client.\n+·*\n+·*·Intent:·Provides·persistence·and·retrieval·logic·for·Kanban·cards·in·SQLite.\n+·*\n+·*·Guarantees:·Maps·database·rows·to·the·`@lofi-pm/core`·Card·Zod·schema.·Handles·JSON·serialization\n+·*·for·labels·and·assignees.\n+·*/\n+export·class·CardRepository·{\n+··constructor(private·db:·Client)·{}\n+\n+··/**\n+···*·Create·a·new·card·in·the·database.\n+···*\n+···*·Intent:·Persist·a·new·card·object·to·the·SQLite·storage.\n+···*\n+···*·Guarantees:·Inserts·a·row·into·the·'cards'·table.·Serializes·complex·objects·to·JSON·strings.\n+···*/\n+··async·create(card:·typeof·Card._type):·Promise<void>·{\n+····await·this.db.execute({\n+······sql:·`\n+········INSERT·INTO·cards·(\n+··········id,·title,·description,·status,·priority,·labels,·assignees,·position,·created_at,·updated_at,\n+··········dirty_fields,·sync_snapshot,·sync_status\n+········)·VALUES·(?,·?,·?,·?,·?,·?,·?,·?,·?,·?,·?,·?,·?)\n+······`,\n+······args:·[\n+········card.id,\n+········card.title,\n+········card.description·||·null,","path":"apps/server/src/repositories/CardRepository.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0005\",·\"file_path\":·\"apps/server/src/repositories/CardRepository.ts\",·\"start_line\":·33,·\"end_line\":·33,·\"side\":·\"RIGHT\"}·-->\n\n📝·**Info:·`description·||·null`·silently·converts·empty·string·to·null**\n\nBoth·`create`·(`apps/server/src/repositories/CardRepository.ts:33`)·and·`update`·(line·99)·use·`card.description·||·null`,·which·converts·empty·strings·to·`null`.·On·read,·`mapRow`·uses·`row.description·||·undefined`·(line·132),·converting·`null`·back·to·`undefined`.·The·Zod·schema·allows·`z.string().optional()`·—·meaning·an·empty·string·`\"\"`·is·a·valid·value·distinct·from·`undefined`.·A·card·with·`description:·\"\"`·would·be·persisted·as·`null`·and·read·back·as·`undefined`,·losing·the·distinction.·Since·the·schema·doesn't·enforce·`.min(1)`·on·description·(unlike·title),·this·is·a·subtle·data·fidelity·issue.·Using·`??·null`·and·`??·undefined`·instead·of·`||`·would·preserve·empty·strings.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:06Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917011","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917011"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917011"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917011/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":null,"original_start_line":null,"start_side":null,"line":33,"original_line":33,"side":"RIGHT","author_association":"NONE","original_position":33,"position":33,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917018","pull_request_review_id":3802640830,"id":2807917018,"node_id":"PRRC_kwDORP6kLM6nXWna","diff_hunk":"@@·-0,0·+1,104·@@\n+import·type·{·Client·}·from·'@libsql/client';\n+import·{·Board,·type·BoardId,·type·Column,·type·ColumnId·}·from·'@lofi-pm/core';\n+\n+/**\n+·*·Repository·for·Board·entity·using·@libsql/client.\n+·*\n+·*·Intent:·Manages·persistence·and·retrieval·of·boards·and·their·associated·columns·in·SQLite.\n+·*\n+·*·Guarantees:·Maps·database·rows·to·the·`@lofi-pm/core`·Board·and·Column·Zod·schemas.\n+·*/\n+export·class·BoardRepository·{\n+··constructor(private·db:·Client)·{}\n+\n+··/**\n+···*·Create·a·new·board·and·its·default·columns.\n+···*\n+···*·Intent:·Initialize·a·new·Kanban·board·with·its·structural·columns·in·a·single·transaction.\n+···*\n+···*·Guarantees:·Atomic·operation.·Either·both·board·and·columns·are·created,·or·neither.\n+···*/\n+··async·create(board:·typeof·Board._type):·Promise<void>·{\n+····//·LibSQL·batch·for·transaction\n+····const·stmts·=·[\n+······{\n+········sql:·'INSERT·INTO·boards·(id,·title)·VALUES·(?,·?)',\n+········args:·[board.id,·board.title]·as·(string·|·number)[],\n+······},\n+····];\n+\n+····Object.values(board.columns).forEach((column,·index)·=>·{\n+······stmts.push({\n+········sql:·'INSERT·INTO·columns·(id,·board_id,·title,·position)·VALUES·(?,·?,·?,·?)',\n+········args:·[column.id,·board.id,·column.title,·index]·as·(string·|·number)[],\n+······});\n+····});\n+\n+····await·this.db.batch(stmts,·'write');\n+··}\n+\n+··/**\n+···*·Find·a·board·by·ID,·including·its·columns.\n+···*\n+···*·Intent:·Retrieve·the·structural·definition·of·a·board.\n+···*\n+···*·Guarantees:·Returns·a·parsed·Board·object·with·its·columns·(but·without·cards)·or·null·if·not·found.\n+···*/\n+··async·findById(id:·BoardId):·Promise<typeof·Board._type·|·null>·{\n+····const·boardResult·=·await·this.db.execute({\n+······sql:·'SELECT·*·FROM·boards·WHERE·id·=·?',\n+······args:·[id],\n+····});\n+····const·boardRow·=·boardResult.rows[0];\n+····if·(!boardRow)·return·null;\n+\n+····const·columnResult·=·await·this.db.execute({\n+······sql:·'SELECT·*·FROM·columns·WHERE·board_id·=·?·ORDER·BY·position',\n+······args:·[id],\n+····});\n+\n+····const·columns:·Record<string,·Column>·=·{};\n+····columnResult.rows.forEach((row)·=>·{\n+······columns[row.id·as·string]·=·{\n+········id:·row.id·as·ColumnId,\n+········title:·row.title·as·string,\n+········cards:·[],\n+······};\n+····});\n+\n+····return·Board.parse({\n+······id:·boardRow.id,\n+······title:·boardRow.title,\n+······columns,\n+······cards:·{},\n+····});\n+··}\n+\n+··/**\n+···*·Update·board·title.\n+···*\n+···*·Intent:·Change·the·display·name·of·an·existing·board.\n+···*\n+···*·Guarantees:·Updates·the·'title'·column·for·the·matching·Board·ID.\n+···*/\n+··async·update(board:·typeof·Board._type):·Promise<void>·{\n+····await·this.db.execute({\n+······sql:·'UPDATE·boards·SET·title·=·?·WHERE·id·=·?',\n+······args:·[board.title,·board.id],\n+····});\n+··}","path":"apps/server/src/repositories/BoardRepository.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0006\",·\"file_path\":·\"apps/server/src/repositories/BoardRepository.ts\",·\"start_line\":·84,·\"end_line\":·89,·\"side\":·\"RIGHT\"}·-->\n\n📝·**Info:·BoardRepository.update·only·updates·title·—·columns·are·silently·ignored**\n\nThe·`update`·method·at·`apps/server/src/repositories/BoardRepository.ts:84-89`·accepts·a·full·`Board`·object·but·only·updates·`boards.title`.·If·a·caller·passes·a·board·with·modified·columns·(e.g.,·renamed·or·reordered),·those·changes·are·silently·discarded.·The·`Board`·Zod·type·includes·`columns`·and·`cards`·as·required·fields,·so·a·caller·might·reasonably·expect·them·to·be·persisted.·This·isn't·necessarily·a·bug·—·the·method's·TSDoc·says·\"Update·board·title\"·—·but·the·method·signature·accepting·the·full·`Board`·type·is·misleading.·Either·narrow·the·parameter·type·or·add·column·update·logic.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:07Z","updated_at":"2026-02-14T20:54:09Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917018","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917018"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917018"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917018/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":84,"original_start_line":84,"start_side":"RIGHT","line":89,"original_line":89,"side":"RIGHT","author_association":"NONE","original_position":89,"position":89,"subject_type":"line"},{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917025","pull_request_review_id":3802640830,"id":2807917025,"node_id":"PRRC_kwDORP6kLM6nXWnh","diff_hunk":"@@·-0,0·+1,104·@@\n+import·type·{·Client·}·from·'@libsql/client';\n+import·{·Board,·type·BoardId,·type·Column,·type·ColumnId·}·from·'@lofi-pm/core';\n+\n+/**\n+·*·Repository·for·Board·entity·using·@libsql/client.\n+·*\n+·*·Intent:·Manages·persistence·and·retrieval·of·boards·and·their·associated·columns·in·SQLite.\n+·*\n+·*·Guarantees:·Maps·database·rows·to·the·`@lofi-pm/core`·Board·and·Column·Zod·schemas.\n+·*/\n+export·class·BoardRepository·{\n+··constructor(private·db:·Client)·{}\n+\n+··/**\n+···*·Create·a·new·board·and·its·default·columns.\n+···*\n+···*·Intent:·Initialize·a·new·Kanban·board·with·its·structural·columns·in·a·single·transaction.\n+···*\n+···*·Guarantees:·Atomic·operation.·Either·both·board·and·columns·are·created,·or·neither.\n+···*/\n+··async·create(board:·typeof·Board._type):·Promise<void>·{\n+····//·LibSQL·batch·for·transaction\n+····const·stmts·=·[\n+······{\n+········sql:·'INSERT·INTO·boards·(id,·title)·VALUES·(?,·?)',\n+········args:·[board.id,·board.title]·as·(string·|·number)[],\n+······},\n+····];\n+\n+····Object.values(board.columns).forEach((column,·index)·=>·{\n+······stmts.push({\n+········sql:·'INSERT·INTO·columns·(id,·board_id,·title,·position)·VALUES·(?,·?,·?,·?)',\n+········args:·[column.id,·board.id,·column.title,·index]·as·(string·|·number)[],\n+······});\n+····});","path":"apps/server/src/repositories/BoardRepository.ts","commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","original_commit_id":"56ded3a6886b0f752867c952413522b0a7d881f3","user":{"login":"devin-ai-integration[bot]","id":158243242,"node_id":"BOT_kgDOCW6Zqg","avatar_url":"https://avatars.githubusercontent.com/in/811515?v=4","gravatar_id":"","url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D","html_url":"https://github.com/apps/devin-ai-integration","followers_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers","following_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}","gists_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}","starred_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions","organizations_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs","repos_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos","events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}","received_events_url":"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events","type":"Bot","user_view_type":"public","site_admin":false},"body":"<!--·devin-review-comment·{\"id\":·\"ANALYSIS_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0007\",·\"file_path\":·\"apps/server/src/repositories/BoardRepository.ts\",·\"start_line\":·30,·\"end_line\":·35,·\"side\":·\"RIGHT\"}·-->\n\n📝·**Info:·Column·position·in·BoardRepository.create·depends·on·Object.values·iteration·order**\n\nIn·`BoardRepository.create`·at·`apps/server/src/repositories/BoardRepository.ts:30`,·column·positions·are·assigned·via·the·`index`·parameter·of·`Object.values(board.columns).forEach`.·While·modern·JavaScript·engines·preserve·insertion·order·for·string-keyed·properties,·the·order·depends·on·how·the·`columns`·record·was·constructed·by·the·caller.·A·`z.record(ColumnId,·Column)`·parsed·object·may·not·maintain·the·user's·intended·column·ordering.·If·column·display·order·matters·(which·it·does·for·a·kanban·board),·the·position·assignment·here·is·fragile·—·the·order·of·`Object.values()`·on·the·Zod-parsed·record·may·not·match·the·caller's·intent,·especially·if·the·record·was·built·programmatically·or·deserialized·from·JSON.\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*","created_at":"2026-02-14T20:54:08Z","updated_at":"2026-02-14T20:54:10Z","html_url":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917025","pull_request_url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7","_links":{"self":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917025"},"html":{"href":"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807917025"},"pull_request":{"href":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"}},"reactions":{"url":"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807917025/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"start_line":30,"original_start_line":30,"start_side":"RIGHT","line":35,"original_line":35,"side":"RIGHT","author_association":"NONE","original_position":35,"position":35,"subject_type":"line"}]
+2026-02-14T21:09:00.1982481Z         1 │ + [
+2026-02-14T21:09:00.1982757Z         2 │ + ··{
+2026-02-14T21:09:00.1983616Z         3 │ + ····"url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916892",
+2026-02-14T21:09:00.1984254Z         4 │ + ····"pull_request_review_id":·3802640830,
+2026-02-14T21:09:00.1984622Z         5 │ + ····"id":·2807916892,
+2026-02-14T21:09:00.1984985Z         6 │ + ····"node_id":·"PRRC_kwDORP6kLM6nXWlc",
+2026-02-14T21:09:00.1987644Z         7 │ + ····"diff_hunk":·"@@·-0,0·+1,44·@@\n+--·Initial·schema·for·Kanban·system\n+\n+CREATE·TABLE·IF·NOT·EXISTS·migrations·(\n+··id·INTEGER·PRIMARY·KEY·AUTOINCREMENT,\n+··name·TEXT·NOT·NULL·UNIQUE,\n+··applied_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·boards·(\n+··id·TEXT·PRIMARY·KEY,·--·Branded·string·from·core\n+··title·TEXT·NOT·NULL,\n+··created_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n+··updated_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+);\n+\n+CREATE·TABLE·IF·NOT·EXISTS·columns·(\n+··id·TEXT·PRIMARY·KEY,",
+2026-02-14T21:09:00.1989988Z         8 │ + ····"path":·"apps/server/src/db/migrations/001_init.sql",
+2026-02-14T21:09:00.1990529Z         9 │ + ····"commit_id":·"56ded3a6886b0f752867c952413522b0a7d881f3",
+2026-02-14T21:09:00.1991085Z        10 │ + ····"original_commit_id":·"56ded3a6886b0f752867c952413522b0a7d881f3",
+2026-02-14T21:09:00.1991645Z        11 │ + ····"user":·{
+2026-02-14T21:09:00.1991992Z        12 │ + ······"login":·"devin-ai-integration[bot]",
+2026-02-14T21:09:00.1992342Z        13 │ + ······"id":·158243242,
+2026-02-14T21:09:00.1992679Z        14 │ + ······"node_id":·"BOT_kgDOCW6Zqg",
+2026-02-14T21:09:00.1993407Z        15 │ + ······"avatar_url":·"https://avatars.githubusercontent.com/in/811515?v=4",
+2026-02-14T21:09:00.1993881Z        16 │ + ······"gravatar_id":·"",
+2026-02-14T21:09:00.1994362Z        17 │ + ······"url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D",
+2026-02-14T21:09:00.1994945Z        18 │ + ······"html_url":·"https://github.com/apps/devin-ai-integration",
+2026-02-14T21:09:00.1995653Z        19 │ + ······"followers_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers",
+2026-02-14T21:09:00.1996493Z        20 │ + ······"following_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}",
+2026-02-14T21:09:00.1997332Z        21 │ + ······"gists_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}",
+2026-02-14T21:09:00.1998180Z        22 │ + ······"starred_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}",
+2026-02-14T21:09:00.1999033Z        23 │ + ······"subscriptions_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions",
+2026-02-14T21:09:00.1999836Z        24 │ + ······"organizations_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs",
+2026-02-14T21:09:00.2000573Z        25 │ + ······"repos_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos",
+2026-02-14T21:09:00.2001342Z        26 │ + ······"events_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}",
+2026-02-14T21:09:00.2002182Z        27 │ + ······"received_events_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events",
+2026-02-14T21:09:00.2002775Z        28 │ + ······"type":·"Bot",
+2026-02-14T21:09:00.2003325Z        29 │ + ······"user_view_type":·"public",
+2026-02-14T21:09:00.2003669Z        30 │ + ······"site_admin":·false
+2026-02-14T21:09:00.2003942Z        31 │ + ····},
+2026-02-14T21:09:00.2018572Z        32 │ + ····"body":·"<!--·devin-review-comment·{\"id\":·\"BUG_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0001\",·\"file_path\":·\"apps/server/src/db/migrations/001_init.sql\",·\"start_line\":·17,·\"end_line\":·17,·\"side\":·\"RIGHT\"}·-->\n\n🔴·**Columns·table·PRIMARY·KEY·prevents·multiple·boards·from·having·the·same·column·type**\n\nThe·`columns`·table·uses·`id·TEXT·PRIMARY·KEY`·(`apps/server/src/db/migrations/001_init.sql:17`),·but·`ColumnId`·is·a·fixed·enum·of·values·like·`'todo'`,·`'backlog'`,·`'in_progress'`,·etc.·(`packages/core/src/schema.ts:6-12`).·This·means·only·one·row·with·`id·=·'todo'`·can·ever·exist·in·the·entire·`columns`·table.\n\n<details>\n<summary>Root·Cause·and·Impact</summary>\n\nWhen·`BoardRepository.create()`·inserts·columns·(`apps/server/src/repositories/BoardRepository.ts:30-35`),·it·uses·the·`ColumnId`·enum·value·(e.g.,·`'todo'`)·as·the·column's·`id`.·Since·`id`·is·the·PRIMARY·KEY,·creating·a·second·board·with·any·overlapping·column·type·will·fail·with·a·UNIQUE·constraint·violation:\n\n```sql\n--·Board·1·creates:·INSERT·INTO·columns·(id,·board_id,·...)·VALUES·('todo',·'board-1',·...)\n--·Board·2·tries:···INSERT·INTO·columns·(id,·board_id,·...)·VALUES·('todo',·'board-2',·...)\n--·FAILS:·UNIQUE·constraint·failed:·columns.id\n```\n\n**Impact:**·The·application·can·only·ever·have·one·board,·or·multiple·boards·that·use·completely·disjoint·column·types·—·which·is·impossible·given·the·fixed·enum.·This·is·a·fundamental·schema·design·flaw·that·breaks·multi-board·support.\n\nThe·fix·should·use·a·composite·primary·key·`PRIMARY·KEY·(id,·board_id)`·or·a·surrogate·key.\n\n</details>\n\n<details>\n<summary>Prompt·for·agents</summary>\n\n```\nIn·apps/server/src/db/migrations/001_init.sql,·change·the·columns·table·to·use·a·composite·primary·key·instead·of·just·the·column·id.·Replace·line·17·(id·TEXT·PRIMARY·KEY,)·with·(id·TEXT·NOT·NULL,)·and·add·a·composite·primary·key·constraint:·PRIMARY·KEY·(id,·board_id).·The·full·CREATE·TABLE·should·look·like:\n\nCREATE·TABLE·IF·NOT·EXISTS·columns·(\n··id·TEXT·NOT·NULL,\n··board_id·TEXT·NOT·NULL,\n··title·TEXT·NOT·NULL,\n··position·INTEGER·NOT·NULL,\n··created_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n··updated_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP,\n··PRIMARY·KEY·(id,·board_id),\n··FOREIGN·KEY·(board_id)·REFERENCES·boards(id)·ON·DELETE·CASCADE\n);\n\nAlso·update·the·FOREIGN·KEY·on·the·cards·table·(line·43)·to·reference·the·composite·key,·or·change·it·to·just·reference·the·column·id·without·a·foreign·key·constraint·since·the·column·id·is·no·longer·globally·unique.\n```\n\n</details>\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*",
+2026-02-14T21:09:00.2029812Z        33 │ + ····"created_at":·"2026-02-14T20:54:00Z",
+2026-02-14T21:09:00.2030198Z        34 │ + ····"updated_at":·"2026-02-14T20:54:09Z",
+2026-02-14T21:09:00.2030856Z        35 │ + ····"html_url":·"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916892",
+2026-02-14T21:09:00.2031742Z        36 │ + ····"pull_request_url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7",
+2026-02-14T21:09:00.2032262Z        37 │ + ····"_links":·{
+2026-02-14T21:09:00.2032515Z        38 │ + ······"self":·{
+2026-02-14T21:09:00.2033307Z        39 │ + ········"href":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916892"
+2026-02-14T21:09:00.2033868Z        40 │ + ······},
+2026-02-14T21:09:00.2034107Z        41 │ + ······"html":·{
+2026-02-14T21:09:00.2034691Z        42 │ + ········"href":·"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916892"
+2026-02-14T21:09:00.2035192Z        43 │ + ······},
+2026-02-14T21:09:00.2035465Z        44 │ + ······"pull_request":·{
+2026-02-14T21:09:00.2036029Z        45 │ + ········"href":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"
+2026-02-14T21:09:00.2036488Z        46 │ + ······}
+2026-02-14T21:09:00.2036702Z        47 │ + ····},
+2026-02-14T21:09:00.2036956Z        48 │ + ····"reactions":·{
+2026-02-14T21:09:00.2037645Z        49 │ + ······"url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916892/reactions",
+2026-02-14T21:09:00.2038251Z        50 │ + ······"total_count":·0,
+2026-02-14T21:09:00.2038530Z        51 │ + ······"+1":·0,
+2026-02-14T21:09:00.2038772Z        52 │ + ······"-1":·0,
+2026-02-14T21:09:00.2039197Z        53 │ + ······"laugh":·0,
+2026-02-14T21:09:00.2039483Z        54 │ + ······"hooray":·0,
+2026-02-14T21:09:00.2039773Z        55 │ + ······"confused":·0,
+2026-02-14T21:09:00.2040053Z        56 │ + ······"heart":·0,
+2026-02-14T21:09:00.2040323Z        57 │ + ······"rocket":·0,
+2026-02-14T21:09:00.2040575Z        58 │ + ······"eyes":·0
+2026-02-14T21:09:00.2040815Z        59 │ + ····},
+2026-02-14T21:09:00.2041067Z        60 │ + ····"start_line":·null,
+2026-02-14T21:09:00.2041413Z        61 │ + ····"original_start_line":·null,
+2026-02-14T21:09:00.2041738Z        62 │ + ····"start_side":·null,
+2026-02-14T21:09:00.2042005Z        63 │ + ····"line":·17,
+2026-02-14T21:09:00.2042282Z        64 │ + ····"original_line":·17,
+2026-02-14T21:09:00.2042747Z        65 │ + ····"side":·"RIGHT",
+2026-02-14T21:09:00.2043351Z        66 │ + ····"author_association":·"NONE",
+2026-02-14T21:09:00.2043709Z        67 │ + ····"original_position":·17,
+2026-02-14T21:09:00.2044031Z        68 │ + ····"position":·17,
+2026-02-14T21:09:00.2044366Z        69 │ + ····"subject_type":·"line"
+2026-02-14T21:09:00.2044643Z        70 │ + ··},
+2026-02-14T21:09:00.2044860Z        71 │ + ··{
+2026-02-14T21:09:00.2045453Z        72 │ + ····"url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916915",
+2026-02-14T21:09:00.2046071Z        73 │ + ····"pull_request_review_id":·3802640830,
+2026-02-14T21:09:00.2046417Z        74 │ + ····"id":·2807916915,
+2026-02-14T21:09:00.2046765Z        75 │ + ····"node_id":·"PRRC_kwDORP6kLM6nXWlz",
+2026-02-14T21:09:00.2054397Z        76 │ + ····"diff_hunk":·"@@·-0,0·+1,66·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·{·type·Client,·createClient·}·from·'@libsql/client';\n+\n+/**\n+·*·Database·client·management·using·@libsql/client.\n+·*\n+·*·Intent:·Provides·a·single·point·of·access·to·the·SQLite·database·instance·for·the·server.\n+·*\n+·*·Guarantees:·Supports·local·file·and·in-memory·databases.·Ensures·the·data·directory·exists\n+·*·before·initialization.\n+·*/\n+let·dbInstance:·Client·|·null·=·null;\n+\n+export·interface·DbOptions·{\n+··path?:·string;\n+}\n+\n+/**\n+·*·Retrieve·the·singleton·database·instance.\n+·*\n+·*·Intent:·Ensure·all·database·operations·use·a·consistent,·configured·connection.\n+·*\n+·*·Guarantees:·Returns·an·initialized·LibSQL·Client.·Defaults·to·local·'data/kanban.db'·if·no·path·provided.\n+·*\n+·*·Constraints:·Concurrent·calls·will·return·the·same·instance·once·initialized.\n+·*/\n+export·function·getDb(options:·DbOptions·=·{}):·Client·{\n+··if·(dbInstance)·{\n+····return·dbInstance;\n+··}\n+\n+··const·dbPath·=·options.path·||·process.env.DATABASE_URL·||·'data/kanban.db';\n+··let·url·=·'';\n+\n+··if·(dbPath·===·':memory:')·{\n+····url·=·'file::memory:';\n+··}·else·{\n+····const·absolutePath·=·path.resolve(dbPath);\n+····const·dir·=·path.dirname(absolutePath);\n+····if·(!fs.existsSync(dir))·{\n+······fs.mkdirSync(dir,·{·recursive:·true·});\n+····}\n+····url·=·`file:${absolutePath}`;\n+··}\n+\n+··dbInstance·=·createClient({\n+····url,\n+··});",
+2026-02-14T21:09:00.2059890Z        77 │ + ····"path":·"apps/server/src/db/client.ts",
+2026-02-14T21:09:00.2060361Z        78 │ + ····"commit_id":·"56ded3a6886b0f752867c952413522b0a7d881f3",
+2026-02-14T21:09:00.2060914Z        79 │ + ····"original_commit_id":·"56ded3a6886b0f752867c952413522b0a7d881f3",
+2026-02-14T21:09:00.2061303Z        80 │ + ····"user":·{
+2026-02-14T21:09:00.2061645Z        81 │ + ······"login":·"devin-ai-integration[bot]",
+2026-02-14T21:09:00.2061987Z        82 │ + ······"id":·158243242,
+2026-02-14T21:09:00.2062321Z        83 │ + ······"node_id":·"BOT_kgDOCW6Zqg",
+2026-02-14T21:09:00.2063045Z        84 │ + ······"avatar_url":·"https://avatars.githubusercontent.com/in/811515?v=4",
+2026-02-14T21:09:00.2063703Z        85 │ + ······"gravatar_id":·"",
+2026-02-14T21:09:00.2064211Z        86 │ + ······"url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D",
+2026-02-14T21:09:00.2064790Z        87 │ + ······"html_url":·"https://github.com/apps/devin-ai-integration",
+2026-02-14T21:09:00.2065500Z        88 │ + ······"followers_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/followers",
+2026-02-14T21:09:00.2066339Z        89 │ + ······"following_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/following{/other_user}",
+2026-02-14T21:09:00.2067164Z        90 │ + ······"gists_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/gists{/gist_id}",
+2026-02-14T21:09:00.2067986Z        91 │ + ······"starred_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/starred{/owner}{/repo}",
+2026-02-14T21:09:00.2068837Z        92 │ + ······"subscriptions_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/subscriptions",
+2026-02-14T21:09:00.2069644Z        93 │ + ······"organizations_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/orgs",
+2026-02-14T21:09:00.2070382Z        94 │ + ······"repos_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/repos",
+2026-02-14T21:09:00.2071151Z        95 │ + ······"events_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/events{/privacy}",
+2026-02-14T21:09:00.2071993Z        96 │ + ······"received_events_url":·"https://api.github.com/users/devin-ai-integration%5Bbot%5D/received_events",
+2026-02-14T21:09:00.2072545Z        97 │ + ······"type":·"Bot",
+2026-02-14T21:09:00.2073048Z        98 │ + ······"user_view_type":·"public",
+2026-02-14T21:09:00.2073391Z        99 │ + ······"site_admin":·false
+2026-02-14T21:09:00.2073670Z       100 │ + ····},
+2026-02-14T21:09:00.2084358Z       101 │ + ····"body":·"<!--·devin-review-comment·{\"id\":·\"BUG_pr-review-job-916fee679f8d431b9b4d340e3e4563dd_0002\",·\"file_path\":·\"apps/server/src/db/client.ts\",·\"start_line\":·47,·\"end_line\":·49,·\"side\":·\"RIGHT\"}·-->\n\n🔴·**Foreign·keys·not·enabled·—·CASCADE·deletes·and·referential·integrity·silently·don't·work**\n\nSQLite·has·foreign·key·enforcement·**disabled·by·default**.·The·schema·defines·`ON·DELETE·CASCADE`·on·`columns.board_id`·(`apps/server/src/db/migrations/001_init.sql:23`)·and·a·foreign·key·on·`cards.status`·(line·43),·but·`PRAGMA·foreign_keys·=·ON`·is·never·executed·anywhere·in·the·codebase.\n\n<details>\n<summary>Root·Cause·and·Impact</summary>\n\nSQLite·requires·`PRAGMA·foreign_keys·=·ON`·to·be·set·**per·connection**·for·foreign·key·constraints·to·be·enforced.·Neither·`client.ts`·nor·`migrator.ts`·sets·this·pragma.\n\nThe·`BoardRepository.delete()`·method·(`apps/server/src/repositories/BoardRepository.ts:96-102`)·documents·that·\"Cascading·deletes·via·foreign·keys·handle·associated·columns·and·cards,\"·but·this·guarantee·is·false.·Deleting·a·board·will:\n1.·Delete·only·the·board·row\n2.·Leave·orphaned·column·rows·in·the·`columns`·table\n3.·Leave·orphaned·card·rows·(if·the·cards·FK·were·working)\n\nAdditionally,·cards·can·be·inserted·with·a·`status`·value·that·doesn't·match·any·existing·column,·silently·violating·referential·integrity.\n\n**Impact:**·Data·integrity·violations·—·orphaned·rows·accumulate·and·referential·constraints·are·not·enforced.\n\n</details>\n\n```suggestion\n··dbInstance·=·createClient({\n····url,\n··});\n\n··//·SQLite·requires·this·pragma·per-connection·for·FK·constraints·and·CASCADE·to·work\n··dbInstance.execute('PRAGMA·foreign_keys·=·ON;');\n\n```\n\n<!--·devin-review-badge-begin·-->\n<a·href=\"https://app.devin.ai/review/lofi-monk/github-project-management/pull/7\"·target=\"_blank\">\n··<picture>\n····<source·media=\"(prefers-color-scheme:·dark)\"·srcset=\"https://static.devin.ai/assets/gh-open-in-devin-review-dark.svg?v=1\">\n····<img·src=\"https://static.devin.ai/assets/gh-open-in-devin-review-light.svg?v=1\"·alt=\"Open·in·Devin·Review\">\n··</picture>\n</a>\n<!--·devin-review-badge-end·-->\n\n---\n*Was·this·helpful?·React·with·👍·or·👎·to·provide·feedback.*",
+2026-02-14T21:09:00.2092612Z       102 │ + ····"created_at":·"2026-02-14T20:54:01Z",
+2026-02-14T21:09:00.2093201Z       103 │ + ····"updated_at":·"2026-02-14T20:54:09Z",
+2026-02-14T21:09:00.2093886Z       104 │ + ····"html_url":·"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916915",
+2026-02-14T21:09:00.2094778Z       105 │ + ····"pull_request_url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7",
+2026-02-14T21:09:00.2095305Z       106 │ + ····"_links":·{
+2026-02-14T21:09:00.2095565Z       107 │ + ······"self":·{
+2026-02-14T21:09:00.2096183Z       108 │ + ········"href":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916915"
+2026-02-14T21:09:00.2096714Z       109 │ + ······},
+2026-02-14T21:09:00.2096950Z       110 │ + ······"html":·{
+2026-02-14T21:09:00.2097538Z       111 │ + ········"href":·"https://github.com/LoFi-Monk/github-project-management/pull/7#discussion_r2807916915"
+2026-02-14T21:09:00.2098056Z       112 │ + ······},
+2026-02-14T21:09:00.2098322Z       113 │ + ······"pull_request":·{
+2026-02-14T21:09:00.2098896Z       114 │ + ········"href":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/7"
+2026-02-14T21:09:00.2099375Z       115 │ + ······}
+2026-02-14T21:09:00.2099598Z       116 │ + ····},
+2026-02-14T21:09:00.2099846Z       117 │ + ····"reactions":·{
+2026-02-14T21:09:00.2100526Z       118 │ + ······"url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916915/reactions",
+2026-02-14T21:09:00.2101134Z       119 │ + ······"total_count":·0,
+2026-02-14T21:09:00.2101416Z       120 │ + ······"+1":·0,
+2026-02-14T21:09:00.2101669Z       121 │ + ······"-1":·0,
+2026-02-14T21:09:00.2101937Z       122 │ + ······"laugh":·0,
+2026-02-14T21:09:00.2102218Z       123 │ + ······"hooray":·0,
+2026-02-14T21:09:00.2102505Z       124 │ + ······"confused":·0,
+2026-02-14T21:09:00.2102795Z       125 │ + ······"heart":·0,
+2026-02-14T21:09:00.2103304Z       126 │ + ······"rocket":·0,
+2026-02-14T21:09:00.2103568Z       127 │ + ······"eyes":·0
+2026-02-14T21:09:00.2103815Z       128 │ + ····},
+2026-02-14T21:09:00.2104101Z       129 │ + ····"start_line":·47,
+2026-02-14T21:09:00.2104434Z       130 │ + ····"original_start_line":·47,
+2026-02-14T21:09:00.2104818Z       131 │ + ····"start_side":·"RIGHT",
+2026-02-14T21:09:00.2105093Z       132 │ + ····"line":·49,
+2026-02-14T21:09:00.2105371Z       133 │ + ····"original_line":·49,
+2026-02-14T21:09:00.2105673Z       134 │ + ····"side":·"RIGHT",
+2026-02-14T21:09:00.2105999Z       135 │ + ····"author_association":·"NONE",
+2026-02-14T21:09:00.2106343Z       136 │ + ····"original_position":·49,
+2026-02-14T21:09:00.2106648Z       137 │ + ····"position":·49,
+2026-02-14T21:09:00.2106948Z       138 │ + ····"subject_type":·"line"
+2026-02-14T21:09:00.2107211Z       139 │ + ··},
+2026-02-14T21:09:00.2107420Z       140 │ + ··{
+2026-02-14T21:09:00.2108019Z       141 │ + ····"url":·"https://api.github.com/repos/LoFi-Monk/github-project-management/pulls/comments/2807916931",
+2026-02-14T21:09:00.2108629Z       142 │ + ····"pull_request_review_id":·3802640830,
+2026-02-14T21:09:00.2108969Z       143 │ + ····"id":·2807916931,
+2026-02-14T21:09:00.2109315Z       144 │ + ····"node_id":·"PRRC_kwDORP6kLM6nXWmD",
+2026-02-14T21:09:00.2118698Z       145 │ + ····"diff_hunk":·"@@·-0,0·+1,50·@@\n+import·fs·from·'node:fs';\n+import·path·from·'node:path';\n+import·type·{·Client·}·from·'@libsql/client';\n+\n+/**\n+·*·Migration·runner·for·SQLite·using·@libsql/client.\n+·*\n+·*·Intent:·Scans·the·migrations·directory·for·SQL·files·and·applies·them·in·order·to·ensure·the\n+·*·database·schema·is·up-to-date·and·consistent.\n+·*\n+·*·Guarantees:·Idempotent.·Tracks·applied·migrations·in·a·'migrations'·table·and·skips·those\n+·*·already·applied.\n+·*\n+·*·Constraints:·Migrations·are·applied·in·alphabetical·order·based·on·filename.\n+·*/\n+export·async·function·runMigrations(db:·Client):·Promise<void>·{\n+··//·Ensure·migrations·table·exists\n+··await·db.execute(`\n+····CREATE·TABLE·IF·NOT·EXISTS·migrations·(\n+······id·INTEGER·PRIMARY·KEY·AUTOINCREMENT,\n+······name·TEXT·NOT·NULL·UNIQUE,\n+······applied_at·DATETIME·DEFAULT·CURRENT_TIMESTAMP\n+····);\n+··`);\n+\n+··const·migrationsDir·=·path.join(__dirname,·'migrations');\n+··const·files·=·fs\n+····.readdirSync(migrationsDir)\n+····.filter((f)·=>·f.endsWith('.sql'))\n+····.sort();\n+\n+··const·appliedResult·=·await·db.execute('SELECT·name·FROM·migrations');\n+··const·appliedNames·=·new·Set(appliedResult.rows.map((m)·=>·m.name·as·string));\n+\n+··for·(const·file·of·files)·{\n+····if·(appliedNames.has(file))·continue;\n+\n+····console.log(`Applying·migration:·${file}`);\n+····const·sql·=·fs.readFileSync(path.join(migrationsDir,·file),·'utf8');\n+\n+····//·LibSQL·doesn't·support·complex·transaction·blocks·via·.execute·for·multiple·statements·easily\n+····//·We·execute·the·migration·SQL·(which·might·contain·multiple·statements)·and·then·record·it.\n+····//·Note:·Most·migrations·should·be·wrapped·in·BEGIN/COMMIT·if·they·contain·multiple·statements.\n+····await·db.executeMultiple(sql);\n+····await·db.execute({\n+······sql:·'INSERT·INTO·migrations·(name)·VALUES·(?)',\n+······args:·[file],\n+····});",
+2026-02-14T21:09:00.2125755Z       146 │ + ····"path":·"apps/server/src/db/migrator.ts",
+2026-02-14T21:09:00.2126285Z       147 │ + ····"commit_id":·"56ded3a6886b0f752867c952413522b0a7d881f3",
+2026-02-14T21:09:00.2126841Z       148 │ + ····"original_commit_id":·"56ded3a6886b0f752867c952413522b0a7d881f3",
+2026-02-14T21:09:00.2127233Z       149 │ + ····"user":·{
+2026-02-14T21:09:00.2127455Z   544 more lines truncated
+2026-02-14T21:09:00.2127662Z   
+2026-02-14T21:09:00.2127754Z 
+2026-02-14T21:09:00.2128171Z check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-02-14T21:09:00.2128462Z 
+2026-02-14T21:09:00.2128661Z   × Some errors were emitted while running checks.
+2026-02-14T21:09:00.2128929Z   
+2026-02-14T21:09:00.2129023Z 
+2026-02-14T21:09:00.2129214Z Checked 24 files in 22ms. No fixes applied.
+2026-02-14T21:09:00.2129510Z Found 1 error.
+2026-02-14T21:09:00.2129710Z Found 10 warnings.
+2026-02-14T21:09:00.2130052Z  ELIFECYCLE  Command failed with exit code 1.
+2026-02-14T21:09:00.2140321Z ##[error]Process completed with exit code 1.
+2026-02-14T21:09:00.2209818Z Post job cleanup.
+2026-02-14T21:09:00.2777140Z Pruning is unnecessary.
+2026-02-14T21:09:00.2881590Z Post job cleanup.
+2026-02-14T21:09:00.3862344Z [command]/usr/bin/git version
+2026-02-14T21:09:00.3924202Z git version 2.52.0
+2026-02-14T21:09:00.3984651Z Temporarily overriding HOME='/home/runner/work/_temp/d0936089-92fb-46d2-b30a-b95a7efe5586' before making global git config changes
+2026-02-14T21:09:00.3986035Z Adding repository directory to the temporary git global config as a safe directory
+2026-02-14T21:09:00.3993179Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/github-project-management/github-project-management
+2026-02-14T21:09:00.4036819Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-02-14T21:09:00.4077859Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-02-14T21:09:00.4351856Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-02-14T21:09:00.4376711Z http.https://github.com/.extraheader
+2026-02-14T21:09:00.4393797Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-02-14T21:09:00.4441489Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-02-14T21:09:00.4694128Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-02-14T21:09:00.4728879Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-02-14T21:09:00.5144334Z Cleaning up orphan processes

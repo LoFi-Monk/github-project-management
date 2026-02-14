@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Board, BoardId, Card, CardId, Column, ColumnId } from './schema';
+import { Board, Card } from './schema';
 
 describe('Schema Validation', () => {
   it('should validate a correct Card', () => {

@@ -82,7 +82,7 @@ export type Board = z.infer<typeof Board>;
  * Treats null and undefined as equivalent for comparison purposes
  * (handling JSON serialization artifacts).
  */
-export function areValuesEqual(a: any, b: any): boolean {
+export function areValuesEqual(a: unknown, b: unknown): boolean {
   // Treat null and undefined as equal
   if ((a === null || a === undefined) && (b === null || b === undefined)) {
     return true;

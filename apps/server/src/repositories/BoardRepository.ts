@@ -71,8 +71,9 @@ export class BoardRepository {
     });
 
     const columns: Record<string, Column> = {};
-    columnResult.rows.forEach((row: any) => {
-      columns[row.id as string] = {
+    columnResult.rows.forEach((row) => {
+      const rowId = row.id as string;
+      columns[rowId] = {
         id: row.id as ColumnId,
         title: row.title as string,
         cards: [],
@@ -80,11 +81,12 @@ export class BoardRepository {
     });
 
     const cards: Record<string, typeof Card._type> = {};
-    cardResult.rows.forEach((row: any) => {
+    cardResult.rows.forEach((row) => {
       const card = this.mapCardRow(row);
       cards[card.id] = card;
-      if (columns[card.status as string]) {
-        columns[card.status as string].cards.push(card.id);
+      const status = card.status as string;
+      if (columns[status]) {
+        columns[status].cards.push(card.id);
       }
     });
 
@@ -96,7 +98,7 @@ export class BoardRepository {
     });
   }
 
-  private mapCardRow(row: any): typeof Card._type {
+  private mapCardRow(row: Record<string, unknown>): typeof Card._type {
     return Card.parse({
       id: row.id,
       title: row.title,

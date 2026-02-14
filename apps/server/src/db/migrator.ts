@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Client } from '@libsql/client';
+import type { Client, InStatement } from '@libsql/client';
 
 /**
  * Migration runner for SQLite using @libsql/client.
@@ -40,7 +40,7 @@ export async function runMigrations(db: Client): Promise<void> {
 
     // Wrap migration execution and recording in a transaction for atomicity
     // We split the SQL by semicolons to execute as individual statements in a batch
-    const statements: { sql: string; args: any[] }[] = sql
+    const statements: InStatement[] = sql
       .split(';')
       .map((s) => s.trim())
       .filter((s) => s.length > 0)

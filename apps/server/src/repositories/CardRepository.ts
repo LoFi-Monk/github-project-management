@@ -77,7 +77,7 @@ export class CardRepository {
       sql: 'SELECT * FROM cards WHERE status = ? AND board_id = ? ORDER BY position',
       args: [columnId, boardId],
     });
-    return result.rows.map((row: any) => this.mapRow(row));
+    return result.rows.map((row) => this.mapRow(row as unknown as Record<string, unknown>));
   }
 
   /**
@@ -127,7 +127,7 @@ export class CardRepository {
     });
   }
 
-  private mapRow(row: any): typeof Card._type {
+  private mapRow(row: Record<string, unknown>): typeof Card._type {
     return Card.parse({
       id: row.id,
       title: row.title,

@@ -41,7 +41,7 @@ export function mergeCards(local: Card, remote: Card): Card {
     if (!isDirty && remoteChanged) {
       // CASE: Local is clean, Remote changed.
       // Action: Accept GitHub value (Automation or other user).
-      (result as any)[field] = remoteValue;
+      (result as Record<string, unknown>)[field] = remoteValue;
       remoteChangedAny = true;
     } else if (isDirty && remoteChanged) {
       // CASE: Local is dirty, Remote changed.
