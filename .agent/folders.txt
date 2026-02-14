@@ -1,0 +1,24 @@
+Folder PATH listing for volume Windows
+Volume serial number is 14FB-0ED1
+C:\AG-WORKSPACE\GITHUB-PROJECT-MANAGEMENT\.AGENT
++---docs
+|   +---architecture
+|   +---decisions
+|   +---plans
+|   +---runbooks
+|   \---specs
++---rules
+|   +---docs
+|   \---git
++---skills
+|   +---brainstorming
+|   +---ears-method
+|   |   \---resources
+|   +---mermaid-diagrams
+|   |   \---references
+|   +---mermaid-validator
+|   \---youtube-transcript
+|       \---scripts
+|           \---__pycache__
++---templates
+\---workflows

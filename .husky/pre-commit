@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pnpm lint-staged
+# Tests for changed files are handled by lint-staged via 'vitest run --related'
+# to ensure precision and avoid issues with git context in new repos.
