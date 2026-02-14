@@ -30,11 +30,16 @@ We prioritize a "Unified Toolchain" approach to minimize configuration drift and
 ```mermaid
 graph TD
     User([User]) <--> CLI[Packages: CLI]
+    User <--> Web[Apps: Web UI]
     LLM([LLM/Devin]) <--> MCP[Packages: MCP]
-    CLI --> Core[Packages: Core]
-    MCP --> Core
-    Core <--> GH[GitHub API]
-    Core <--> DB[(SQLite)]
+
+    CLI <--> Server[Apps: Server]
+    Web <--> Server
+    MCP <--> Server
+
+    Server <--> Core[Packages: Core]
+    Server <--> GH[GitHub API]
+    Server <--> DB[(SQLite)]
 ```
 
 ## Quality Management
