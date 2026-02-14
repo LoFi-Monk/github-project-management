@@ -129,19 +129,19 @@ export class CardRepository {
 
   private mapRow(row: Record<string, unknown>): typeof Card._type {
     return Card.parse({
-      id: row.id,
-      title: row.title,
-      description: row.description ?? undefined,
-      status: row.status,
-      priority: row.priority,
-      labels: JSON.parse(row.labels),
-      assignees: JSON.parse(row.assignees),
+      id: row.id as string,
+      title: row.title as string,
+      description: (row.description as string | null) ?? undefined,
+      status: row.status as string,
+      priority: row.priority as string,
+      labels: JSON.parse(row.labels as string),
+      assignees: JSON.parse(row.assignees as string),
       position: Number(row.position),
-      createdAt: row.created_at,
-      updatedAt: row.updated_at,
-      dirtyFields: row.dirty_fields ? JSON.parse(row.dirty_fields) : undefined,
-      syncSnapshot: row.sync_snapshot ? JSON.parse(row.sync_snapshot) : undefined,
-      syncStatus: row.sync_status || undefined,
+      createdAt: row.created_at as string,
+      updatedAt: row.updated_at as string,
+      dirtyFields: row.dirty_fields ? JSON.parse(row.dirty_fields as string) : undefined,
+      syncSnapshot: row.sync_snapshot ? JSON.parse(row.sync_snapshot as string) : undefined,
+      syncStatus: (row.sync_status as string) || undefined,
     });
   }
 }
