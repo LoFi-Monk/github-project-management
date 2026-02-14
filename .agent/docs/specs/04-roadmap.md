@@ -264,6 +264,7 @@ kanban github conflicts resolve <cardId> --field status --keep remote
 ### Milestone 1 — Foundation
 
 - [ ] pnpm workspaces, Biome, Husky, Vitest, root tsconfig
+- [ ] **CI**: GitHub Actions workflow (`.github/workflows/ci.yml`) for lint/test/typecheck
 - [ ] `packages/core` — types, Zod schemas, constants
 - [ ] Pure field-level merge function in `core/merge.ts`
 - [ ] Unit tests: all four merge cases, conflict detection

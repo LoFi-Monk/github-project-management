@@ -1,0 +1,153 @@
+# Phase 1: MVP - Granular Issue Breakdown
+
+We are breaking down Milestones 1-5 into atomic, manageable units of work.
+
+---
+
+## 📦 Milestone 1: Foundation
+
+### Issue 1: Monorepo Setup & CI Pipeline
+**Context**: Establish the build system, workspace structure, and quality gates before writing feature code.
+**Scope**: Root config, basic package structure, and automated checking.
+
+**Task List**:
+- [ ] Initialize `pnpm` workspaces (`apps/*`, `packages/*`).
+- [ ] Configure `biome` for linting/formatting.
+- [ ] Configure `vitest` in root and `custom-test-env`.
+- [ ] Set up `husky` (pre-commit: lint, pre-push: test).
+- [ ] **(Red)** Create failing GitHub Actions workflow (fails due to missing scripts).
+- [ ] **(Green)** Implement CI scripts and fix workflow.
+- [ ] **(Refactor)** Tune CI caching for speed.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When `pnpm install` is executed, then all dependencies for sub-packages shall be linked correctly.
+- **Unwanted Behavior**: If code with lint errors is pushed, then the GitHub Action shall fail the build.
+
+### Issue 2: Core Domain & Merge Logic
+**Context**: The heart of the "offline-first" system. Types and conflict resolution logic shared by Client, Server, and CLI.
+**Scope**: `packages/core`
+
+**Task List (TDD)**:
+- [ ] Define Zod schemas for `Card`, `Column`, `Board`.
+- [ ] **(Red)** Write failing unit tests for `mergeCards` (Clean/Remote, Dirty/Remote, Dirty/NoConflict, Dirty/Conflict).
+- [ ] **(Green)** Implement pure `mergeCards(local, remote)` function to pass tests.
+- [ ] **(Refactor)** Optimize merge logic for readability and edge cases.
+- [ ] Export inferred TypeScript types.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When `mergeCards` compares a dirty local card with a clean remote card, the system shall prefer local changes.
+- **Unwanted Behavior**: If the same field is changed in both local and remote versions, then `mergeCards` shall mark the field as conflicting.
+
+---
+
+## 🔌 Milestone 2: Server Implementation
+
+### Issue 3: Server Storage Engine (SQLite)
+**Context**: The persistence layer. Needs to be robust and migration-capable.
+**Scope**: `apps/server` (Database Layer)
+
+**Task List (TDD)**:
+- [ ] Set up `better-sqlite3`.
+- [ ] **(Red)** Write failing test: Ensure database file is created and tables exist on startup.
+- [ ] **(Green)** Implement migration runner and apply `boards/cards` schema.
+- [ ] **(Red)** Write failing integration tests for Repository classes (Create/Read/Update/Delete).
+- [ ] **(Green)** Implement Repository classes.
+- [ ] **(Refactor)** Extract SQL queries to constant files or builder patterns.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When the server application creates a connection, it shall automatically run pending migrations.
+
+### Issue 4: Server API & WebSockets
+**Context**: The interface for clients. HTTP for CRUD, WS for live updates.
+**Scope**: `apps/server` (Transport Layer)
+
+**Task List (TDD)**:
+- [ ] Configure Fastify with Zod validation.
+- [ ] **(Red)** Write failing requests for `GET /boards` and `POST /cards`.
+- [ ] **(Green)** Implement REST endpoints.
+- [ ] **(Red)** Write failing test for WebSocket subscription (connect client, trigger mutation, expect event).
+- [ ] **(Green)** Implement WebSocket server and event broadcasting.
+- [ ] **(Refactor)** Standardize error response formats.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When a generic `POST /cards` request receives valid JSON, the system shall persist the card and return 201 Created.
+- **Event Driven**: When a card is updated via REST, the system shall broadcast a `card:updated` event to all connected WebSocket clients.
+
+---
+
+## 🎨 Milestone 3: Web UI Construction
+
+### Issue 5: UI Scaffold & Design System
+**Context**: Setting up the visual environment.
+**Scope**: `apps/web` (Setup)
+*(Note: Visual setup is less strictly TDD, more Verified via Storybook/Preview)*
+
+**Task List**:
+- [ ] Initialize Vite + React.
+- [ ] Configure Tailwind CSS.
+- [ ] Install `shadcn/ui` base and standard components.
+- [ ] **(Verify)** Ensure development server starts and renders Landing Page.
+
+### Issue 6: Board Layout & Read-Only View
+**Context**: Displaying data. Getting columns and cards on the screen.
+**Scope**: `apps/web` (Read Features)
+
+**Task List (TDD)**:
+- [ ] **(Red)** Write component test: `BoardLayout` renders column headers from props.
+- [ ] **(Green)** Implement `BoardLayout` component.
+- [ ] **(Red)** Write component test: `Card` renders title and badges.
+- [ ] **(Green)** Implement `Card` component.
+- [ ] Connect to `GET /boards/:id` API.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When the board loads, the system shall display all columns and cards.
+
+### Issue 7: Interactions & Real-time Sync
+**Context**: Making it interactive. Dragging, editing, and live updates.
+**Scope**: `apps/web` (Write/Interactive Features)
+
+**Task List (TDD)**:
+- [ ] **(Red)** Write hook test: `useKanban` updates local state immediately on move.
+- [ ] **(Green)** Implement `useKanban` with optimistic updates.
+- [ ] Integrate `@dnd-kit` for drag-and-drop.
+- [ ] **(Red)** Write WebSocket test: Dispatching mock event updates store.
+- [ ] **(Green)** Connect WebSocket client listener.
+
+**Acceptance Criteria (EARS)**:
+- **Event Driven**: When a user drops a card in a new column, the system shall immediately update the UI (optimistic).
+
+---
+
+## 💻 Milestone 4: CLI
+
+### Issue 8: CLI Commands
+**Context**: Terminal-based access to the board.
+**Scope**: `packages/cli`
+
+**Task List (TDD)**:
+- [ ] Set up `commander`.
+- [ ] **(Red)** Write test: `cli list --format json` returns valid JSON to stdout.
+- [ ] **(Green)** Implement `list` command and JSON formatter.
+- [ ] **(Red)** Write test: `cli move <id> <status>` calls API endpoint.
+- [ ] **(Green)** Implement `move` command.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When the user runs `kanban list --format json`, the system shall output valid, parsable JSON.
+
+---
+
+## 🤖 Milestone 5: MCP Server
+
+### Issue 9: MCP Tool Exposure
+**Context**: The bridge for AI agents.
+**Scope**: `packages/mcp`
+
+**Task List (TDD)**:
+- [ ] Set up MCP SDK.
+- [ ] **(Red)** Write test: Call `list_cards` tool, expect list from internal API.
+- [ ] **(Green)** wiring `list_cards` tool to API.
+- [ ] **(Red)** Write test: Read `kanban://board` resource, expect Markdown.
+- [ ] **(Green)** Implement Markdown formatter and resource handler.
+
+**Acceptance Criteria (EARS)**:
+- **Normal Operation**: When an AI client requests the `kanban://board` resource, the system shall return a simplified Markdown representation.
