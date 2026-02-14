@@ -41,6 +41,7 @@ pnpm-debug.log*
 
 # Agent
 .agent/docs/Main Branch Protection.json
+.agent/temp
 
 # Test Coverage
 coverage/

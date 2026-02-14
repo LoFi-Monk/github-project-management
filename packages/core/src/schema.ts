@@ -98,7 +98,8 @@ export function areValuesEqual(a: unknown, b: unknown): boolean {
     return true;
   }
 
-  if (typeof a === 'object' && typeof b === 'object') {
+  // Added object comparison
+  if (typeof a === 'object' && a !== null && typeof b === 'object' && b !== null) {
     const keysA = Object.keys(a as object);
     const keysB = Object.keys(b as object);
     if (keysA.length !== keysB.length) return false;

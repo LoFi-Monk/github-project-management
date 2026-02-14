@@ -20,6 +20,7 @@ description: ending a session
    - Organize information in **logical or chronological order** within each section.
    - Remove any outdated or irrelevant information.
    - Ensure clarity and consistency for the next session.
+   - Clean up temp files in `.agent/temp`
 
 4. Stop all background processes
    - Terminate any running scripts, agents, or temporary tasks initiated during the session.
