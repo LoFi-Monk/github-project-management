@@ -1,3 +1,7 @@
 #!/bin/sh
 
-pnpm lint:fix
+pnpm lint-staged
+# Vitest run --changed is handled better by vitest directly for the whole repo
+# but lint-staged ensures format/fix on specific files.
+# Running vitest --changed here as well to satisfy the spec.
+npx vitest run --changed
