@@ -19,7 +19,7 @@ jobs:
           version: 9.1.1
 
       - name: Set up Node.js
-        uses: actions/command-setup@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
