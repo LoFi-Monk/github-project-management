@@ -1,16 +1,13 @@
 # Architecture Overview
 
-This project is structured as a **pnpm monorepo** to maintain high cohesion between the core logic, CLI interface, and MCP server while keeping them independently deployable.
+This project is a **pnpm monorepo** established to support the development of a local-first kanban system. Currently, it consists of the foundational workspace configuration and the first shared logic package.
 
-## Directory Structure
+## Current Directory Structure
 
 ```text
 .
-├── apps/                 # Future application runtimes (Server, Web)
 ├── packages/             # Shared libraries and internal tools
-│   ├── core/             # Core domain logic, models, and GitHub sync engine
-│   └── cli/              # Command line interface (placeholder)
-│   └── mcp/              # Model Context Protocol server (placeholder)
+│   └── core/             # Core domain logic and models
 ├── .agent/               # Agent-specific documentation and rules
 ├── .github/              # CI/CD workflows (GitHub Actions)
 └── .husky/               # Git hooks for quality gates
@@ -18,32 +15,24 @@ This project is structured as a **pnpm monorepo** to maintain high cohesion betw
 
 ## Tooling Strategy
 
-We prioritize a "Unified Toolchain" approach to minimize configuration drift and maximize developer experience:
+We use a unified toolchain to ensure consistency across the monorepo:
 
-- **Package Management:** `pnpm` for fast, disk-efficient workspace management.
-- **Linting & Formatting:** `Biome` as a single, high-performance tool for both, replacing the Prettier/ESLint complexity.
-- **TypeScript:** Strict-mode project references to ensure type safety across package boundaries.
-- **Testing:** `Vitest` for its native ESM support and speed, configured at the workspace root but runnable per package.
+- **Package Management:** `pnpm` for workspace management.
+- **Linting & Formatting:** `Biome` (v2.3.15) for unified linting and formatting.
+- **TypeScript:** Strict-mode configuration for all packages.
+- **Testing:** `Vitest` for unit and integration testing.
 
-## Data Flow (Conceptual)
+## Current Data Flow
+
+The project currently consists of the **Core** package. Future runtimes (CLI, Server, MCP) will depend on this package for business logic and data persistence.
 
 ```mermaid
 graph TD
-    User([User]) <--> CLI[Packages: CLI]
-    User <--> Web[Apps: Web UI]
-    LLM([LLM/Devin]) <--> MCP[Packages: MCP]
-
-    CLI <--> Server[Apps: Server]
-    Web <--> Server
-    MCP <--> Server
-
-    Server <--> Core[Packages: Core]
-    Server <--> GH[GitHub API]
-    Server <--> DB[(SQLite)]
+    Core[Packages: Core] <--> DB[(SQLite Placeholder)]
 ```
 
 ## Quality Management
 
-1. **Local Enforcement:** Husky hooks run `lint-staged` (Biome + related tests) on every commit.
-2. **CI Validation:** Every PR triggers a full `lint`, `typecheck`, and `test` suite in GitHub Actions.
+1. **Local Enforcement:** Husky hooks run `lint-staged` on staged files.
+2. **CI Validation:** GitHub Actions runs `lint`, `typecheck`, and `test` on every pull request.
 3. **Branch Protection:** Merges to `main` require linear history and successful status checks.
