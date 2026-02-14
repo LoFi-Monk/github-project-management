@@ -1,4 +1,4 @@
-import type { Card } from './schema';
+import { areValuesEqual, type Card, MUTABLE_CARD_FIELDS } from './schema';
 
 /**
  * Merges a local card with a remote card based on the "offline-first" sync strategy.
@@ -20,17 +20,10 @@ export function mergeCards(local: Card, remote: Card): Card {
   const result = { ...local };
 
   // Fields that are synchronized and subject to merge logic.
-  const mutableFields = [
-    'title',
-    'description',
-    'status',
-    'priority',
-    'labels',
-    'assignees',
-    'position',
-  ] as const;
+  const mutableFields = MUTABLE_CARD_FIELDS;
 
   let hasConflict = false;
+  let remoteChangedAny = false;
 
   for (const field of mutableFields) {
     const remoteValue = remote[field];
@@ -39,21 +32,31 @@ export function mergeCards(local: Card, remote: Card): Card {
     const isDirty = local.dirtyFields?.includes(field);
 
     // Remote changed if it differs from the snapshot we took last time.
-    // If we have no snapshot, we assume remote is different (safe default).
-    const remoteChanged = !isEqual(remoteValue, snapshotValue);
+    // BUG FIX: If we have no snapshot, we cannot determine if remote changed relative to our last sync.
+    // In this case, we treat remoteChanged as false to avoid false conflicts.
+    // The clean local fields will still take remote values if we didn't have dirtyFields,
+    // but since we have dirtyFields here, we prioritize local work unless we PROVE a conflict.
+    const remoteChanged = snapshot !== undefined && !areValuesEqual(remoteValue, snapshotValue);
 
     if (!isDirty && remoteChanged) {
       // CASE: Local is clean, Remote changed.
       // Action: Accept GitHub value (Automation or other user).
       (result as any)[field] = remoteValue;
+      remoteChangedAny = true;
     } else if (isDirty && remoteChanged) {
       // CASE: Local is dirty, Remote changed.
       // Action: Conflict. We keep the local value to preserve user work,
       // but mark the card as conflicting so the UI can flag it.
       hasConflict = true;
     }
-    // CASE: !isDirty && !remoteChanged -> Both same, keep local (which matches remote).
-    // CASE: isDirty && !remoteChanged  -> Local changed, Remote same. Keep local (pending push).
+  }
+
+  // Handle updatedAt propagation for merged result
+  const localDate = new Date(local.updatedAt);
+  const remoteDate = new Date(remote.updatedAt);
+
+  if (remoteChangedAny || remoteDate > localDate) {
+    result.updatedAt = remote.updatedAt;
   }
 
   if (hasConflict) {
@@ -61,20 +64,4 @@ export function mergeCards(local: Card, remote: Card): Card {
   }
 
   return result;
-}
-
-/**
- * Helper to compare field values.
- * specific handling for arrays (labels, assignees) to ensure content equality.
- */
-function isEqual(a: any, b: any): boolean {
-  if (a === b) return true;
-  if (Array.isArray(a) && Array.isArray(b)) {
-    if (a.length !== b.length) return false;
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
-  }
-  return false;
 }

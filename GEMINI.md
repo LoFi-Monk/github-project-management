@@ -2,24 +2,26 @@
 
 # Current Focus
 
-Preparation for Issue 2 (Core Logic Implementation). The monorepo foundation and CI/CD pipeline are fully established and merged.
+Server Implementation (Issue 3). The Core Domain Logic has been implemented and is in PR Review.
 
 # Recent Decisions
 
 - **Tailwind Sorting**: Use Biome's `useSortedClasses` rule to avoid toolchain conflicts between Prettier and Biome.
 - **Unified Toolchain**: Standardized on Biome for linting and formatting across the monorepo.
 - **Strict Documentation**: Architecture documentation must strictly reflect the _current_ state of the code to avoid confusion. Planned features are reserved for the roadmap.
+- **Merge Strategy**: Adopted "clean/dirty" field-level sync logic for offline-first data, prioritizing local changes only when they are dirty.
 
 # Backlog
 
-- [/] Implement Core Domain Logic (Issue 2)
+- [ ] Implement Server Storage Engine (Issue 3)
+- [ ] Implement Server API & WebSockets (Issue 4)
 - [ ] Implement CLI Interface
 - [ ] Implement MCP Server
 - [ ] Implement GitHub Sync Engine
 
 # In Progress
 
-None.
+- [/] PR Review: Core Domain & Merge Logic (#5)
 
 # Blocked
 
@@ -27,6 +29,7 @@ None.
 
 # Completed
 
+- [x] Issue #2: Core Domain & Merge Logic (PR #5)
 - [x] Issue #1: Monorepo Foundation & CI Setup
 - [x] Biome v2 Setup with CRLF normalization
 - [x] Husky Hooks (pre-commit, commit-msg, pre-push)

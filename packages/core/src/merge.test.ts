@@ -103,4 +103,38 @@ describe('mergeCards', () => {
     const result = mergeCards(local, remote);
     expect(result.labels).toEqual(['a']);
   });
+
+  it('should NOT mark conflict if syncSnapshot is missing but dirtyFields is present', () => {
+    const local = createCard({
+      title: 'Local Update',
+      dirtyFields: ['title'],
+      syncSnapshot: undefined,
+    });
+    const remote = createCard({
+      title: 'Original Title',
+    });
+
+    const result = mergeCards(local, remote);
+
+    expect(result.syncStatus).not.toBe('conflict');
+    expect(result.title).toBe('Local Update');
+  });
+
+  it('should treat null and undefined as equal in isEqual (via nested merge logic)', () => {
+    const snapshot = { description: null };
+    const local = createCard({
+      description: 'Local',
+      dirtyFields: ['description'],
+      syncSnapshot: snapshot,
+    });
+    const remote = createCard({
+      description: undefined,
+      syncSnapshot: snapshot,
+    });
+
+    const result = mergeCards(local, remote);
+
+    expect(result.syncStatus).not.toBe('conflict');
+    expect(result.description).toBe('Local');
+  });
 });

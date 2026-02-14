@@ -27,7 +27,7 @@
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
       "biome check --write --no-errors-on-unmatched",
-      "vitest run --related --passWithNoTests"
+      "vitest related --run --passWithNoTests"
     ]
   }
 }
