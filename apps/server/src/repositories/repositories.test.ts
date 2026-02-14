@@ -1,4 +1,4 @@
-import { type Client, createClient } from '@libsql/client';
+import type { Client } from '@libsql/client';
 import { Board, type BoardId, Card, type CardId, type ColumnId } from '@lofi-pm/core';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createDbClient } from '../db/client';

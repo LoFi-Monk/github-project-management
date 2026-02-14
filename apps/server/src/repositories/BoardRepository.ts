@@ -1,5 +1,5 @@
 import type { Client } from '@libsql/client';
-import { Board, type BoardId, type Card, type Column, type ColumnId } from '@lofi-pm/core';
+import { Board, type BoardId, type Card, type Column } from '@lofi-pm/core';
 import { mapCardRow, mapColumnRow } from './utils';
 
 /**
