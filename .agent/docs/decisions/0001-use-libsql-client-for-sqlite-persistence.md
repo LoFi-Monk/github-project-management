@@ -1,6 +1,6 @@
 ---
 created: 2026-02-14T13:59:18-06:00
-modified: 2026-02-14T13:59:18-06:00
+modified: 2026-02-14T14:50:00-06:00
 ---
 
 # ADR 0001: Use @libsql/client for SQLite Persistence
@@ -29,19 +29,21 @@ During implementation on Windows 11, we encountered persistent "Could not locate
 
 ## Decision Outcome
 
-Chosen option: "@libsql/client", because it successfully initialized and bypassed the binding errors encountered with `better-sqlite3` while providing a clean, async-first Promise API that aligns well with modern TypeScript development.
+Chosen option: "@libsql/client", because it successfully initialized and bypassed the binding errors encountered with `better-sqlite3`. It provides a clean, async-first Promise API and a robust `batch()` method for handling transactions, aligning well with modern TypeScript and the server's repository patterns.
 
 ### Positive Consequences
 
 - Resolved blocking "missing bindings" errors.
 - Simplified environment setup for contributors.
 - Standardized on an async repository pattern.
+- **Native Transaction Support**: Utilized `db.batch()` for atomic multi-statement operations (e.g., Board/Column creation).
 - Future-proofed for potential LibSQL/Turso integration.
 
 ### Negative Consequences
 
 - Minor performance difference compared to `better-sqlite3`.
 - Required updating repository, migrator, and test code to be `async`.
+- **Lockfile Sensitivity**: Discovered that `@libsql/client` requires strict lockfile synchronization between local and CI environments to avoid `frozen-lockfile` errors.
 
 ## Architectural Context
 
