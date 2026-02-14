@@ -2,7 +2,7 @@
 
 # Current Focus
 
-Server Implementation (Issue 3). The Core Domain Logic has been implemented and is in PR Review.
+Implemented Server Storage Engine (Issue 3/6). Ready for API & WebSocket implementation.
 
 # Recent Decisions
 
@@ -21,14 +21,13 @@ Server Implementation (Issue 3). The Core Domain Logic has been implemented and 
 
 # In Progress
 
-- [/] PR Review: Core Domain & Merge Logic (#5)
-
 # Blocked
 
 None.
 
 # Completed
 
+- [x] PR Review: Core Domain & Merge Logic (#5)
 - [x] Issue #2: Core Domain & Merge Logic (PR #5)
 - [x] Issue #1: Monorepo Foundation & CI Setup
 - [x] Biome v2 Setup with CRLF normalization

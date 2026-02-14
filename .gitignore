@@ -10,8 +10,13 @@ build/
 # Database
 *.sqlite
 *.sqlite-journal
+*.db
+*.db-journal
 
-# IDEs and Editors
+# Logs
+test_output.txt
+npm-debug.log*
+
 .vscode/
 .idea/
 *.swp
