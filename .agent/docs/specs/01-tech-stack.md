@@ -54,7 +54,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "biome check .",
-    "lint:fix": "biome check --apply .",
+    "lint:fix": "biome check --write .",
     "typecheck": "tsc -b --noEmit",
     "prepare": "husky"
   }
@@ -65,7 +65,7 @@
 
 ```yaml
 pre-commit:
-  biome check --apply          # format + lint, auto-fix staged files
+  biome check --write          # format + lint, auto-fix staged files
   vitest run --changed         # tests for changed files only
 
 commit-msg:
