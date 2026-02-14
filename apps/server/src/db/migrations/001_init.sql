@@ -1,10 +1,5 @@
 -- Initial schema for Kanban system
 
-CREATE TABLE IF NOT EXISTS migrations (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL UNIQUE,
-  applied_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
 
 CREATE TABLE IF NOT EXISTS boards (
   id TEXT PRIMARY KEY, -- Branded string from core
@@ -43,5 +38,6 @@ CREATE TABLE IF NOT EXISTS cards (
   sync_status TEXT, -- synced, dirty, conflict, local
   
   FOREIGN KEY (board_id) REFERENCES boards(id) ON DELETE CASCADE,
+  -- Cascade delete ensures cards are removed when the parent column is deleted.
   FOREIGN KEY (status, board_id) REFERENCES columns(id, board_id) ON DELETE CASCADE
 );

@@ -7,7 +7,7 @@ import { CardRepository } from './repositories/CardRepository';
 async function main() {
   console.log('--- Starting Storage Engine Verification (@libsql/client) ---');
 
-  const db = getDb({ path: 'data/test.db' });
+  const db = await getDb({ path: 'data/test.db' });
 
   console.log('Running migrations...');
   await runMigrations(db);

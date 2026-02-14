@@ -98,5 +98,14 @@ export function areValuesEqual(a: unknown, b: unknown): boolean {
     return true;
   }
 
+  if (typeof a === 'object' && typeof b === 'object') {
+    const keysA = Object.keys(a as object);
+    const keysB = Object.keys(b as object);
+    if (keysA.length !== keysB.length) return false;
+    return keysA.every((key) =>
+      areValuesEqual((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key]),
+    );
+  }
+
   return false;
 }

@@ -40,6 +40,8 @@ export async function runMigrations(db: Client): Promise<void> {
 
     // Wrap migration execution and recording in a transaction for atomicity
     // We split the SQL by semicolons to execute as individual statements in a batch
+    // LIMITATION: This simple splitting breaks if semicolons appear in strings or complex constructs.
+    // Future iterations should use a proper SQL parser or specialized migration format.
     const statements: InStatement[] = sql
       .split(';')
       .map((s) => s.trim())

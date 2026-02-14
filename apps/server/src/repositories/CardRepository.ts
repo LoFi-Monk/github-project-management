@@ -1,5 +1,6 @@
 import type { Client } from '@libsql/client';
-import { Card, type CardId, type ColumnId } from '@lofi-pm/core';
+import type { Card, CardId, ColumnId } from '@lofi-pm/core';
+import { mapCardRow } from './utils';
 
 /**
  * Repository for Card entity using @libsql/client.
@@ -62,7 +63,7 @@ export class CardRepository {
     const row = result.rows[0];
     if (!row) return null;
 
-    return this.mapRow(row);
+    return mapCardRow(row as unknown as Record<string, unknown>);
   }
 
   /**
@@ -77,7 +78,7 @@ export class CardRepository {
       sql: 'SELECT * FROM cards WHERE status = ? AND board_id = ? ORDER BY position',
       args: [columnId, boardId],
     });
-    return result.rows.map((row) => this.mapRow(row as unknown as Record<string, unknown>));
+    return result.rows.map((row) => mapCardRow(row as unknown as Record<string, unknown>));
   }
 
   /**
@@ -124,24 +125,6 @@ export class CardRepository {
     await this.db.execute({
       sql: 'DELETE FROM cards WHERE id = ?',
       args: [id],
-    });
-  }
-
-  private mapRow(row: Record<string, unknown>): typeof Card._type {
-    return Card.parse({
-      id: row.id as string,
-      title: row.title as string,
-      description: (row.description as string | null) ?? undefined,
-      status: row.status as string,
-      priority: row.priority as string,
-      labels: JSON.parse(row.labels as string),
-      assignees: JSON.parse(row.assignees as string),
-      position: Number(row.position),
-      createdAt: row.created_at as string,
-      updatedAt: row.updated_at as string,
-      dirtyFields: row.dirty_fields ? JSON.parse(row.dirty_fields as string) : undefined,
-      syncSnapshot: row.sync_snapshot ? JSON.parse(row.sync_snapshot as string) : undefined,
-      syncStatus: (row.sync_status as string) || undefined,
     });
   }
 }

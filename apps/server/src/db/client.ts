@@ -26,18 +26,8 @@ export interface DbOptions {
  *
  * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
-export function getDb(options: DbOptions = {}): Client {
+export async function createDbClient(options: DbOptions = {}): Promise<Client> {
   const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
-
-  if (dbInstance) {
-    if (initializedDbPath && initializedDbPath !== dbPath) {
-      throw new Error(
-        `Database already initialized with ${initializedDbPath}. Cannot change to ${dbPath}.`,
-      );
-    }
-    return dbInstance;
-  }
-
   let url = '';
 
   if (dbPath === ':memory:') {
@@ -51,14 +41,39 @@ export function getDb(options: DbOptions = {}): Client {
     url = `file:${absolutePath}`;
   }
 
-  dbInstance = createClient({
+  const client = createClient({
     url,
   });
-  initializedDbPath = dbPath;
 
   // Enable foreign keys and WAL mode for better concurrency and integrity
-  dbInstance.execute('PRAGMA foreign_keys = ON;');
-  dbInstance.execute('PRAGMA journal_mode = WAL;');
+  await client.execute('PRAGMA foreign_keys = ON;');
+  await client.execute('PRAGMA journal_mode = WAL;');
+
+  return client;
+}
+
+/**
+ * Get the singleton database client instance.
+ * Initializes the client if it doesn't exist.
+ *
+ * Intent: Provide a single shared connection for the application runtime.
+ *
+ * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
+ */
+export async function getDb(options: DbOptions = {}): Promise<Client> {
+  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+
+  if (dbInstance) {
+    if (initializedDbPath && initializedDbPath !== dbPath) {
+      throw new Error(
+        `Database already initialized with ${initializedDbPath}. Cannot change to ${dbPath}.`,
+      );
+    }
+    return dbInstance;
+  }
+
+  dbInstance = await createDbClient(options);
+  initializedDbPath = dbPath;
 
   return dbInstance;
 }
@@ -74,5 +89,6 @@ export function closeDb(): void {
   if (dbInstance) {
     dbInstance.close();
     dbInstance = null;
+    initializedDbPath = null;
   }
 }

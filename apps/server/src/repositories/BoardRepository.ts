@@ -1,5 +1,6 @@
 import type { Client } from '@libsql/client';
-import { Board, type BoardId, Card, type Column, type ColumnId } from '@lofi-pm/core';
+import { Board, type BoardId, type Card, type Column, type ColumnId } from '@lofi-pm/core';
+import { mapCardRow, mapColumnRow } from './utils';
 
 /**
  * Repository for Board entity using @libsql/client.
@@ -72,17 +73,13 @@ export class BoardRepository {
 
     const columns: Record<string, Column> = {};
     columnResult.rows.forEach((row) => {
-      const rowId = row.id as string;
-      columns[rowId] = {
-        id: row.id as ColumnId,
-        title: row.title as string,
-        cards: [],
-      };
+      const col = mapColumnRow(row as Record<string, unknown>);
+      columns[col.id] = col;
     });
 
     const cards: Record<string, typeof Card._type> = {};
     cardResult.rows.forEach((row) => {
-      const card = this.mapCardRow(row);
+      const card = mapCardRow(row as Record<string, unknown>);
       cards[card.id] = card;
       const status = card.status as string;
       if (columns[status]) {
@@ -95,24 +92,6 @@ export class BoardRepository {
       title: boardRow.title,
       columns,
       cards,
-    });
-  }
-
-  private mapCardRow(row: Record<string, unknown>): typeof Card._type {
-    return Card.parse({
-      id: row.id as string,
-      title: row.title as string,
-      description: (row.description as string | null) ?? undefined,
-      status: row.status as ColumnId,
-      priority: row.priority as string,
-      labels: JSON.parse(row.labels as string),
-      assignees: JSON.parse(row.assignees as string),
-      position: Number(row.position),
-      createdAt: row.created_at as string,
-      updatedAt: row.updated_at as string,
-      dirtyFields: row.dirty_fields ? JSON.parse(row.dirty_fields as string) : undefined,
-      syncSnapshot: row.sync_snapshot ? JSON.parse(row.sync_snapshot as string) : undefined,
-      syncStatus: (row.sync_status as string) || undefined,
     });
   }
 
