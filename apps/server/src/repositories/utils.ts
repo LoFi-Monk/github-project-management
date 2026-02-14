@@ -1,4 +1,4 @@
-import { Card, type ColumnId } from '@lofi-pm/core';
+import { Card, type CardId, type ColumnId } from '@lofi-pm/core';
 
 /**
  * Maps a raw database row to a Card domain object.
@@ -29,11 +29,11 @@ export function mapCardRow(row: Record<string, unknown>): typeof Card._type {
 export function mapColumnRow(row: Record<string, unknown>): {
   id: ColumnId;
   title: string;
-  cards: string[];
+  cards: CardId[];
 } {
   return {
     id: row.id as ColumnId,
     title: row.title as string,
-    cards: [], // Cards are populated separately
+    cards: [] as CardId[], // Cards are populated separately
   };
 }
