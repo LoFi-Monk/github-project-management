@@ -27,7 +27,9 @@ description: starting a session
      - Run `git status --porcelain` to see uncommitted local changes.
      - Note any changes that may conflict with the branch or open PRs.
 
-4. Report back to the user
+4. Analyze the `.agent/skills` directory to find skills you will use this session.
+
+5. Report back to the user
    - Summarize your findings, including:
      - Project status
      - Recent changes from closed PRs

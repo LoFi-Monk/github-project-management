@@ -2,7 +2,7 @@
 
 # Current Focus
 
-Server Implementation (Issue 3). The Core Domain Logic has been implemented and is in PR Review.
+Ready for API & WebSocket implementation (Issue 4/6).
 
 # Recent Decisions
 
@@ -13,7 +13,7 @@ Server Implementation (Issue 3). The Core Domain Logic has been implemented and 
 
 # Backlog
 
-- [ ] Implement Server Storage Engine (Issue 3)
+- [x] Implement Server Storage Engine (Issue 3)
 - [ ] Implement Server API & WebSockets (Issue 4)
 - [ ] Implement CLI Interface
 - [ ] Implement MCP Server
@@ -21,15 +21,16 @@ Server Implementation (Issue 3). The Core Domain Logic has been implemented and 
 
 # In Progress
 
-- [/] PR Review: Core Domain & Merge Logic (#5)
-
 # Blocked
 
 None.
 
 # Completed
 
+- [x] PR Review: Core Domain & Merge Logic (#5)
 - [x] Issue #2: Core Domain & Merge Logic (PR #5)
+- [x] Issue #3/6: Server Storage Engine Implementation (#7)
+- [x] ADR 0001: Use @libsql/client for SQLite Persistence
 - [x] Issue #1: Monorepo Foundation & CI Setup
 - [x] Biome v2 Setup with CRLF normalization
 - [x] Husky Hooks (pre-commit, commit-msg, pre-push)

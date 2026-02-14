@@ -10,8 +10,13 @@ build/
 # Database
 *.sqlite
 *.sqlite-journal
+*.db
+*.db-journal
 
-# IDEs and Editors
+# Logs
+test_output.txt
+npm-debug.log*
+
 .vscode/
 .idea/
 *.swp
@@ -36,9 +41,25 @@ pnpm-debug.log*
 
 # Agent
 .agent/docs/Main Branch Protection.json
+.agent/temp
 
 # Test Coverage
 coverage/
 
 # Tooling
 .devin/
+
+# Temporary debug files
+*.json
+!package.json
+!biome.json
+!tsconfig.json
+!composer.json
+!package-lock.json
+!pnpm-lock.yaml
+*.log
+*.txt
+!README.md
+!LICENSE
+!GEMINI.md
+!.agent/docs/Main Branch Protection.json

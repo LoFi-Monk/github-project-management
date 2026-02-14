@@ -6,26 +6,47 @@ This is the core design decision. Getting it right matters more than any feature
 
 ### Guiding principle
 
-> If a local field is clean (unchanged since last sync), GitHub always wins — including changes made by GitHub Project automations. If a local field is dirty (user or agent changed it), that field holds until explicitly pushed or resolved. A conflict only fires when the _same field_ diverged on _both_ sides.
-
-GitHub automations (auto-close on PR merge, auto-move on label, etc.) are treated as legitimate signals, not interference. They change cards on GitHub cleanly, and since the corresponding local fields are clean, those changes flow in without friction. You do not need to disable automations for this tool to work well.
+> **"GitHub Wins" on Clean Fields, "Local Wins" on Dirty Fields.**
+> If a local field is clean (unchanged since last sync), GitHub changes are accepted automatically. If a local field is dirty (user modified it), the local change is preserved. A conflict is only flagged if _both_ sides changed the _same_ field relative to the last sync snapshot.
 
 ### Field-level merge algorithm
 
-Run on every pull, for each synced card:
+Implemented in `packages/core/src/merge.ts`.
 
+```typescript
+// Pseudo-code of actual implementation
+function mergeCards(local, remote) {
+  if (!local.dirtyFields) return remote; // Optimization: Clean local overrides
+
+  const snapshot = local.syncSnapshot;
+  const result = { ...local };
+
+  for (const field of MUTABLE_CARD_FIELDS) {
+    const remoteValue = remote[field];
+    const snapshotValue = snapshot[field];
+
+    // Remote changed if value differs from snapshot
+    // (Treats null/undefined as equal to handle JSON serialization)
+    const remoteChanged = !areValuesEqual(remoteValue, snapshotValue);
+    const isDirty = local.dirtyFields.includes(field);
+
+    if (!isDirty && remoteChanged) {
+      // Clean local + Remote change → Accept Remote
+      result[field] = remoteValue;
+    } else if (isDirty && remoteChanged) {
+      // Dirty local + Remote change → Conflict
+      result.syncStatus = "conflict";
+      // We keep local value but flag it
+    }
+    // Else: Keep local (either local dirty, or no remote change)
+  }
+
+  // Propagate latest updatedAt
+  result.updatedAt = max(local.updatedAt, remote.updatedAt);
+
+  return result;
+}
 ```
-for each field in CardMutableFields:
-  localDirty    = field is in card.dirtyFields
-  githubChanged = github value !== card.syncSnapshot[field]
-
-  !localDirty && !githubChanged  →  no-op
-  !localDirty &&  githubChanged  →  accept GitHub value (automation or collaborator)
-   localDirty && !githubChanged  →  keep local value (will push on next push)
-   localDirty &&  githubChanged  →  CONFLICT on this field
-```
-
-A card is only marked `syncStatus: 'conflict'` if at least one field hits the last case. All non-conflicting fields still merge cleanly. The user or agent resolves only the specific fields that actually conflicted.
 
 ### Sync triggers
 
@@ -47,14 +68,12 @@ Lives in `apps/server/src/sync/`. Runs as a background service within the server
 
 ```
 SyncEngine
-  ├── pull(boardId)              # GitHub → local, runs field-level merge
+  ├── pull(boardId)              # GitHub → local, runs mergeCards()
   ├── push(boardId)              # dirty local cards → GitHub
   ├── sync(boardId)              # pull then push
   ├── importIssues(opts)         # fetch GitHub issues → new local cards
   └── resolveConflict(cardId, field, keep: 'local' | 'remote')
 ```
-
-Not exposed directly to clients. Clients trigger it via REST endpoints. Status flows back via WebSocket `sync:status` events.
 
 ### 2. GitHub Data Mapping
 
@@ -71,56 +90,7 @@ Not exposed directly to clients. Clients trigger it via REST endpoints. Status f
 | `githubIssueNumber`   | Issue number                                          |
 | `githubProjectItemId` | Project item node ID                                  |
 
-**GitHub Projects v2 specifics**
-
-- Issues and Project items are separate objects. Creating an issue does not add it to the project — requires a separate `addProjectV2ItemById` GraphQL mutation.
-- The Status field is a `SingleSelectField` with option IDs, not free-text. The board config stores `ColumnId → GitHub option ID` mapping, set during `kanban github link`.
-- Automations mutate Project items, not Issues. The pull must read Project item state via GraphQL, not just Issue state via REST.
-- Projects v2 read/write requires GraphQL. The REST API does not support Projects v2.
-- GraphQL rate limit: 5,000 points/hour. A full board pull costs ~1 point per item — not a concern at kanban scale.
-
-### 3. Sync Operations Details
-
-**Pull** (`GitHub → local`)
-
-```
-1. Fetch all Project items via GraphQL (projectV2Items, paginated)
-2. For each item, fetch linked Issue data
-3. For each item:
-   a. No local card with this githubProjectItemId → create local card, syncStatus: 'synced'
-   b. Local card exists → run field-level merge algorithm (§4)
-4. Write syncSnapshot, syncedAt on all touched cards
-5. Emit sync:status via WebSocket
-```
-
-**Push** (`local → GitHub`)
-
-```
-1. Query cards where syncStatus = 'dirty' or 'local'
-2. For each card:
-   a. githubIssueNumber exists:
-      - PATCH issue (title, body, labels, assignees)
-      - Update Project item status via GraphQL mutation
-   b. No githubIssueNumber:
-      - POST /repos/{owner}/{repo}/issues → store githubIssueNumber
-      - addProjectV2ItemById → store githubProjectItemId
-   c. Set syncStatus: 'synced', update syncSnapshot, clear dirtyFields
-3. Emit sync:status via WebSocket
-```
-
-**Import Issues**
-
-```
-1. Fetch Issues from GitHub REST with user-supplied filters (label, state, milestone)
-2. Skip issues already linked to a local card (by githubIssueNumber)
-3. Create local cards: syncStatus: 'local', githubIssueNumber set, githubProjectItemId empty
-4. Cards are NOT yet added to the GitHub Project
-5. User grooms locally, then pushes → creates Project items at that point
-```
-
-The two-step import→push model lets you refine issues before they appear on the shared GitHub Project board. This is the right UX for backlog grooming in a team context.
-
-### 4. Conflict Resolution
+### 3. Conflict Resolution
 
 A conflict means at least one field in `dirtyFields` was also changed on GitHub since `syncSnapshot`. Non-conflicting fields have already merged cleanly.
 
@@ -129,24 +99,4 @@ Resolution (field-by-field, not card-level):
 ```
 keep-local    Push local field value to GitHub on next push
 keep-remote   Accept GitHub value, remove field from dirtyFields
-```
-
-No automatic value merging in v1. In practice, conflicts are rare because the field-level model means most concurrent edits don't touch the same field.
-
-## Data Flow
-
-```
-┌─────────┐     REST/WS      ┌────────────────────────────────────┐
-│  Web UI │ ◄──────────────► │           Fastify Server            │
-└─────────┘                  │                                     │
-                              │  ┌──────────┐  ┌────────────────┐  │
-┌─────────┐     REST          │  │  SQLite  │  │  Sync Engine   │  │
-│   CLI   │ ──────────────►  │  │    DB    │  │  (background)  │  │
-└─────────┘                  │  └──────────┘  └───────┬────────┘  │
-                              │                         │           │
-┌─────────┐     REST          │               ┌─────────▼────────┐  │
-│   MCP   │ ──────────────►  │               │   GitHub API     │  │
-└─────────┘                  │               │ REST + GraphQL   │  │
-                              │               └──────────────────┘  │
-                              └────────────────────────────────────┘
 ```

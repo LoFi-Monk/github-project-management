@@ -24,11 +24,18 @@ We use a unified toolchain to ensure consistency across the monorepo:
 
 ## Current Data Flow
 
-The project currently consists of the **Core** package. Future runtimes (CLI, Server, MCP) will depend on this package for business logic and data persistence.
+The project currently consists of the **Core** package.
+
+- **`packages/core`**: Contains the Zod schemas for `Card`, `Board`, and `Column`, as well as the offline-first **Merge Logic**.
+- **Future Runtimes**: CLI, Server, and MCP will import `packages/core` to ensure identical validation and conflict resolution across all interfaces.
 
 ```mermaid
 graph TD
-    Core[Packages: Core] <--> DB[(SQLite Placeholder)]
+    Core[Packages: Core] --> Schema[Zod Schemas]
+    Core --> Merge[Merge Logic]
+    CLI --> Core
+    Server --> Core
+    MCP --> Core
 ```
 
 ## Quality Management
