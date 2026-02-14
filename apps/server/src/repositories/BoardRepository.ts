@@ -4,13 +4,19 @@ import { Board, type BoardId, type Column, type ColumnId } from '@lofi-pm/core';
 /**
  * Repository for Board entity using @libsql/client.
  *
- * Manages boards and their associated columns.
+ * Intent: Manages persistence and retrieval of boards and their associated columns in SQLite.
+ *
+ * Guarantees: Maps database rows to the `@lofi-pm/core` Board and Column Zod schemas.
  */
 export class BoardRepository {
   constructor(private db: Client) {}
 
   /**
    * Create a new board and its default columns.
+   *
+   * Intent: Initialize a new Kanban board with its structural columns in a single transaction.
+   *
+   * Guarantees: Atomic operation. Either both board and columns are created, or neither.
    */
   async create(board: typeof Board._type): Promise<void> {
     // LibSQL batch for transaction
@@ -33,6 +39,10 @@ export class BoardRepository {
 
   /**
    * Find a board by ID, including its columns.
+   *
+   * Intent: Retrieve the structural definition of a board.
+   *
+   * Guarantees: Returns a parsed Board object with its columns (but without cards) or null if not found.
    */
   async findById(id: BoardId): Promise<typeof Board._type | null> {
     const boardResult = await this.db.execute({
@@ -66,6 +76,10 @@ export class BoardRepository {
 
   /**
    * Update board title.
+   *
+   * Intent: Change the display name of an existing board.
+   *
+   * Guarantees: Updates the 'title' column for the matching Board ID.
    */
   async update(board: typeof Board._type): Promise<void> {
     await this.db.execute({
@@ -76,6 +90,10 @@ export class BoardRepository {
 
   /**
    * Delete a board and all its associated columns/cards.
+   *
+   * Intent: Hard delete a board and its structure.
+   *
+   * Guarantees: Cascading deletes via foreign keys handle associated columns and cards.
    */
   async delete(id: BoardId): Promise<void> {
     await this.db.execute({

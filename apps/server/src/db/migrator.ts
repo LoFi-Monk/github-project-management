@@ -5,7 +5,13 @@ import type { Client } from '@libsql/client';
 /**
  * Migration runner for SQLite using @libsql/client.
  *
- * Scans the migrations directory for SQL files and applies them in order.
+ * Intent: Scans the migrations directory for SQL files and applies them in order to ensure the
+ * database schema is up-to-date and consistent.
+ *
+ * Guarantees: Idempotent. Tracks applied migrations in a 'migrations' table and skips those
+ * already applied.
+ *
+ * Constraints: Migrations are applied in alphabetical order based on filename.
  */
 export async function runMigrations(db: Client): Promise<void> {
   // Ensure migrations table exists

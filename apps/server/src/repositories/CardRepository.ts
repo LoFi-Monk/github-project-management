@@ -4,13 +4,20 @@ import { Card, type CardId, type ColumnId } from '@lofi-pm/core';
 /**
  * Repository for Card entity using @libsql/client.
  *
- * Handles persistence and retrieval of cards from SQLite.
+ * Intent: Provides persistence and retrieval logic for Kanban cards in SQLite.
+ *
+ * Guarantees: Maps database rows to the `@lofi-pm/core` Card Zod schema. Handles JSON serialization
+ * for labels and assignees.
  */
 export class CardRepository {
   constructor(private db: Client) {}
 
   /**
    * Create a new card in the database.
+   *
+   * Intent: Persist a new card object to the SQLite storage.
+   *
+   * Guarantees: Inserts a row into the 'cards' table. Serializes complex objects to JSON strings.
    */
   async create(card: typeof Card._type): Promise<void> {
     await this.db.execute({
@@ -40,6 +47,10 @@ export class CardRepository {
 
   /**
    * Find a card by ID.
+   *
+   * Intent: Retrieve a single card from the database by its unique identifier.
+   *
+   * Guarantees: Returns a parsed Card object or null if not found.
    */
   async findById(id: CardId): Promise<typeof Card._type | null> {
     const result = await this.db.execute({
@@ -55,6 +66,10 @@ export class CardRepository {
 
   /**
    * Find all cards in a specific column.
+   *
+   * Intent: List all cards associated with a column, ordered by their board position.
+   *
+   * Guarantees: Returns an array of parsed Card objects, sorted by 'position' ascending.
    */
   async findByColumn(columnId: ColumnId): Promise<(typeof Card._type)[]> {
     const result = await this.db.execute({
@@ -66,6 +81,10 @@ export class CardRepository {
 
   /**
    * Update an existing card.
+   *
+   * Intent: Synchronize changes to a card object back to the database.
+   *
+   * Guarantees: Replaces existing row values with current object state based on Card ID.
    */
   async update(card: typeof Card._type): Promise<void> {
     await this.db.execute({
@@ -94,6 +113,10 @@ export class CardRepository {
 
   /**
    * Delete a card by ID.
+   *
+   * Intent: Remove a card from the database.
+   *
+   * Guarantees: Deletes the row matching the provided Card ID. Idempotent.
    */
   async delete(id: CardId): Promise<void> {
     await this.db.execute({

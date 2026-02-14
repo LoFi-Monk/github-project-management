@@ -5,8 +5,10 @@ import { type Client, createClient } from '@libsql/client';
 /**
  * Database client management using @libsql/client.
  *
- * Provides a single point of access to the SQLite database instance.
- * Supports local file and in-memory databases.
+ * Intent: Provides a single point of access to the SQLite database instance for the server.
+ *
+ * Guarantees: Supports local file and in-memory databases. Ensures the data directory exists
+ * before initialization.
  */
 let dbInstance: Client | null = null;
 
@@ -14,6 +16,15 @@ export interface DbOptions {
   path?: string;
 }
 
+/**
+ * Retrieve the singleton database instance.
+ *
+ * Intent: Ensure all database operations use a consistent, configured connection.
+ *
+ * Guarantees: Returns an initialized LibSQL Client. Defaults to local 'data/kanban.db' if no path provided.
+ *
+ * Constraints: Concurrent calls will return the same instance once initialized.
+ */
 export function getDb(options: DbOptions = {}): Client {
   if (dbInstance) {
     return dbInstance;
@@ -40,6 +51,13 @@ export function getDb(options: DbOptions = {}): Client {
   return dbInstance;
 }
 
+/**
+ * Close the singleton database instance.
+ *
+ * Intent: Safely release database resources during shutdown or tests.
+ *
+ * Guarantees: Idempotent. Sets the shared instance to null after closing.
+ */
 export function closeDb(): void {
   if (dbInstance) {
     dbInstance.close();
