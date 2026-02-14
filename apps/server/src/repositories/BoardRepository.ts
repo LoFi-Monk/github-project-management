@@ -23,7 +23,7 @@ export class BoardRepository {
     const stmts = [
       {
         sql: 'INSERT INTO boards (id, title) VALUES (?, ?)',
-        args: [board.id, board.title],
+        args: [board.id, board.title] as (string | number)[],
       },
     ];
 

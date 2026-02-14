@@ -76,7 +76,7 @@ export class CardRepository {
       sql: 'SELECT * FROM cards WHERE status = ? ORDER BY position',
       args: [columnId],
     });
-    return result.rows.map((row) => this.mapRow(row));
+    return result.rows.map((row: any) => this.mapRow(row));
   }
 
   /**
