@@ -6,7 +6,7 @@ console.log('🚀 Starting Monorepo Test Suite (Sequential execution)...\n');
 // 1. Dynamic Discovery via pnpm
 console.log('🔍 Discovering workspace packages...');
 const pnpmListCmd = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
-const listResult = spawnSync(pnpmListCmd, ['m', 'ls', '--json', '--depth', '-1'], {
+const listResult = spawnSync(pnpmListCmd, ['ls', '-r', '--json', '--depth', '-1'], {
   encoding: 'utf8',
   shell: true,
 });
