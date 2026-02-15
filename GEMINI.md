@@ -2,7 +2,7 @@
 
 # Current Focus
 
-Ready for API & WebSocket implementation (Issue 4/6).
+Ready for CLI Interface implementation (Issue 5/6).
 
 # Recent Decisions
 
@@ -14,7 +14,6 @@ Ready for API & WebSocket implementation (Issue 4/6).
 
 # Backlog
 
-- [ ] Implement Server API & WebSockets (Issue 4)
 - [ ] Implement CLI Interface
 - [ ] Implement MCP Server
 - [ ] Implement GitHub Sync Engine
@@ -29,6 +28,7 @@ None.
 
 # Completed
 
+- [x] Implement Server API & WebSockets (Issue 4)
 - [x] Implement Server Storage Engine (Issue #3/6)
 - [x] PR Review: Core Domain & Merge Logic (#5)
 - [x] Issue #2: Core Domain & Merge Logic (PR #5)
@@ -38,6 +38,7 @@ None.
 - [x] CI Pipeline with dynamic pnpm versioning
 - [x] Documentation Modernization (Modular specs, Architecture, Runbooks)
 - [x] Documentation Update (Specs & Runbooks) - Added Server Storage Spec and DB Runbook.
+- [x] Enforce TSDoc Documentation Standards (Issue #10)
 
 # Artifacts
 

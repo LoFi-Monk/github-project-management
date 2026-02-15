@@ -13,6 +13,11 @@ import { type Client, createClient } from '@libsql/client';
 let dbInstance: Client | null = null;
 let initializedDbPath: string | null = null;
 
+/**
+ * Configuration options for the database client.
+ *
+ * Intent: Allow flexible configuration of the database path, supporting both file-system and in-memory modes.
+ */
 export interface DbOptions {
   path?: string;
 }

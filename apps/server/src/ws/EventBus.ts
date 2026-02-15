@@ -41,5 +41,9 @@ export class EventBus {
   }
 }
 
-// Singleton instance for the application
+/**
+ * Singleton instance of the EventBus.
+ *
+ * Intent: Shared event bus for the entire application to broadcast WebSocket messages.
+ */
 export const eventBus = new EventBus();
