@@ -1,22 +1,18 @@
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-      <h1 className="text-4xl font-bold">Vite + React + shadcn/ui</h1>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4">
+      <h1 className="font-bold text-4xl">Vite + React + shadcn/ui</h1>
       <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
+        <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>
       </div>
-      <p className="text-muted-foreground">
-        Local-first Kanban project scaffolded!
-      </p>
+      <p className="text-muted-foreground">Local-first Kanban project scaffolded!</p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

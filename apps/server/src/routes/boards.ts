@@ -40,14 +40,14 @@ export async function boardRoutes(app: FastifyInstance, options: { db?: Client }
       const board = Board.parse({
         ...(request.body as object),
         // Default columns if not provided
-        columns: (request.body as any).columns || {
+        columns: (request.body as { columns?: unknown }).columns || {
           backlog: { id: 'backlog' as ColumnId, title: 'Backlog', cards: [] },
           todo: { id: 'todo' as ColumnId, title: 'To Do', cards: [] },
           in_progress: { id: 'in_progress' as ColumnId, title: 'In Progress', cards: [] },
           review: { id: 'review' as ColumnId, title: 'Review', cards: [] },
           done: { id: 'done' as ColumnId, title: 'Done', cards: [] },
         },
-        cards: (request.body as any).cards || {},
+        cards: (request.body as { cards?: unknown }).cards || {},
       });
 
       await boardRepo.create(board);

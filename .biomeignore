@@ -1,4 +1,4 @@
-**/dist
-**/.agent
-**/node_modules
-scripts/verify-docs.ts
+apps/web/src/index.css
+apps\web\src\index.css
+./apps/web/src/index.css
+**/index.css

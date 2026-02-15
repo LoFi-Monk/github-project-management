@@ -1,5 +1,5 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { Project } from 'ts-morph';
 
 const project = new Project({
@@ -33,9 +33,11 @@ function checkFile(filePath: string) {
           continue;
         }
 
+        // biome-ignore lint/suspicious/noExplicitAny: ts-morph types are complex
         let jsDocs: any[] = [];
 
         if (Node.isTypeAliasDeclaration(decl)) {
+          // biome-ignore lint/suspicious/noExplicitAny: accessing internal property
           jsDocs = (decl as any).getJsDocs?.() || [];
 
           // If type alias has no docs, check if there is a variable with same name that has docs (merged declaration)
@@ -61,6 +63,7 @@ function checkFile(filePath: string) {
             }
           }
         } else if (Node.isVariableDeclaration(decl)) {
+          // biome-ignore lint/suspicious/noExplicitAny: accessing internal property
           jsDocs = (decl as any).getJsDocs?.() || [];
 
           // Fallback: Check VariableStatement (grandparent)
@@ -71,6 +74,7 @@ function checkFile(filePath: string) {
             }
           }
         } else {
+          // biome-ignore lint/suspicious/noExplicitAny: accessing internal property
           jsDocs = (decl as any).getJsDocs?.() || [];
         }
 

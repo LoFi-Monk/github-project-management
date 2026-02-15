@@ -1,4 +1,5 @@
 import type { BoardId } from '@lofi-pm/core';
+import type { FastifyInstance } from 'fastify';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import WebSocket from 'ws';
 import { buildApp } from '../../src/app';
@@ -9,7 +10,7 @@ import { runMigrations } from '../../src/db/migrator';
  * Integration tests for WebSocket synchronization.
  */
 describe('WebSockets', () => {
-  let app: any;
+  let app: FastifyInstance;
   let wsClient: WebSocket | undefined;
   const boardId = 'ws-test-board' as BoardId;
 
@@ -52,7 +53,7 @@ describe('WebSockets', () => {
         reject(new Error('WebSocket message timeout after 5000ms'));
       }, 5000);
 
-      wsClient!.on('message', (data) => {
+      wsClient?.on('message', (data) => {
         clearTimeout(timeout);
         resolve(JSON.parse(data.toString()));
       });
@@ -62,7 +63,7 @@ describe('WebSockets', () => {
       });
     });
 
-    await new Promise((resolve) => wsClient!.on('open', resolve));
+    await new Promise((resolve) => wsClient?.on('open', resolve));
 
     // Create a card via REST
     await app.inject({
@@ -71,6 +72,7 @@ describe('WebSockets', () => {
       payload: { id: 'ws-card-1', title: 'WS Card', status: 'todo', priority: 'medium' },
     });
 
+    // biome-ignore lint/suspicious/noExplicitAny: convenient loose typing for test event
     const event: any = await messagePromise;
     expect(event.type).toBe('card_created');
     expect(event.payload.id).toBe('ws-card-1');
