@@ -2,19 +2,19 @@
 
 ## Core Technologies
 
-| Concern                | Choice                   | Reason                                      |
-| ---------------------- | ------------------------ | ------------------------------------------- |
-| Runtime                | Node.js (LTS)            | Universal, tooling-rich                     |
-| Language               | TypeScript (strict)      | Safety, IDE ergonomics                      |
-| Linter/Formatter       | Biome                    | Fast, single-tool, zero config drift        |
-| Test runner            | Vitest                   | Native TS, fast, compatible with Vite       |
-| Git hooks              | Husky + lint-staged      | Enforce quality at commit time              |
-| Web server             | Fastify                  | Typed, fast, plugin ecosystem               |
-| UI framework           | React (Vite)             | Component model suits kanban                |
-| UI components          | shadcn/ui                | Unstyled, composable, copy-owned components |
-| UI styling             | Tailwind CSS             | Required by shadcn/ui; utility-first        |
-| Icons                  | Lucide React             | Consistent, clean icon set; no emoji        |
-| Tailwind class sorting | Biome `useSortedClasses` | See note below                              |
+| Concern                | Choice                   | Reason                                               |
+| ---------------------- | ------------------------ | ---------------------------------------------------- |
+| Runtime                | Node.js (LTS)            | Universal, tooling-rich                              |
+| Language               | TypeScript (strict)      | Safety, IDE ergonomics                               |
+| Linter/Formatter       | Biome                    | Fast, single-tool, zero config drift                 |
+| Test runner            | Vitest + Custom Runner   | Native TS, fast; Custom runner for Windows stability |
+| Git hooks              | Husky + lint-staged      | Enforce quality at commit time                       |
+| Web server             | Fastify                  | Typed, fast, plugin ecosystem                        |
+| UI framework           | React (Vite)             | Component model suits kanban                         |
+| UI components          | shadcn/ui                | Unstyled, composable, copy-owned components          |
+| UI styling             | Tailwind CSS             | Required by shadcn/ui; utility-first                 |
+| Icons                  | Lucide React             | Consistent, clean icon set; no emoji                 |
+| Tailwind class sorting | Biome `useSortedClasses` | See note below                                       |
 
 **Tailwind class sorting — known trade-off**
 

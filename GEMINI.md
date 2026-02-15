@@ -2,10 +2,12 @@
 
 # Current Focus
 
-Ready for CLI Interface implementation (Issue 5/6).
+Ready for CLI Interface implementation (Phase 1, Milestone 4).
 
 # Recent Decisions
 
+- [ADR 0007: Monorepo Testing Strategy](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0007-adr-monorepo-testing-strategy.md) - Adopted sequential execution with custom runner for Windows stability.
+- [ADR 0006: TSDoc Enforcement](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0006-adr-tsdoc-enforcement.md) - Mandated JSDoc for all exported members.
 - [ADR 0001: Use @libsql/client for SQLite Persistence](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0001-adr-sqlite-libsql.md) - Pivoted to LibSQL/client for better performance and concurrency.
 - **Tailwind Sorting**: Use Biome's `useSortedClasses` rule to avoid toolchain conflicts between Prettier and Biome.
 - **Unified Toolchain**: Standardized on Biome for linting and formatting across the monorepo.
@@ -28,6 +30,7 @@ None.
 
 # Completed
 
+- [x] Monorepo Stabilization (Windows Test Runner)
 - [x] Implement Server API & WebSockets (Issue 4)
 - [x] Implement Server Storage Engine (Issue #3/6)
 - [x] PR Review: Core Domain & Merge Logic (#5)
