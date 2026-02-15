@@ -54,7 +54,7 @@ export class CardRepository {
    *
    * Guarantees: Returns a parsed Card object or null if not found.
    */
-  async findById(id: CardId): Promise<typeof Card._type | null> {
+  async findById(id: CardId): Promise<(typeof Card._type & { boardId: string }) | null> {
     const result = await this.db.execute({
       sql: 'SELECT * FROM cards WHERE id = ?',
       args: [id],
@@ -73,7 +73,10 @@ export class CardRepository {
    *
    * Guarantees: Returns an array of parsed Card objects, sorted by 'position' ascending.
    */
-  async findByColumn(columnId: ColumnId, boardId: string): Promise<(typeof Card._type)[]> {
+  async findByColumn(
+    columnId: ColumnId,
+    boardId: string,
+  ): Promise<(typeof Card._type & { boardId: string })[]> {
     const result = await this.db.execute({
       sql: 'SELECT * FROM cards WHERE status = ? AND board_id = ? ORDER BY position',
       args: [columnId, boardId],
