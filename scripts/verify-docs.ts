@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { Project } from 'ts-morph';
+import { Node, Project } from 'ts-morph';
 
 const project = new Project({
   tsConfigFilePath: 'tsconfig.json',
