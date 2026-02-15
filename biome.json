@@ -25,7 +25,7 @@
   },
   "overrides": [
     {
-      "include": ["apps/web/src/index.css"],
+      "includes": ["apps/web/src/index.css"],
       "linter": { "enabled": false }
     }
   ],
