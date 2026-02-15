@@ -61,9 +61,13 @@ export async function createDbClient(options: DbOptions = {}): Promise<Client> {
     url,
   });
 
-  // Enable foreign keys and WAL mode for better concurrency and integrity
+  // Enable foreign keys
   await client.execute('PRAGMA foreign_keys = ON;');
-  await client.execute('PRAGMA journal_mode = WAL;');
+
+  // Only enable WAL mode for file-based databases to avoid potential in-memory locking issues on Windows
+  if (dbPath !== ':memory:') {
+    await client.execute('PRAGMA journal_mode = WAL;');
+  }
 
   return client;
 }
@@ -89,7 +93,7 @@ export async function getDb(options: DbOptions = {}): Promise<Client> {
     return dbInstance;
   }
 
-  dbInstance = await createDbClient(options);
+  dbInstance = await createDbClient({ path: dbPath });
   initializedDbPath = dbPath;
 
   return dbInstance;
@@ -102,10 +106,11 @@ export async function getDb(options: DbOptions = {}): Promise<Client> {
  *
  * Guarantees: Idempotent. Sets the shared instance to null after closing.
  */
-export function closeDb(): void {
+export async function closeDb(): Promise<void> {
   if (dbInstance) {
-    dbInstance.close();
+    const db = dbInstance;
     dbInstance = null;
     initializedDbPath = null;
+    await db.close();
   }
 }

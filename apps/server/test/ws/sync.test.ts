@@ -28,17 +28,13 @@ describe('WebSockets', () => {
   });
 
   afterEach(async () => {
-    if (wsClient) {
-      wsClient.close();
-      wsClient = undefined;
-    }
-
-    // Clear event bus to prevent leaking clients between tests
+    // Clear event bus first as it now terminates all active connections
     const { eventBus } = await import('../../src/ws/EventBus');
     eventBus.clear();
+    wsClient = undefined;
 
     if (app) await app.close();
-    closeDb();
+    await closeDb();
   });
 
   /**
@@ -52,10 +48,18 @@ describe('WebSockets', () => {
     wsClient = new WebSocket(url);
 
     const messagePromise = new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        reject(new Error('WebSocket message timeout after 5000ms'));
+      }, 5000);
+
       wsClient!.on('message', (data) => {
+        clearTimeout(timeout);
         resolve(JSON.parse(data.toString()));
       });
-      wsClient!.on('error', reject);
+      wsClient!.on('error', (err) => {
+        clearTimeout(timeout);
+        reject(err);
+      });
     });
 
     await new Promise((resolve) => wsClient!.on('open', resolve));

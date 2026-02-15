@@ -26,7 +26,7 @@ describe('Cards API', () => {
 
   afterEach(async () => {
     if (app) await app.close();
-    closeDb();
+    await closeDb();
   });
 
   /**
