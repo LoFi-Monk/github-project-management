@@ -112,4 +112,4 @@ Shared mapping logic resides in `utils.ts` to ensure consistency between reposit
   - `DATABASE_URL`: Path to SQLite file (e.g., `./data/kanban.db` or `:memory:`). The `file:` prefix is supported and automatically normalized.
 - **Pragmas**:
   - `foreign_keys = ON`: Enforced on every connection.
-  - `journal_mode = WAL`: Enabled for performance and concurrency.
+  - `journal_mode = WAL`: Enabled for performance and concurrency (disabled in `:memory:`/test environments to prevent locking).
