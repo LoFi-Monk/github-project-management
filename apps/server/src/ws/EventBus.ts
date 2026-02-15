@@ -33,13 +33,20 @@ export class EventBus {
   }
 
   /**
-   * Clears all registered clients.
-   * Useful for testing cleanup.
+   * Clears all client connections from the event bus and terminates their WebSocket connections.
+   * This ensures that no stale connections persist between tests or during server shutdown.
    */
   clear() {
+    for (const client of this.clients) {
+      client.terminate();
+    }
     this.clients.clear();
   }
 }
 
-// Singleton instance for the application
+/**
+ * Singleton instance of the EventBus.
+ *
+ * Intent: Shared event bus for the entire application to broadcast WebSocket messages.
+ */
 export const eventBus = new EventBus();

@@ -10,6 +10,7 @@ import { runMigrations } from '../../src/db/migrator';
  */
 describe('WebSockets', () => {
   let app: any;
+  let wsClient: WebSocket | undefined;
   const boardId = 'ws-test-board' as BoardId;
 
   beforeEach(async () => {
@@ -27,11 +28,13 @@ describe('WebSockets', () => {
   });
 
   afterEach(async () => {
-    if (app) await app.close();
-    closeDb();
-    // Clear event bus to prevent leaking clients between tests
+    // Clear event bus first as it now terminates all active connections
     const { eventBus } = await import('../../src/ws/EventBus');
     eventBus.clear();
+    wsClient = undefined;
+
+    if (app) await app.close();
+    await closeDb();
   });
 
   /**
@@ -42,15 +45,24 @@ describe('WebSockets', () => {
     const address = app.server.address();
     const url = `ws://localhost:${address.port}/ws`;
 
-    const ws = new WebSocket(url);
+    wsClient = new WebSocket(url);
 
-    const messagePromise = new Promise((resolve) => {
-      ws.on('message', (data) => {
+    const messagePromise = new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        reject(new Error('WebSocket message timeout after 5000ms'));
+      }, 5000);
+
+      wsClient!.on('message', (data) => {
+        clearTimeout(timeout);
         resolve(JSON.parse(data.toString()));
+      });
+      wsClient!.on('error', (err) => {
+        clearTimeout(timeout);
+        reject(err);
       });
     });
 
-    await new Promise((resolve) => ws.on('open', resolve));
+    await new Promise((resolve) => wsClient!.on('open', resolve));
 
     // Create a card via REST
     await app.inject({
@@ -62,7 +74,5 @@ describe('WebSockets', () => {
     const event: any = await messagePromise;
     expect(event.type).toBe('card_created');
     expect(event.payload.id).toBe('ws-card-1');
-
-    ws.close();
   });
 });

@@ -12,6 +12,8 @@ build/
 *.sqlite-journal
 *.db
 *.db-journal
+*.db-shm
+*.db-wal
 
 # Logs
 test_output.txt

@@ -61,7 +61,7 @@ async function main() {
   console.log('Retrieved Card:', JSON.stringify(retrieved, null, 2));
 
   console.log('--- Verification Complete ---');
-  closeDb();
+  await closeDb();
 }
 
 main().catch(console.error);

@@ -48,7 +48,7 @@ Chosen option: "@libsql/client", because it successfully initialized and bypasse
 ## Architectural Context
 
 - Referenced Architecture Document(s):
-  - [.agent/docs/architecture/01-overview.md](file:///c:/ag-workspace/github-project-management/.agent/docs/architecture/01-overview.md)
+  - [.agent/docs/architecture/01-overview.md](.agent/docs/architecture/01-overview.md)
 
 - Impacted Components:
   - `apps/server` (Storage Engine)
