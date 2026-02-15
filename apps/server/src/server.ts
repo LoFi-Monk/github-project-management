@@ -1,13 +1,13 @@
+import dotenv from 'dotenv';
+import { buildApp } from './app';
 import { closeDb, getDb } from './db/client';
 import { runMigrations } from './db/migrator';
-import { buildApp } from './app';
-import dotenv from 'dotenv';
 
 dotenv.config();
 
 /**
  * Starts the Kanban Server.
- * 
+ *
  * Initializes the database connection, runs pending migrations,
  * and starts the Fastify listener.
  */
@@ -17,11 +17,11 @@ async function start() {
 
   try {
     const db = await getDb({ path: dbPath });
-    
+
     console.log('Running migrations...');
     await runMigrations(db);
 
-    const app = await buildApp();
+    const app = await buildApp({ db });
 
     await app.listen({ port, host: '0.0.0.0' });
     console.log(`Server listening on port ${port}`);
@@ -36,7 +36,6 @@ async function start() {
 
     process.on('SIGINT', shutdown);
     process.on('SIGTERM', shutdown);
-
   } catch (err) {
     console.error('Failed to start server:', err);
     process.exit(1);

@@ -3,9 +3,12 @@ import { Card, type CardId, type ColumnId } from '@lofi-pm/core';
 /**
  * Maps a raw database row to a Card domain object.
  * Handles type casting and defaults.
+ *
+ * Note: boardId is added to the domain object for repository/server usage
+ * even though it's not in the base Zod schema.
  */
-export function mapCardRow(row: Record<string, unknown>): typeof Card._type {
-  return Card.parse({
+export function mapCardRow(row: Record<string, unknown>): typeof Card._type & { boardId: string } {
+  const card = Card.parse({
     id: row.id as string,
     title: row.title as string,
     description: (row.description as string | null) ?? undefined,
@@ -21,6 +24,11 @@ export function mapCardRow(row: Record<string, unknown>): typeof Card._type {
     syncSnapshot: row.sync_snapshot ? JSON.parse(row.sync_snapshot as string) : undefined,
     syncStatus: (row.sync_status as string) || undefined,
   });
+
+  return {
+    ...card,
+    boardId: row.board_id as string,
+  };
 }
 
 /**

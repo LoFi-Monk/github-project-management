@@ -128,4 +128,19 @@ export class BoardRepository {
       args: [id],
     });
   }
+
+  /**
+   * List all boards.
+   *
+   * Intent: Retrieve a summary of all existing Kanban boards.
+   *
+   * Guarantees: Returns an array of Board objects (without cards and columns for performance).
+   */
+  async findAll(): Promise<Array<{ id: BoardId; title: string }>> {
+    const result = await this.db.execute('SELECT id, title FROM boards');
+    return result.rows.map((row) => ({
+      id: row.id as BoardId,
+      title: row.title as string,
+    }));
+  }
 }
