@@ -56,7 +56,7 @@ describe('WebSockets', () => {
         clearTimeout(timeout);
         resolve(JSON.parse(data.toString()));
       });
-      wsClient!.on('error', (err) => {
+      wsClient?.on('error', (err) => {
         clearTimeout(timeout);
         reject(err);
       });
