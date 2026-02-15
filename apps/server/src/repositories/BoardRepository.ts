@@ -32,6 +32,7 @@ export class BoardRepository {
     const sortedColumns = Object.values(board.columns).sort((a, b) => {
       // If we had a position field in core, we'd use it.
       // For now, we'll use a reliable set order based on the ColumnId enum
+      // TODO: Refactor this to not rely on hardcoded values if we support custom columns
       const order = ['backlog', 'todo', 'in_progress', 'review', 'done'];
       return order.indexOf(a.id) - order.indexOf(b.id);
     });
