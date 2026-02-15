@@ -27,7 +27,10 @@ export interface DbOptions {
  * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
 export async function createDbClient(options: DbOptions = {}): Promise<Client> {
-  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  let dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  if (dbPath.startsWith('file:')) {
+    dbPath = dbPath.replace(/^file:/, '');
+  }
   let url = '';
 
   if (dbPath === ':memory:') {

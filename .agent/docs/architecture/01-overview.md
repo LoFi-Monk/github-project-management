@@ -6,6 +6,8 @@ This project is a **pnpm monorepo** established to support the development of a 
 
 ```text
 .
+├── apps/                 # Application runtimes
+│   └── server/           # Fastify server + SQLite storage engine
 ├── packages/             # Shared libraries and internal tools
 │   └── core/             # Core domain logic and models
 ├── .agent/               # Agent-specific documentation and rules
@@ -27,7 +29,12 @@ We use a unified toolchain to ensure consistency across the monorepo:
 The project currently consists of the **Core** package.
 
 - **`packages/core`**: Contains the Zod schemas for `Card`, `Board`, and `Column`, as well as the offline-first **Merge Logic**.
-- **Future Runtimes**: CLI, Server, and MCP will import `packages/core` to ensure identical validation and conflict resolution across all interfaces.
+- **`apps/server`**: The local-first backend.
+  - **Storage**: SQLite via `@libsql/client`.
+  - **Pattern**: Repository pattern (`CardRepository`, `BoardRepository`) using raw SQL.
+  - **Migrations**: Automated SQL migrations on startup.
+
+- **Future Runtimes**: CLI and MCP will import `packages/core` to ensure identical validation and conflict resolution across all interfaces.
 
 ```mermaid
 graph TD
