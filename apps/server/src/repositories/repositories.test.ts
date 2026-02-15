@@ -19,8 +19,8 @@ describe('Repositories', () => {
     await runMigrations(db);
   });
 
-  afterEach(() => {
-    db.close();
+  afterEach(async () => {
+    await db.close();
   });
 
   describe('BoardRepository', () => {

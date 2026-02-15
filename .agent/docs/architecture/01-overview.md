@@ -6,6 +6,8 @@ This project is a **pnpm monorepo** established to support the development of a 
 
 ```text
 .
+├── apps/                 # Application runtimes
+│   └── server/           # Fastify server + SQLite storage engine
 ├── packages/             # Shared libraries and internal tools
 │   └── core/             # Core domain logic and models
 ├── .agent/               # Agent-specific documentation and rules
@@ -21,21 +23,34 @@ We use a unified toolchain to ensure consistency across the monorepo:
 - **Linting & Formatting:** `Biome` (v2.3.15) for unified linting and formatting.
 - **TypeScript:** Strict-mode configuration for all packages.
 - **Testing:** `Vitest` for unit and integration testing.
+  - **Runner:** `node scripts/test-all.js` (custom sequential runner) for Windows stability.
 
 ## Current Data Flow
 
 The project currently consists of the **Core** package.
 
 - **`packages/core`**: Contains the Zod schemas for `Card`, `Board`, and `Column`, as well as the offline-first **Merge Logic**.
-- **Future Runtimes**: CLI, Server, and MCP will import `packages/core` to ensure identical validation and conflict resolution across all interfaces.
+- **`apps/server`**: The local-first backend.
+  - **Storage**: SQLite via `@libsql/client`.
+  - **API**: Fastify-based REST endpoints for CRUD operations.
+  - **Real-time**: WebSocket integration via `EventBus` for multi-client synchronization.
+  - **Pattern**: Repository pattern (`CardRepository`, `BoardRepository`) using raw SQL.
+  - **Migrations**: Automated SQL migrations on startup.
+
+- **Future Runtimes**: CLI and MCP will import `packages/core` to ensure identical validation and conflict resolution across all interfaces.
 
 ```mermaid
 graph TD
     Core[Packages: Core] --> Schema[Zod Schemas]
     Core --> Merge[Merge Logic]
+    Server[Apps: Server] --> Core
+    Server --> Repo[Repositories]
+    Server --> WS[WebSockets - EventBus]
     CLI --> Core
-    Server --> Core
     MCP --> Core
+
+    WS -.-> Clients((WebSocket Clients))
+    Repo <--> DB[(SQLite)]
 ```
 
 ## Quality Management

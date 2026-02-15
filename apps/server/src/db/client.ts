@@ -13,8 +13,23 @@ import { type Client, createClient } from '@libsql/client';
 let dbInstance: Client | null = null;
 let initializedDbPath: string | null = null;
 
+/**
+ * Configuration options for the database client.
+ *
+ * Intent: Allow flexible configuration of the database path, supporting both file-system and in-memory modes.
+ */
 export interface DbOptions {
   path?: string;
+}
+
+/**
+ * Normalizes a database path by stripping the 'file:' prefix.
+ */
+function normalizeDbPath(dbPath: string): string {
+  if (dbPath.startsWith('file:')) {
+    return dbPath.replace(/^file:/, '');
+  }
+  return dbPath;
 }
 
 /**
@@ -27,7 +42,8 @@ export interface DbOptions {
  * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
 export async function createDbClient(options: DbOptions = {}): Promise<Client> {
-  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const rawPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const dbPath = normalizeDbPath(rawPath);
   let url = '';
 
   if (dbPath === ':memory:') {
@@ -45,9 +61,13 @@ export async function createDbClient(options: DbOptions = {}): Promise<Client> {
     url,
   });
 
-  // Enable foreign keys and WAL mode for better concurrency and integrity
+  // Enable foreign keys
   await client.execute('PRAGMA foreign_keys = ON;');
-  await client.execute('PRAGMA journal_mode = WAL;');
+
+  // Only enable WAL mode for file-based databases to avoid potential in-memory locking issues on Windows
+  if (dbPath !== ':memory:') {
+    await client.execute('PRAGMA journal_mode = WAL;');
+  }
 
   return client;
 }
@@ -61,7 +81,8 @@ export async function createDbClient(options: DbOptions = {}): Promise<Client> {
  * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
 export async function getDb(options: DbOptions = {}): Promise<Client> {
-  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const rawPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const dbPath = normalizeDbPath(rawPath);
 
   if (dbInstance) {
     if (initializedDbPath && initializedDbPath !== dbPath) {
@@ -72,7 +93,7 @@ export async function getDb(options: DbOptions = {}): Promise<Client> {
     return dbInstance;
   }
 
-  dbInstance = await createDbClient(options);
+  dbInstance = await createDbClient({ path: dbPath });
   initializedDbPath = dbPath;
 
   return dbInstance;
@@ -85,10 +106,11 @@ export async function getDb(options: DbOptions = {}): Promise<Client> {
  *
  * Guarantees: Idempotent. Sets the shared instance to null after closing.
  */
-export function closeDb(): void {
+export async function closeDb(): Promise<void> {
   if (dbInstance) {
-    dbInstance.close();
+    const db = dbInstance;
     dbInstance = null;
     initializedDbPath = null;
+    await db.close();
   }
 }

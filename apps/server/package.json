@@ -6,20 +6,26 @@
   "types": "./src/index.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "test": "vitest",
+    "test": "vitest run",
     "lint": "biome check .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "@fastify/sensible": "^6.0.4",
+    "@fastify/websocket": "^11.2.0",
     "@libsql/client": "^0.17.0",
     "@lofi-pm/core": "workspace:*",
     "dotenv": "^16.4.5",
+    "fastify": "^5.7.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.14.11",
+    "@types/ws": "^8.18.1",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "ws": "^8.19.0"
   }
 }

@@ -59,7 +59,8 @@ export const Board = z.object({
 │       │   ├── types.ts       # Inferred TypeScript types
 │       │   └── index.ts       # Public API
 │       └── tsup.config.ts
-├── apps/                # Future home for server/web/cli
+├── apps/
+│   └── server/          # Fastify server + SQLite
 ├── biome.json           # Shared linting/formatting config
 ├── package.json
 └── pnpm-workspace.yaml

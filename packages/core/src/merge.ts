@@ -3,10 +3,16 @@ import { areValuesEqual, type Card, MUTABLE_CARD_FIELDS } from './schema';
 /**
  * Merges a local card with a remote card based on the "offline-first" sync strategy.
  *
- * Strategy:
- * - If local field is CLEAN (not in dirtyFields), accept REMOTE change.
- * - If local field is DIRTY (in dirtyFields), keep LOCAL change.
- * - If both LOCAL and REMOTE changed the same field (relative to snapshot), mark as CONFLICT.
+ * Intent: Resolve conflicts between local changes and remote (GitHub) updates.
+ *
+ * Guarantees:
+ * - If local field is CLEAN (not in dirtyFields), accepts REMOTE change.
+ * - If local field is DIRTY (in dirtyFields), keeps LOCAL change.
+ * - If both LOCAL and REMOTE changed the same field (relative to snapshot), marks `syncStatus` as 'conflict'.
+ * - `updatedAt` is always advanced to the latest timestamp.
+ *
+ * Constraints:
+ * - Requires `syncSnapshot` on the local card to detect remote changes accurately.
  */
 export function mergeCards(local: Card, remote: Card): Card {
   // Optimization: If local has no changes, we can safely overwrite with remote.

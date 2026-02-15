@@ -32,6 +32,7 @@ export class BoardRepository {
     const sortedColumns = Object.values(board.columns).sort((a, b) => {
       // If we had a position field in core, we'd use it.
       // For now, we'll use a reliable set order based on the ColumnId enum
+      // TODO: Refactor this to not rely on hardcoded values if we support custom columns
       const order = ['backlog', 'todo', 'in_progress', 'review', 'done'];
       return order.indexOf(a.id) - order.indexOf(b.id);
     });
@@ -127,5 +128,20 @@ export class BoardRepository {
       sql: 'DELETE FROM boards WHERE id = ?',
       args: [id],
     });
+  }
+
+  /**
+   * List all boards.
+   *
+   * Intent: Retrieve a summary of all existing Kanban boards.
+   *
+   * Guarantees: Returns an array of Board objects (without cards and columns for performance).
+   */
+  async findAll(): Promise<Array<{ id: BoardId; title: string }>> {
+    const result = await this.db.execute('SELECT id, title FROM boards');
+    return result.rows.map((row) => ({
+      id: row.id as BoardId,
+      title: row.title as string,
+    }));
   }
 }
