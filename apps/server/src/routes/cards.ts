@@ -91,6 +91,7 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
         ...existing,
         ...(request.body as object),
         id: cardId, // Protect ID
+        createdAt: existing.createdAt, // Protect creation timestamp
         updatedAt: new Date().toISOString(),
       });
 
@@ -143,7 +144,7 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
         toPosition: card.position,
       });
 
-      return card;
+      return { ...card, boardId: existing.boardId };
     } catch (error) {
       app.log.error(error);
       return reply.internalServerError('Failed to move card');
