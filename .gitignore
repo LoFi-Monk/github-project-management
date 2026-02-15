@@ -48,6 +48,23 @@ pnpm-debug.log*
 # Test Coverage
 coverage/
 
+<<<<<<< HEAD
 # Tooling
 .devin/
 
+=======
+# Temporary debug files
+*.json
+!package.json
+!biome.json
+!tsconfig.json
+!composer.json
+!package-lock.json
+!pnpm-lock.yaml
+*.log
+*.txt
+!README.md
+!LICENSE
+!GEMINI.md
+!.agent/docs/Main Branch Protection.json
+>>>>>>> origin/main

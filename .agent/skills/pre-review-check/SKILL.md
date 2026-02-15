@@ -25,7 +25,7 @@ If nothing is staged, run:
 git diff HEAD
 ```
 
-Save the output. This is your **evidence**.
+Save the output in `.agent/temp/diff.txt`. This is your **evidence**.
 
 ## Step 2: Recall Your Mission
 
@@ -97,7 +97,7 @@ Required action: [what to fix]
 
 ## Step 7: Log Your Verdict
 
-Record your decision in chat:
+Record your decision in chat use `notify_user` tool:
 
 If approved:
 

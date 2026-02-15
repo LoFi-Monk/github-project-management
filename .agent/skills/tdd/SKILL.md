@@ -422,4 +422,4 @@ cycle independently for each slice. Don't accumulate a lot of untested code.
 ## Completion
 
 **Critical:**
-When you are done with the task, run the following skill: `.agent/skills/pre-review-check`
+When you are done with the task, You **MUST** use the following skill to judge your work before code review: `.agent/skills/pre-review-check`
