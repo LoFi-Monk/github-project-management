@@ -10,8 +10,8 @@ describe('Migrator', () => {
     db = createClient({ url: 'file::memory:' });
   });
 
-  afterEach(() => {
-    db.close();
+  afterEach(async () => {
+    await db.close();
   });
 
   it('should run migrations successfully', async () => {

@@ -6,7 +6,7 @@
   "types": "./src/index.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "test": "vitest",
+    "test": "vitest run",
     "lint": "biome check .",
     "typecheck": "tsc --noEmit"
   },

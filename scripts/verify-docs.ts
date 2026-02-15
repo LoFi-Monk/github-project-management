@@ -118,7 +118,8 @@ for (const dir of TARGET_DIRECTORIES) {
   if (fs.existsSync(dir)) {
     walkDir(dir);
   } else {
-    console.warn(`Skipping missing directory: ${dir}`);
+    console.error(`Error: Target directory missing: ${dir}`);
+    hasErrors = true;
   }
 }
 

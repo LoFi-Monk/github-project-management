@@ -30,7 +30,7 @@ async function start() {
     const shutdown = async () => {
       console.log('Shutting down...');
       await app.close();
-      closeDb();
+      await closeDb();
       process.exit(0);
     };
 
