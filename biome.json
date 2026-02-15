@@ -23,12 +23,6 @@
       }
     }
   },
-  "overrides": [
-    {
-      "includes": ["apps/web/src/index.css"],
-      "linter": { "enabled": false }
-    }
-  ],
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
