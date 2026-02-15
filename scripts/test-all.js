@@ -1,5 +1,5 @@
-const { spawnSync } = require('child_process');
-const path = require('path');
+const { spawnSync } = require('node:child_process');
+const path = require('node:path');
 
 console.log('🚀 Starting Monorepo Test Suite (Sequential execution)...\n');
 
