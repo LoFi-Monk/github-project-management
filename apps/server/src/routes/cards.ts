@@ -42,8 +42,8 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
       return reply.status(201).send({ ...card, boardId });
     } catch (error) {
       app.log.error(error);
-      if ((error as any).name === 'ZodError') {
-        return reply.badRequest((error as any).message);
+      if (error && typeof error === 'object' && 'name' in error && error.name === 'ZodError') {
+        return reply.badRequest((error as { message: string }).message);
       }
       return reply.internalServerError('Failed to create card');
     }
@@ -103,8 +103,8 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
       return { ...card, boardId };
     } catch (error) {
       app.log.error(error);
-      if ((error as any).name === 'ZodError') {
-        return reply.badRequest((error as any).message);
+      if (error && typeof error === 'object' && 'name' in error && error.name === 'ZodError') {
+        return reply.badRequest((error as { message: string }).message);
       }
       return reply.internalServerError('Failed to update card');
     }

@@ -54,8 +54,8 @@ export async function boardRoutes(app: FastifyInstance, options: { db?: Client }
       return reply.status(201).send(board);
     } catch (error) {
       app.log.error(error);
-      if ((error as any).name === 'ZodError') {
-        return reply.badRequest((error as any).message);
+      if (error && typeof error === 'object' && 'name' in error && error.name === 'ZodError') {
+        return reply.badRequest((error as { message: string }).message);
       }
       return reply.internalServerError('Failed to create board');
     }
