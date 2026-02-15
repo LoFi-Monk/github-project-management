@@ -23,6 +23,7 @@ We use a unified toolchain to ensure consistency across the monorepo:
 - **Linting & Formatting:** `Biome` (v2.3.15) for unified linting and formatting.
 - **TypeScript:** Strict-mode configuration for all packages.
 - **Testing:** `Vitest` for unit and integration testing.
+  - **Runner:** `node scripts/test-all.js` (custom sequential runner) for Windows stability.
 
 ## Current Data Flow
 

@@ -49,7 +49,7 @@ All JSON endpoints reside at the root `/` (no versioning currently).
 
 ### 3.1 Connection
 
-Connect to `/ws`.
+Connect to `ws://<host>:<port>/ws`.
 
 ### 3.2 Outbound Events (Server -> Client)
 
