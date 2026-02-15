@@ -18,6 +18,16 @@ export interface DbOptions {
 }
 
 /**
+ * Normalizes a database path by stripping the 'file:' prefix.
+ */
+function normalizeDbPath(dbPath: string): string {
+  if (dbPath.startsWith('file:')) {
+    return dbPath.replace(/^file:/, '');
+  }
+  return dbPath;
+}
+
+/**
  * Retrieve the singleton database instance.
  *
  * Intent: Ensure all database operations use a consistent, configured connection.
@@ -27,10 +37,8 @@ export interface DbOptions {
  * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
 export async function createDbClient(options: DbOptions = {}): Promise<Client> {
-  let dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
-  if (dbPath.startsWith('file:')) {
-    dbPath = dbPath.replace(/^file:/, '');
-  }
+  const rawPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const dbPath = normalizeDbPath(rawPath);
   let url = '';
 
   if (dbPath === ':memory:') {
@@ -64,7 +72,8 @@ export async function createDbClient(options: DbOptions = {}): Promise<Client> {
  * Constraints: Concurrent calls will return the same instance. Throws if re-initialization with different path is attempted.
  */
 export async function getDb(options: DbOptions = {}): Promise<Client> {
-  const dbPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const rawPath = options.path || process.env.DATABASE_URL || 'data/kanban.db';
+  const dbPath = normalizeDbPath(rawPath);
 
   if (dbInstance) {
     if (initializedDbPath && initializedDbPath !== dbPath) {
