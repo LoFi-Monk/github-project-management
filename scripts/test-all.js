@@ -1,5 +1,4 @@
 const { spawnSync } = require('node:child_process');
-const path = require('node:path');
 
 console.log('🚀 Starting Monorepo Test Suite (Sequential execution)...\n');
 
@@ -19,7 +18,7 @@ if (listResult.status !== 0) {
 let packages = [];
 try {
   packages = JSON.parse(listResult.stdout);
-} catch (e) {
+} catch (_e) {
   console.error('❌ Failed to parse pnpm output');
   process.exit(1);
 }
