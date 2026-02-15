@@ -15,7 +15,7 @@
     "format": "biome format --write .",
     "typecheck": "pnpm -r typecheck",
     "prepare": "husky",
-    "check:docs": "pnpm exec ts-node -T scripts/check-tsdoc.ts"
+    "check:docs": "tsx scripts/verify-docs.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.15",
@@ -24,6 +24,7 @@
     "lint-staged": "^16.2.7",
     "ts-morph": "^27.0.2",
     "ts-node": "^10.9.2",
+    "tsx": "^4.16.2",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },

@@ -106,6 +106,7 @@ function walkDir(dir: string) {
       !fullPath.endsWith('.spec.ts') &&
       !fullPath.endsWith('.d.ts')
     ) {
+      console.log(`Checking: ${fullPath}`);
       checkFile(fullPath);
     }
   }
