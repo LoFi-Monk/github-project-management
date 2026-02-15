@@ -31,6 +31,8 @@ The project currently consists of the **Core** package.
 - **`packages/core`**: Contains the Zod schemas for `Card`, `Board`, and `Column`, as well as the offline-first **Merge Logic**.
 - **`apps/server`**: The local-first backend.
   - **Storage**: SQLite via `@libsql/client`.
+  - **API**: Fastify-based REST endpoints for CRUD operations.
+  - **Real-time**: WebSocket integration via `EventBus` for multi-client synchronization.
   - **Pattern**: Repository pattern (`CardRepository`, `BoardRepository`) using raw SQL.
   - **Migrations**: Automated SQL migrations on startup.
 
@@ -40,9 +42,14 @@ The project currently consists of the **Core** package.
 graph TD
     Core[Packages: Core] --> Schema[Zod Schemas]
     Core --> Merge[Merge Logic]
+    Server[Apps: Server] --> Core
+    Server --> Repo[Repositories]
+    Server --> WS[WebSockets - EventBus]
     CLI --> Core
-    Server --> Core
     MCP --> Core
+
+    WS -.-> Clients((WebSocket Clients))
+    Repo <--> DB[(SQLite)]
 ```
 
 ## Quality Management

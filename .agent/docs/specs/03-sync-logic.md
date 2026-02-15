@@ -2,7 +2,20 @@
 
 This is the core design decision. Getting it right matters more than any feature.
 
-## Sync Model
+## Sync Models
+
+The system employs two distinct synchronization mechanisms: **Local Real-time Sync** (Phase 1) and **Asynchronous GitHub Sync** (Phase 2).
+
+### 1. Local Real-time Sync (Phase 1)
+
+This mechanism keeps multiple local clients (CLI, MCP, Browser) in sync when connected to the same Server.
+
+- **Trigger**: Any mutation (POST, PUT, DELETE, PATCH) on the Server.
+- **Protocol**: WebSockets via a singleton `EventBus`.
+- **Payload**: The mutated entity (Card, Board) is broadcast to all active subscribers.
+- **Status**: **Implemented**.
+
+### 2. Asynchronous GitHub Sync (Phase 2)
 
 ### Guiding principle
 
@@ -59,6 +72,8 @@ function mergeCards(local, remote) {
 - `syncSnapshot` is written on every successful pull or push
 - `dirtyFields` is updated on every local mutation: add field if value differs from snapshot, remove field if value returns to snapshot value
 - After a successful push: clear `dirtyFields`, update `syncSnapshot` to new GitHub state, set `syncStatus: 'synced'`
+
+**Status**: **Not Started (Phase 2)**.
 
 ## Sync Operations (Phase 2)
 
