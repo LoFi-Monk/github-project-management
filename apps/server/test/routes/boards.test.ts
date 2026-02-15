@@ -1,3 +1,4 @@
+import type { FastifyInstance } from 'fastify';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { buildApp } from '../../src/app';
 import { closeDb, getDb } from '../../src/db/client';
@@ -9,7 +10,7 @@ import { runMigrations } from '../../src/db/migrator';
  * Verifies that the server correctly handles requests for listing and creating boards.
  */
 describe('Boards API', () => {
-  let app: any;
+  let app: FastifyInstance;
 
   beforeEach(async () => {
     // Use in-memory DB for tests

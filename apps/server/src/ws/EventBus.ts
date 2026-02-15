@@ -22,7 +22,7 @@ export class EventBus {
    * @param type - The event type (e.g., 'card_created')
    * @param payload - The data associated with the event
    */
-  broadcast(type: string, payload: any) {
+  broadcast(type: string, payload: unknown) {
     const message = JSON.stringify({ type, payload });
     for (const client of this.clients) {
       if (client.readyState === 1) {

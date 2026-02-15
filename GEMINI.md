@@ -2,7 +2,7 @@
 
 # Current Focus
 
-Ready for CLI Interface implementation (Phase 1, Milestone 4).
+Ready for Board Layout & Read-Only View (Issue 13).
 
 # Recent Decisions
 
@@ -16,6 +16,8 @@ Ready for CLI Interface implementation (Phase 1, Milestone 4).
 
 # Backlog
 
+- [ ] Board Layout & Read-Only View (Issue 13)
+- [ ] Interactions & Real-time Sync (Issue 14)
 - [ ] Implement CLI Interface
 - [ ] Implement MCP Server
 - [ ] Implement GitHub Sync Engine
@@ -42,14 +44,21 @@ None.
 - [x] Documentation Modernization (Modular specs, Architecture, Runbooks)
 - [x] Documentation Update (Specs & Runbooks) - Added Server Storage Spec and DB Runbook.
 - [x] Enforce TSDoc Documentation Standards (Issue #10)
+- [x] UI Scaffold & Design System (Issue 12)
 
 # Artifacts
 
-- [Implementation Plan](file:///C:/Users/lofim/.gemini/antigravity/brain/047b1943-383d-442b-97e9-73f35a79ea46/implementation_plan.md)
-- [Task List](file:///C:/Users/lofim/.gemini/antigravity/brain/047b1943-383d-442b-97e9-73f35a79ea46/task.md)
-- [Walkthrough](file:///C:/Users/lofim/.gemini/antigravity/brain/047b1943-383d-442b-97e9-73f35a79ea46/walkthrough.md)
+- [Implementation Plan](file:///C:/Users/lofim/.gemini/antigravity/brain/9ab5ac5b-0039-43cf-98ad-845d375029bf/implementation_plan.md)
+- [Task List](file:///C:/Users/lofim/.gemini/antigravity/brain/9ab5ac5b-0039-43cf-98ad-845d375029bf/task.md)
+- [Walkthrough](file:///C:/Users/lofim/.gemini/antigravity/brain/9ab5ac5b-0039-43cf-98ad-845d375029bf/walkthrough.md)
 
 # Notes to future self
 
 Maintain the "Server as single writer" architecture pattern. Ensure `packages/core` remains the single source of truth for business logic. When documenting, never assume future implementations as current state.
 Use the new `pre-review-check` skill before any commit.
+CRITICAL: When scaffolding new projects, ensure no nested `.git` directories remain to prevent tracking issues.
+Do not commit files that are excluded by .gitignore patterns (e.g., node_modules, .env, .idea, .devin).
+Always respect the user's manual edits in .gitignore.
+If a frontend build or test appears stuck, PROVIDE IMMEDIATE FEEDBACK rather than letting the session run indefinitely.
+Visual and functional feedback is MANDATORY for UI tasks.
+Follow the formal Post-Mortem in `.idea/FUCK.md` for recovery directives.

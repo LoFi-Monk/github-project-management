@@ -1,4 +1,5 @@
 import type { BoardId } from '@lofi-pm/core';
+import type { FastifyInstance } from 'fastify';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { buildApp } from '../../src/app';
 import { closeDb, getDb } from '../../src/db/client';
@@ -8,7 +9,7 @@ import { runMigrations } from '../../src/db/migrator';
  * Integration tests for Cards API.
  */
 describe('Cards API', () => {
-  let app: any;
+  let app: FastifyInstance;
   const boardId = 'test-board' as BoardId;
 
   beforeEach(async () => {
