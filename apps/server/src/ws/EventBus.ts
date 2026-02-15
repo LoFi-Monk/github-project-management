@@ -31,6 +31,14 @@ export class EventBus {
       }
     }
   }
+
+  /**
+   * Clears all registered clients.
+   * Useful for testing cleanup.
+   */
+  clear() {
+    this.clients.clear();
+  }
 }
 
 // Singleton instance for the application

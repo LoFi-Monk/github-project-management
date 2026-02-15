@@ -29,6 +29,9 @@ describe('WebSockets', () => {
   afterEach(async () => {
     if (app) await app.close();
     closeDb();
+    // Clear event bus to prevent leaking clients between tests
+    const { eventBus } = await import('../../src/ws/EventBus');
+    eventBus.clear();
   });
 
   /**

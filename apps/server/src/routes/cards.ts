@@ -37,9 +37,9 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
       await cardRepo.create(card, boardId);
 
       // Broadcast event
-      eventBus.broadcast('card_created', card);
+      eventBus.broadcast('card_created', { ...card, boardId });
 
-      return reply.status(201).send(card);
+      return reply.status(201).send({ ...card, boardId });
     } catch (error) {
       app.log.error(error);
       if ((error as any).name === 'ZodError') {
@@ -85,7 +85,7 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
         return reply.notFound('Card not found');
       }
 
-      const boardId = (request.body as any).boardId || existing.boardId;
+      const boardId = existing.boardId; // Prevent moving boards via PUT
 
       const card = Card.parse({
         ...existing,
@@ -94,12 +94,12 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
         updatedAt: new Date().toISOString(),
       });
 
-      await cardRepo.update(card, boardId as BoardId);
+      await cardRepo.update(card, boardId);
 
       // Broadcast event
-      eventBus.broadcast('card_updated', card);
+      eventBus.broadcast('card_updated', { ...card, boardId });
 
-      return card;
+      return { ...card, boardId };
     } catch (error) {
       app.log.error(error);
       if ((error as any).name === 'ZodError') {
@@ -158,6 +158,11 @@ export async function cardRoutes(app: FastifyInstance, options: { db?: Client })
   app.delete('/cards/:cardId', async (request, reply) => {
     const { cardId } = request.params as { cardId: CardId };
     try {
+      const existing = await cardRepo.findById(cardId);
+      if (!existing) {
+        return reply.notFound('Card not found');
+      }
+
       await cardRepo.delete(cardId);
 
       // Broadcast event
