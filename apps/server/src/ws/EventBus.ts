@@ -37,6 +37,9 @@ export class EventBus {
    * Useful for testing cleanup.
    */
   clear() {
+    for (const client of this.clients) {
+      client.terminate();
+    }
     this.clients.clear();
   }
 }
