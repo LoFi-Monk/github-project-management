@@ -40,6 +40,7 @@ export function BoardCard({ card }: BoardCardProps) {
         )}
         <div className="flex flex-wrap gap-1">
           {card.labels.map((label, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: composite key combines label value with index for uniqueness
             <Badge key={`${label}-${index}`} variant="secondary" className="px-1 py-0 text-[10px]">
               {label}
             </Badge>

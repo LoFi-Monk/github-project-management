@@ -10,7 +10,9 @@
   },
   "overrides": [
     {
-      "includes": ["apps/web/src/index.css"],
+      "includes": [
+        "apps/web/src/index.css"
+      ],
       "linter": {
         "rules": {
           "suspicious": {
@@ -38,9 +40,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "suspicious": {
-        "noArrayIndexKey": "off"
-      },
+      "recommended": true,
       "nursery": {
         "useSortedClasses": "off"
       }
