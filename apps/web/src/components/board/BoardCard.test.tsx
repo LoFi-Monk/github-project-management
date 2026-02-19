@@ -1,11 +1,11 @@
-import type { Card } from '@lofi-pm/core';
+import type { Card, CardId } from '@lofi-pm/core';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { BoardCard } from './BoardCard';
 
 describe('BoardCard', () => {
   const mockCard: Card = {
-    id: 'card-1' as any,
+    id: 'card-1' as CardId,
     title: 'Test Card',
     description: 'Test Description',
     status: 'todo',

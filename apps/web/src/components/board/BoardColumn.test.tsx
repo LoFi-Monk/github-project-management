@@ -1,18 +1,18 @@
-import type { Card, Column } from '@lofi-pm/core';
+import type { Card, CardId, Column, ColumnId } from '@lofi-pm/core';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { BoardColumn } from './BoardColumn';
 
 describe('BoardColumn', () => {
   const mockColumn: Column = {
-    id: 'todo' as any,
+    id: 'todo' as ColumnId,
     title: 'To Do',
-    cards: ['card-1' as any, 'card-2' as any],
+    cards: ['card-1' as CardId, 'card-2' as CardId],
   };
 
   const mockCards: Card[] = [
     {
-      id: 'card-1' as any,
+      id: 'card-1' as CardId,
       title: 'Card 1',
       status: 'todo',
       priority: 'low',
@@ -23,7 +23,7 @@ describe('BoardColumn', () => {
       updatedAt: new Date().toISOString(),
     },
     {
-      id: 'card-2' as any,
+      id: 'card-2' as CardId,
       title: 'Card 2',
       status: 'todo',
       priority: 'high',
