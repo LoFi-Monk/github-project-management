@@ -23,7 +23,7 @@ All scripts should be run from the repository root using `pnpm`.
 - `pnpm lint`: Run Biome check (linter + formatter).
 - `pnpm lint:fix`: Run Biome and apply safe auto-fixes.
 - `pnpm typecheck`: Run TypeScript type-checking across all packages.
-- `pnpm test`: Run the full test suite using Vitest.
+- `pnpm test`: Run the full test suite via the custom sequential runner (`node scripts/test-all.js`).
 - `pnpm build`: Build all packages.
 
 ### Adding New Packages
@@ -40,8 +40,7 @@ When adding a new package to the `packages/` directory:
 We enforce several quality gates via Husky:
 
 - **Pre-commit:** Runs `lint-staged` which performs Biome checks and runs tests related to the changed files.
-- **Commit Message:** Enforces the [Conventional Commits](https://www.conventionalcommits.org/) specification.
-- **Pre-push:** Runs a full suite of linting, type-checking, and tests.
+- **Pre-push:** Runs the full test suite (`pnpm test`).
 
 ## Continuous Integration
 

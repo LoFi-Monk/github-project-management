@@ -1,6 +1,6 @@
 ---
 name: mermaid-validator
-description: Automatically validate mermaid diagrams after creating or editing them in markdown files
+description: Automatically validate mermaid diagrams after creating or editing them in markdown files. use when creating or after editing any mermaid diagram in a markdown file. This can also be used to fix brocken mermaid diagrams. 
 ---
 
 # When to Use This Skill

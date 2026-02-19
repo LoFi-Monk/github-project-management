@@ -19,6 +19,11 @@ All JSON endpoints reside at the root `/` (no versioning currently).
 - **Body**: `Partial<Board>` (at minimum `title`)
 - **Result**: Full `Board` object with default columns.
 
+#### `GET /boards/:id`
+
+- **Result**: Full `Board` object including hydrated columns and cards.
+- **Error**: `404 Not Found` if board does not exist.
+
 ### 2.2 Cards
 
 #### `GET /boards/:boardId/cards`

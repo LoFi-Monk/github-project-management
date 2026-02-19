@@ -12,4 +12,4 @@ description: when updating or adding local documentation.
   - `.agent\docs\plans`
   - `.agent\docs\runbooks`
   - `.agent\docs\specs`
-- Keep `./GEMINI.md` up to date throughout our conversation.
+- Keep `.agent\AG_CONTEXT.md` up to date throughout our conversation.

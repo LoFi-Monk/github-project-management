@@ -12,7 +12,7 @@ description: starting a session
    - Read the latest documents in `.agent/docs` to get up to speed.
    - Focus on architecture, ADRs, runbooks, specs, and any recent updates.
 
-2. Read `./GEMINI.md`
+2. Read `.agent\AG_CONTEXT.md`
    - Review all artifact files left by the previous agent.
    - Take note of any incomplete tasks, decisions, or context markers.
 

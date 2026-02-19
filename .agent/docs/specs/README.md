@@ -11,6 +11,8 @@ This directory contains the detailed specifications for the project, broken down
 - **[03-sync-logic.md](./03-sync-logic.md)**: Sync engine, conflict resolution, and data flow.
 - **[04-roadmap.md](./04-roadmap.md)**: Implementation phases and milestones.
 - **[05-design-principles.md](./05-design-principles.md)**: Key architectural decisions and trade-offs.
+- **[06-server-storage.md](./06-server-storage.md)**: Server storage engine, database schema, and repository layer.
+- **[07-server-api.md](./07-server-api.md)**: REST API endpoints and WebSocket event specification.
 
 ---
 

@@ -1,13 +1,6 @@
 ---
 name: tdd
-description: >
-  Guides agents through strict Test-Driven Development (TDD) using the Red → Green → Refactor
-  cycle, combined with TSDoc-style documentation comments on all public APIs, functions, classes,
-  and interfaces. Enforces SOLID design principles and DRY (Don't Repeat Yourself) throughout,
-  and requires that all comments explain *why* or *what for* — never just restate what the code
-  literally does. Use this skill whenever the user asks you to write TypeScript or JavaScript code,
-  implement a feature, create a module, build a class or function, or fix a bug — even if they
-  don't explicitly mention TDD, documentation, or design principles.
+description: Use this skill whenever writing TypeScript or JavaScript code — building features, creating modules, implementing classes/functions, fixing bugs, or refactoring. Enforces Red-Green-Refactor TDD workflow, TSDoc on all public APIs, SOLID principles, DRY, and intent-focused comments (never mechanical descriptions). Apply even when the user doesn't explicitly mention tests, documentation, or design patterns.
 ---
 
 # TDD Skill
@@ -422,4 +415,4 @@ cycle independently for each slice. Don't accumulate a lot of untested code.
 ## Completion
 
 **Critical:**
-When you are done with the task, You **MUST** use the following skill to judge your work before code review: `.agent/skills/pre-review-check`
+When you are done with the task, You **MUST** use the following skill to judge your work before making commits and before code review: `.agent/skills/pre-review-check`

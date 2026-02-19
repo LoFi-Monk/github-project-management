@@ -60,4 +60,46 @@ describe('Boards API', () => {
     expect(body.title).toBe(payload.title);
     expect(body.columns).toBeDefined();
   });
+
+  /**
+   * @remarks
+   * Fetching an existing board by ID should return 200 OK and the board object.
+   */
+  it('GET /boards/:id returns the specified board', async () => {
+    // First, create a board
+    const payload = {
+      id: 'board-1',
+      title: 'Fetch Me',
+    };
+    await app.inject({
+      method: 'POST',
+      url: '/boards',
+      payload,
+    });
+
+    // Then, try to fetch it
+    const response = await app.inject({
+      method: 'GET',
+      url: `/boards/${payload.id}`,
+    });
+
+    expect(response.statusCode).toBe(200);
+    const body = response.json();
+    expect(body.id).toBe(payload.id);
+    expect(body.title).toBe(payload.title);
+    expect(body.columns).toBeDefined();
+  });
+
+  /**
+   * @remarks
+   * Fetching a non-existent board ID should return 404 Not Found.
+   */
+  it('GET /boards/:id returns 404 for non-existent board', async () => {
+    const response = await app.inject({
+      method: 'GET',
+      url: '/boards/non-existent-id',
+    });
+
+    expect(response.statusCode).toBe(404);
+  });
 });

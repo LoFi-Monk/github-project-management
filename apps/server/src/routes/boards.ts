@@ -1,5 +1,5 @@
 import type { Client } from '@libsql/client';
-import { Board, type ColumnId } from '@lofi-pm/core';
+import { Board, type BoardId, type ColumnId } from '@lofi-pm/core';
 import type { FastifyInstance } from 'fastify';
 import { getDb } from '../db/client';
 import { BoardRepository } from '../repositories/BoardRepository';
@@ -58,6 +58,27 @@ export async function boardRoutes(app: FastifyInstance, options: { db?: Client }
         return reply.badRequest((error as { message: string }).message);
       }
       return reply.internalServerError('Failed to create board');
+    }
+  });
+
+  /**
+   * GET /boards/:id
+   *
+   * Returns a specific board by ID, including its columns and cards.
+   */
+  app.get('/:id', async (request, reply) => {
+    try {
+      const { id } = request.params as { id: string };
+      const board = await boardRepo.findById(id as BoardId);
+
+      if (!board) {
+        return reply.notFound('Board not found');
+      }
+
+      return board;
+    } catch (error) {
+      app.log.error(error);
+      return reply.internalServerError('Failed to fetch board');
     }
   });
 }
