@@ -37,8 +37,8 @@ export function BoardCard({ card }: BoardCardProps) {
           <p className="text-xs text-muted-foreground line-clamp-2 mb-2">{card.description}</p>
         )}
         <div className="flex flex-wrap gap-1">
-          {card.labels.map((label) => (
-            <Badge key={label} variant="secondary" className="text-[10px] px-1 py-0">
+          {card.labels.map((label, index) => (
+            <Badge key={`${label}-${index}`} variant="secondary" className="text-[10px] px-1 py-0">
               {label}
             </Badge>
           ))}
