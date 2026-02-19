@@ -26,8 +26,10 @@ export function BoardCard({ card }: BoardCardProps) {
     <CardContainer className="mb-2 shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing">
       <CardHeader className="p-3 pb-0">
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-sm font-medium leading-tight">{card.title}</CardTitle>
-          <Badge variant="outline" className="text-[10px] uppercase px-1 py-0">
+          <CardTitle className="text-sm font-medium leading-tight text-card-foreground">
+            {card.title}
+          </CardTitle>
+          <Badge variant="outline" className="px-1 py-0 text-[10px] uppercase shrink-0">
             {card.priority}
           </Badge>
         </div>
@@ -38,7 +40,7 @@ export function BoardCard({ card }: BoardCardProps) {
         )}
         <div className="flex flex-wrap gap-1">
           {card.labels.map((label, index) => (
-            <Badge key={`${label}-${index}`} variant="secondary" className="text-[10px] px-1 py-0">
+            <Badge key={`${label}-${index}`} variant="secondary" className="px-1 py-0 text-[10px]">
               {label}
             </Badge>
           ))}
