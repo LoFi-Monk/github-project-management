@@ -60,6 +60,6 @@ describe('useBoard Hook', () => {
 
     // Verify state is reset even though fetch is pending
     expect(result.current.loading).toBe(true);
-    expect(result.current.board).toBeNull(); // This is the bug: it currently stays mockBoard
+    expect(result.current.board).toBeNull();
   });
 });

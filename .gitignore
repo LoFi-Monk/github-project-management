@@ -21,7 +21,6 @@ npm-debug.log*
 
 .vscode/
 .idea/
-.idea/issue-roadmap.md
 *.swp
 *.swo
 
