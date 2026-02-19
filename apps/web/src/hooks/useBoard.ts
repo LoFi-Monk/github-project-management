@@ -34,6 +34,7 @@ export function useBoard(id: BoardId): UseBoardResult {
     let isMounted = true;
     setLoading(true);
     setError(null);
+    setBoard(null);
 
     getBoard(id)
       .then((data) => {

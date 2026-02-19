@@ -42,4 +42,24 @@ describe('useBoard Hook', () => {
     expect(result.current.board).toBeNull();
     expect(result.current.error).toBe('Fetch failed');
   });
+
+  it('resets board to null when ID changes', async () => {
+    vi.mocked(api.getBoard).mockResolvedValue(mockBoard);
+
+    const { result, rerender } = renderHook(({ id }) => useBoard(id), {
+      initialProps: { id: 'board-1' as any },
+    });
+
+    // Wait for first load
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.board).toEqual(mockBoard);
+
+    // Change ID
+    vi.mocked(api.getBoard).mockReturnValue(new Promise(() => {})); // Hang second fetch
+    rerender({ id: 'board-2' as any });
+
+    // Verify state is reset even though fetch is pending
+    expect(result.current.loading).toBe(true);
+    expect(result.current.board).toBeNull(); // This is the bug: it currently stays mockBoard
+  });
 });
