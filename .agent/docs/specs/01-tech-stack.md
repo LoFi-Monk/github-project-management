@@ -26,7 +26,7 @@
 
 | Concern        | Choice                               | Reason                                   |
 | -------------- | ------------------------------------ | ---------------------------------------- |
-| State (server) | SQLite via `better-sqlite3`          | Local-first, zero infra, fast            |
+| State (server) | SQLite via `@libsql/client`          | Local-first, zero infra, async-first     |
 | State (client) | Zustand or Jotai                     | Lightweight, TS-friendly                 |
 | CLI            | `commander`                          | Mature, typed                            |
 | MCP server     | `@modelcontextprotocol/sdk`          | Official SDK                             |
@@ -46,7 +46,7 @@
 {
   "scripts": {
     "build": "pnpm -r build",
-    "test": "vitest run",
+    "test": "node scripts/test-all.js",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "biome check .",
@@ -64,11 +64,6 @@
 pre-commit:
   pnpm lint-staged             # biome check --write + vitest run --related
 
-commit-msg:
-  npx commitlint --edit        # enforces conventional commits prefix
-
 pre-push:
-  pnpm lint                    # full lint check
-  pnpm typecheck               # full type check across all packages
-  pnpm test                    # full test suite run
+  pnpm test                    # full test suite via custom sequential runner
 ```

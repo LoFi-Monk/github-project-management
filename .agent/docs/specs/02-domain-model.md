@@ -58,7 +58,7 @@ export const Board = z.object({
 │       │   ├── merge.ts       # Field-level conflict resolution
 │       │   ├── types.ts       # Inferred TypeScript types
 │       │   └── index.ts       # Public API
-│       └── tsup.config.ts
+│       └── vitest.config.ts
 ├── apps/
 │   └── server/          # Fastify server + SQLite
 ├── biome.json           # Shared linting/formatting config

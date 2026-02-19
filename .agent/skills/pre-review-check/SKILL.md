@@ -1,6 +1,6 @@
 ---
 name: pre-review-check
-description: Tests passing? STOP. REQUIRED before committing. Verifies you didn't cheat and stayed within scope.
+description: Tests passing? STOP. REQUIRED before committing. Verifies you didn't cheat and stayed within scope. Use this skill after writing code(Green Phase) and before pushing to github.
 ---
 
 # Pre-Review Check Skill

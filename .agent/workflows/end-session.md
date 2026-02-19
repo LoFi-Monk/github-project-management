@@ -10,13 +10,13 @@ description: ending a session
    - Ensure all relevant files in `.agent/docs` are up to date.
    - Include architecture changes, ADRs, runbooks, specs, and any new notes.
 
-2. Update `./GEMINI.md`
+2. Update `.agent\AG_CONTEXT.md`
    - Use the template located at:
-     `.agent/templates/template-GEMINI.md`
-   - Edit `GEMINI.md` using the template.
+     `.agent\templates\template-AG_CONTEXT.md`
+   - Edit `.agent\AG_CONTEXT.md` using the template.
    - Make sure all new session information is included.
 
-3. Clean up `./GEMINI.md`
+3. Clean up `.agent\AG_CONTEXT.md`
    - Organize information in **logical or chronological order** within each section.
    - Remove any outdated or irrelevant information.
    - Ensure clarity and consistency for the next session.

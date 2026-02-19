@@ -43,7 +43,7 @@ Chosen option: **Biome `useSortedClasses`**, because it provides the best balanc
 ## Architectural Context
 
 - Referenced Architecture Document(s):
-  - [SPEC.md](file:///c:/ag-workspace/github-project-management/.agent/docs/SPEC.md)
+  - [01-tech-stack.md](file:///c:/ag-workspace/github-project-management/.agent/docs/specs/01-tech-stack.md)
 
 - Impacted Components:
   - `apps/web` (Main UI implementation)
