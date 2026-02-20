@@ -1,4 +1,4 @@
-import { type DeviceCodeResponse, GitHubAuthStatus } from '@lofi-pm/core';
+import type { DeviceCodeResponse } from '@lofi-pm/core';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as authApi from '../lib/authApi';
 

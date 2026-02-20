@@ -23,7 +23,7 @@ export async function authRoutes(
    *
    * Initiates the GitHub OAuth Device Flow.
    */
-  app.post('/device-code', async (request, reply) => {
+  app.post('/device-code', async (_request, reply) => {
     try {
       const details = await authService.initiateDeviceFlow();
       return details;
@@ -38,7 +38,7 @@ export async function authRoutes(
    *
    * Completes the Device Flow by waiting for user authorization.
    */
-  app.get('/poll', async (request, reply) => {
+  app.get('/poll', async (_request, reply) => {
     try {
       const status = await authService.completeDeviceFlow();
       return status;
@@ -53,7 +53,7 @@ export async function authRoutes(
    *
    * Returns current authentication status and username.
    */
-  app.get('/status', async (request, reply) => {
+  app.get('/status', async (_request, reply) => {
     try {
       const status = await authService.getAuthStatus();
       return status;
@@ -68,7 +68,7 @@ export async function authRoutes(
    *
    * Clears the stored GitHub token.
    */
-  app.post('/logout', async (request, reply) => {
+  app.post('/logout', async (_request, reply) => {
     try {
       await authService.logout();
       return reply.status(204).send();

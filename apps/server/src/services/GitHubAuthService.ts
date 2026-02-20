@@ -104,7 +104,7 @@ export class GitHubAuthService {
         authenticated: true,
         username: user.login,
       };
-    } catch (error) {
+    } catch (_error) {
       // If token is invalid or request fails, treat as unauthenticated
       return { authenticated: false };
     }
