@@ -20,16 +20,12 @@ export function useGitHubAuth() {
   const [deviceCode, setDeviceCode] = useState<DeviceCodeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const pollingRef = useRef(false);
-
   const checkStatus = useCallback(async () => {
     try {
       const authStatus = await authApi.getAuthStatus();
       setIsAuthenticated(authStatus.authenticated);
       setUsername(authStatus.username);
-      if (authStatus.authenticated) {
-        setStatus('authenticated');
-      }
+      setStatus(authStatus.authenticated ? 'authenticated' : 'idle');
     } catch (err) {
       console.error('Failed to check auth status:', err);
     }
@@ -42,6 +38,7 @@ export function useGitHubAuth() {
   const connect = useCallback(async () => {
     setStatus('checking');
     setError(null);
+    setDeviceCode(null);
     try {
       const codeRes = await authApi.initiateDeviceFlow();
       setDeviceCode(codeRes);
@@ -54,16 +51,16 @@ export function useGitHubAuth() {
 
   // Effect to handle polling once device code is received
   useEffect(() => {
-    if (!deviceCode || pollingRef.current) return;
+    if (!deviceCode) return;
 
     let isMounted = true;
+    const controller = new AbortController();
 
     const startPolling = async () => {
-      pollingRef.current = true;
       // We don't immediately setStatus('polling') because we want to keep 'awaiting_code'
       // visible so the user can see the verification code while we poll in the background.
       try {
-        const pollResult = await authApi.pollAuthStatus();
+        const pollResult = await authApi.pollAuthStatus(controller.signal);
         if (isMounted) {
           setIsAuthenticated(pollResult.authenticated);
           setUsername(pollResult.username);
@@ -72,11 +69,12 @@ export function useGitHubAuth() {
         }
       } catch (err) {
         if (isMounted) {
+          // Ignore abort errors as they are expected on unmount/Strict Mode double-effect
+          if (err instanceof Error && err.name === 'AbortError') return;
+
           setError(err instanceof Error ? err.message : 'Authentication failed');
           setStatus('error');
         }
-      } finally {
-        pollingRef.current = false;
       }
     };
 
@@ -84,6 +82,7 @@ export function useGitHubAuth() {
 
     return () => {
       isMounted = false;
+      controller.abort();
     };
   }, [deviceCode]);
 

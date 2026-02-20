@@ -1,13 +1,12 @@
 import { DeviceCodeResponse, GitHubAuthStatus } from '@lofi-pm/core';
-
-const API_BASE = 'http://localhost:3000';
+import { CONFIG } from './config';
 
 /**
  * Intent: Provide a central HTTP client for GitHub authentication resources.
  */
 
 export async function initiateDeviceFlow(): Promise<DeviceCodeResponse> {
-  const response = await fetch(`${API_BASE}/auth/github/device-code`, {
+  const response = await fetch(`${CONFIG.API_BASE}/auth/github/device-code`, {
     method: 'POST',
   });
 
@@ -19,8 +18,8 @@ export async function initiateDeviceFlow(): Promise<DeviceCodeResponse> {
   return DeviceCodeResponse.parse(data);
 }
 
-export async function pollAuthStatus(): Promise<GitHubAuthStatus> {
-  const response = await fetch(`${API_BASE}/auth/github/poll`);
+export async function pollAuthStatus(signal?: AbortSignal): Promise<GitHubAuthStatus> {
+  const response = await fetch(`${CONFIG.API_BASE}/auth/github/poll`, { signal });
 
   if (!response.ok) {
     throw new Error(`GitHub authentication failed: ${response.statusText}`);
@@ -30,7 +29,7 @@ export async function pollAuthStatus(): Promise<GitHubAuthStatus> {
 }
 
 export async function getAuthStatus(): Promise<GitHubAuthStatus> {
-  const response = await fetch(`${API_BASE}/auth/github/status`);
+  const response = await fetch(`${CONFIG.API_BASE}/auth/github/status`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch auth status: ${response.statusText}`);
@@ -40,7 +39,7 @@ export async function getAuthStatus(): Promise<GitHubAuthStatus> {
 }
 
 export async function logout(): Promise<void> {
-  const response = await fetch(`${API_BASE}/auth/github/logout`, {
+  const response = await fetch(`${CONFIG.API_BASE}/auth/github/logout`, {
     method: 'POST',
   });
 

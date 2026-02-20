@@ -54,7 +54,14 @@ describe('GitHubAuthService', () => {
         interval: 5,
       });
 
-      expect(mockAuth).toHaveBeenCalledWith({ type: 'oauth' });
+      expect(mockAuth).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'oauth',
+          request: expect.objectContaining({
+            signal: expect.any(AbortSignal),
+          }),
+        }),
+      );
       expect(createOAuthDeviceAuth).toHaveBeenCalledWith(
         expect.objectContaining({
           clientType: 'oauth-app',
@@ -97,7 +104,14 @@ describe('GitHubAuthService', () => {
       // Status should now be ready
       const status = await authService.completeDeviceFlow();
 
-      expect(mockAuth).toHaveBeenCalledWith({ type: 'oauth' });
+      expect(mockAuth).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'oauth',
+          request: expect.objectContaining({
+            signal: expect.any(AbortSignal),
+          }),
+        }),
+      );
       expect(tokenStore.setToken).toHaveBeenCalledWith('gho_test_token');
       expect(status).toEqual({
         authenticated: true,

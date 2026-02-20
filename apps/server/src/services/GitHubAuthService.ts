@@ -17,8 +17,9 @@ import type { TokenStore } from './TokenStore';
  * - Maintains transient state (auth instances) during the flow.
  */
 export class GitHubAuthService {
-  private authInstance: any | null = null;
-  private pendingAuth: Promise<any> | null = null;
+  private authInstance: ReturnType<typeof createOAuthDeviceAuth> | null = null;
+  private pendingAuth: Promise<{ token: string; data: any }> | null = null;
+  private abortController: AbortController | null = null;
 
   constructor(
     private tokenStore: TokenStore,
@@ -36,6 +37,12 @@ export class GitHubAuthService {
       throw new Error('GitHub Client ID is required');
     }
 
+    // Abort previous flow if exists to prevent orphaned background polls
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+    this.abortController = new AbortController();
+
     return new Promise((resolve, reject) => {
       this.authInstance = createOAuthDeviceAuth({
         clientType: 'oauth-app',
@@ -52,8 +59,17 @@ export class GitHubAuthService {
       });
 
       // Trigger the auth flow in the background so onVerification can fire
-      this.pendingAuth = this.authInstance({ type: 'oauth' });
-      this.pendingAuth?.catch((err: unknown) => reject(err));
+      this.pendingAuth = this.authInstance({
+        type: 'oauth',
+        request: {
+          signal: this.abortController?.signal,
+        },
+      });
+      this.pendingAuth?.catch((err: unknown) => {
+        // Only reject if it wasn't an abort
+        if (err instanceof Error && err.name === 'AbortError') return;
+        reject(err);
+      });
     });
   }
 
@@ -71,6 +87,9 @@ export class GitHubAuthService {
 
     // This polls until the user authorizes or the code expires
     const authResult = await this.pendingAuth;
+
+    // Reset abort controller as flow is complete
+    this.abortController = null;
 
     // Store the token
     await this.tokenStore.setToken(authResult.token);
@@ -118,7 +137,11 @@ export class GitHubAuthService {
    */
   async logout(): Promise<void> {
     await this.tokenStore.deleteToken();
+    if (this.abortController) {
+      this.abortController.abort();
+    }
     this.authInstance = null;
     this.pendingAuth = null;
+    this.abortController = null;
   }
 }
