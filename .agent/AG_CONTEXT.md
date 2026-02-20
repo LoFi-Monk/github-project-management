@@ -2,50 +2,48 @@
 
 # Current Focus
 
-Ready for **Issue 6: Board Layout & Read-Only View (#15)**.
+Ready to start **Issue 16: Basic Drag & Drop**. The roadmap has been updated with detailed requirements for Phase 2 (GitHub Integration).
 
 # Recent Decisions
 
-- [ADR 0008: Frontend Architecture](file:///c:/ag-workspace/github-project-management/.agent/docs/architecture/003-frontend-architecture.md) - Defined React + Vite + Tailwind stack for `apps/web`.
-- [ADR 0007: Monorepo Testing Strategy](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0007-adr-monorepo-testing-strategy.md) - Adopted sequential execution for Windows stability.
-- [ADR 0006: TSDoc Enforcement](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0006-adr-tsdoc-enforcement.md) - Mandated JSDoc for all exported members.
-- [ADR 0001: Use @libsql/client for SQLite Persistence](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0001-adr-sqlite-libsql.md) - Pivoted to LibSQL/client.
-- **Biome Config Safety**: Added [.agent/rules/config/biome-tailwind.md](file:///c:/ag-workspace/github-project-management/.agent/rules/config/biome-tailwind.md) to forbid removing Tailwind ignore rules from `biome.json`.
-- **Tailwind Sorting**: Use Biome's `useSortedClasses` rule to avoid conflicts.
-- **Merge Strategy**: Clean/dirty field-level sync logic for offline-first data.
+- **GitHub Auth (OAuth Device Flow)**: Decided to use the Device Flow (pairing code) for a better CLI/Local UX, similar to `gh auth login`.
+- **Token Storage**: Use the **OS Keychain** (via `keytar`) for secure, native token persistence on Windows, macOS, and Linux.
+- **GitHub Projects Terminology**: Clarified that the product is called "Projects" (legacy "Classic" is sunset). The GraphQL API uses `ProjectV2` objects. No "Projects v3" exists.
+- [ADR 0009: Biome Toolchain Normalization](file:///c:/ag-workspace/github-project-management/.agent/docs/decisions/0009-adr-biome-windows-normalization.md) - Enforced LF line endings and disabled unstable rules.
+- **Tailwind Sorting**: Manual sorting enforced for Windows stability (ADR 0001 Disabled).
 
 # Backlog
 
-- [ ] Issue 6: Board Layout & Read-Only View (#15)
-- [ ] Issue 7: Interactions & Real-time Sync
-- [ ] Implement CLI Interface
-- [ ] Implement MCP Server
-- [ ] Implement GitHub Sync Engine
+- [ ] Issue 16: Basic Drag & Drop
+- [ ] Issue 17: Dynamic Columns
+- [ ] Issue 18: Real-time Sync
+- [ ] GitHub Auth (OAuth Device Flow)
+- [ ] GitHub Project Selection & Creation
+- [ ] GitHub Sync Engine
 
 # In Progress
 
-- [/] Issue 6: Board Layout & Read-Only View (Implementing `BoardCard`)
+- None (Session ending)
 
 # Blocked
 
-None.
+- None
 
 # Completed
 
-- [x] **Milestone 1**: Monorepo Foundation & CI Setup (Issues 1-2).
-- [x] **Milestone 2**: Server Implementation (Storage & API - Issues 3-4).
-- [x] **Issue 5**: UI Scaffold & Design System (PR #13, Recovery PR #14).
-- [x] Monorepo Stabilization (Sequential Test Runner).
-- [x] Biome v2 & Husky Setup.
+- [x] **Issue 15**: Board Layout & Read-Only View.
+- [x] **Roadmap Sync**: Updated `.agent/docs` to align with the current codebase and future GitHub integration intent.
+- [x] **Milestone 1 & 2**: Monorepo foundation, Server storage, and API.
 
 # Artifacts
 
-- [Implementation Plan](file:///C:/Users/lofim/.gemini/antigravity/brain/50d83f8b-5dd9-47e7-ae3d-000a683a3da3/implementation_plan.md)
-- [Task List](file:///C:/Users/lofim/.gemini/antigravity/brain/50d83f8b-5dd9-47e7-ae3d-000a683a3da3/task.md)
+- [Roadmap](file:///c:/ag-workspace/github-project-management/.agent/docs/plans/roadmap.md) - Contains the new EARS requirements for GitHub integration.
+- [Task Log](file:///C:/Users/lofim/.gemini/antigravity/brain/50d83f8b-5dd9-47e7-ae3d-000a683a3da3/task.md)
 
 # Notes to future self
 
-- **DO NOT TOUCH `biome.json` TAILWIND RULES.**
-- Maintain "Server as single writer" pattern.
-- Visual and functional feedback is MANDATORY for UI tasks.
-- Use `pre-review-check` skill before any commit.
+- **GitHub Integration**: Use **GraphQL** (`ProjectV2` queries) as the primary way to interact with Projects. The new REST API (Sept 2025) is an alternative for item management.
+- **Column Mapping**: Implementation should auto-map columns by name (case-insensitive) but allow a settings override.
+- **Windows Parity**: Keep using `scripts/test-all.js` for testing to avoid resource contention on Windows.
+- **Biome**: Never touch Tailwind sorting rules in `biome.json` without re-evaluating Windows stability.
+- **Environment Variables**: Next priority for `apps/web` is moving `API_BASE` to a `.env` file.

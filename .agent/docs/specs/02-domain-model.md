@@ -60,7 +60,8 @@ export const Board = z.object({
 │       │   └── index.ts       # Public API
 │       └── vitest.config.ts
 ├── apps/
-│   └── server/          # Fastify server + SQLite
+│   ├── server/          # Fastify server + SQLite
+│   └── web/             # React 19 + Vite Kanban frontend
 ├── biome.json           # Shared linting/formatting config
 ├── package.json
 └── pnpm-workspace.yaml

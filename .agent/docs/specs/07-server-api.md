@@ -8,44 +8,44 @@ The Server API provides a RESTful interface for Kanban operations and a WebSocke
 
 All JSON endpoints reside at the root `/` (no versioning currently).
 
-### 2.1 Boards
+### 2.1 Boards (Implemented)
 
-#### `GET /boards`
+#### `GET /boards` (Implemented)
 
 - **Result**: `Board[]` (metadata only)
 
-#### `POST /boards`
+#### `POST /boards` (Implemented)
 
 - **Body**: `Partial<Board>` (at minimum `title`)
 - **Result**: Full `Board` object with default columns.
 
-#### `GET /boards/:id`
+#### `GET /boards/:id` (Implemented)
 
 - **Result**: Full `Board` object including hydrated columns and cards.
 - **Error**: `404 Not Found` if board does not exist.
 
-### 2.2 Cards
+### 2.2 Cards (Implemented)
 
-#### `GET /boards/:boardId/cards`
+#### `GET /boards/:boardId/cards` (Implemented)
 
 - **Result**: `Card[]` for the specified board.
 
-#### `POST /boards/:boardId/cards`
+#### `POST /boards/:boardId/cards` (Implemented)
 
 - **Body**: `Partial<Card>` (at minimum `title`, `status`)
 - **Result**: Full `Card` object including `boardId`.
 
-#### `PUT /cards/:cardId`
+#### `PUT /cards/:cardId` (Implemented)
 
 - **Body**: `Partial<Card>`
 - **Result**: Updated `Card` object.
 - **Constraints**: `id` and `createdAt` are immutable. `updatedAt` is server-set.
 
-#### `DELETE /cards/:cardId`
+#### `DELETE /cards/:cardId` (Implemented)
 
 - **Result**: `204 No Content`
 
-#### `PATCH /cards/:cardId/move`
+#### `PATCH /cards/:cardId/move` (Implemented)
 
 - **Body**: `{ toStatus: ColumnId, toPosition: number }`
 - **Result**: Updated `Card` object with new status and position.

@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 import { buildApp } from './app';
 import { closeDb, getDb } from './db/client';
 import { runMigrations } from './db/migrator';
+import { GitHubAuthService } from './services/GitHubAuthService';
+import { TokenStore } from './services/TokenStore';
 
 dotenv.config();
 
@@ -14,6 +16,7 @@ dotenv.config();
 async function start() {
   const port = Number(process.env.PORT) || 3000;
   const dbPath = process.env.DATABASE_URL || 'data/kanban.db';
+  const githubClientId = process.env.GITHUB_CLIENT_ID || '';
 
   try {
     const db = await getDb({ path: dbPath });
@@ -21,7 +24,11 @@ async function start() {
     console.log('Running migrations...');
     await runMigrations(db);
 
-    const app = await buildApp({ db });
+    // Initialize Auth Services
+    const tokenStore = new TokenStore();
+    const githubAuthService = new GitHubAuthService(tokenStore, githubClientId);
+
+    const app = await buildApp({ db, githubAuthService });
 
     await app.listen({ port, host: '0.0.0.0' });
     console.log(`Server listening on port ${port}`);

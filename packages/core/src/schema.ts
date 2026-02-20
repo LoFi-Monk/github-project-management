@@ -158,3 +158,27 @@ export function areValuesEqual(a: unknown, b: unknown): boolean {
 
   return false;
 }
+
+/**
+ * Zod schema for GitHub authentication status.
+ *
+ * Intent: State monitoring for the user's connection to GitHub.
+ */
+export const GitHubAuthStatus = z.object({
+  authenticated: z.boolean(),
+  username: z.string().optional(),
+});
+export type GitHubAuthStatus = z.infer<typeof GitHubAuthStatus>;
+
+/**
+ * Zod schema for GitHub Device Flow verification details.
+ *
+ * Intent: Carry details for the user to complete GitHub authentication on another device.
+ */
+export const DeviceCodeResponse = z.object({
+  userCode: z.string(),
+  verificationUri: z.string(),
+  expiresIn: z.number(),
+  interval: z.number(),
+});
+export type DeviceCodeResponse = z.infer<typeof DeviceCodeResponse>;

@@ -16,11 +16,15 @@
     "@fastify/websocket": "^11.2.0",
     "@libsql/client": "^0.17.0",
     "@lofi-pm/core": "workspace:*",
+    "@octokit/auth-oauth-device": "^8.0.3",
+    "@octokit/request": "^10.0.7",
     "dotenv": "^16.4.5",
     "fastify": "^5.7.4",
+    "keytar": "^7.9.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/keytar": "^4.4.2",
     "@types/node": "^20.14.11",
     "@types/ws": "^8.18.1",
     "tsx": "^4.16.2",
