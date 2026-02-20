@@ -14,15 +14,13 @@
 | UI components          | shadcn/ui                | Unstyled, composable, copy-owned components          |
 | UI styling             | Tailwind CSS             | Required by shadcn/ui; utility-first                 |
 | Icons                  | Lucide React             | Consistent, clean icon set; no emoji                 |
-| Tailwind class sorting | Biome `useSortedClasses` | See note below                                       |
+| Tailwind class sorting | Manual                   | See note below                                       |
 
-**Tailwind class sorting — known trade-off**
+**Tailwind class sorting**
 
-`prettier-plugin-tailwindcss` is the industry standard for sorting Tailwind classes but is a Prettier plugin. Running Prettier alongside Biome for formatting creates toolchain conflicts in CI and pre-commit hooks — don't do it.
+Biome's `useSortedClasses` nursery rule was initially chosen but proved unstable on Windows, causing false-positive "Duplicate property" errors during the commit flow.
 
-`eslint-plugin-tailwindcss` is compatible with Biome (ESLint for this concern only, Biome for everything else) but adds a second lint toolchain to configure and maintain.
-
-**Decision: use Biome's `useSortedClasses` rule only.** It handles standard Tailwind utilities correctly. Its known limitation — it doesn't read `tailwind.config.ts` for custom classes or plugins — is not a practical problem for this project, which uses stock Tailwind utilities and shadcn/ui without heavy customisation. If that changes, the contained fix is to replace Biome's formatter with Prettier at that point, not to run two formatters now.
+**Decision: Revert to manual sorting.** We prioritize toolchain stability and developer experience on Windows over automated sorting. If automated sorting becomes a hard requirement, we will evaluate stable alternatives like Prettier once the project moves beyond its bootstrap phase.
 
 | Concern        | Choice                               | Reason                                   |
 | -------------- | ------------------------------------ | ---------------------------------------- |

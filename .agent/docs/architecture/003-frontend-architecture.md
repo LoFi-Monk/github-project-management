@@ -21,7 +21,7 @@ We use a customized version of `shadcn/ui` based on Radix UI primitives.
 - **Theme**: CSS variables defined in `index.css` map to Tailwind utility classes.
 - **Components**: Located in `src/components/ui`. owned by the project, not a dependency.
 
-### Board Module (Planned)
+### Board Module
 
 The core feature of the app.
 
@@ -31,23 +31,24 @@ The core feature of the app.
 
 ## Server Integration
 
-- **HTTP**: Fetch initial state via REST endpoints adjacent to `apps/server`.
-- **WebSocket**: Listen for `card:updated` events to trigger optimistic UI updates.
+- **HTTP**: `lib/api.ts` provides a Fetch-based client to communicate with `apps/server`.
+- **Hooks**: `hooks/useBoard` manages the board data fetching lifecycle (loading, error, success).
+- **WebSocket (Planned)**: Listen for `card:updated` events to trigger optimistic UI updates.
 
 ## File Structure
 
 ```text
 apps/web/src/
 ├── components/         # Component library
-│   ├── ui/          # Generic design system components
+│   ├── ui/          # Generic design system components (shadcn)
 │   └── board/       # Feature-specific board components
+├── hooks/              # Custom React hooks (useBoard)
 ├── lib/
+│   ├── api.ts       # HTTP client
 │   └── utils.ts     # Tailwind merge helpers (cn)
 └── App.tsx          # Root component
 ```
 
 ### Planned (Not Yet Implemented)
 
-- `lib/api.ts` — HTTP client for server communication
 - `lib/socket.ts` — WebSocket client for real-time updates
-- `hooks/` — Custom React hooks

@@ -5,7 +5,7 @@ modified: 2026-02-13T17:36:00-06:00
 
 # 0001: Tailwind Class Sorting
 
-- Status: Accepted
+- Status: Disabled (Replaced by manual sorting)
 - Deciders: Antigravity, LoFi Monk
 - Tags: architecture frontend styling tooling
 
@@ -27,18 +27,17 @@ To maintain code readability and consistency, Tailwind CSS classes should be sor
 
 ## Decision Outcome
 
-Chosen option: **Biome `useSortedClasses`**, because it provides the best balance of speed and integration within the chosen toolchain. Its limitation of not reading custom Tailwind configurations is currently not a problem for the project’s stock utility usage.
+Chosen option: **Manual Sorting**, because the Biome `useSortedClasses` nursery rule proved unstable on Windows, causing false-positive "Duplicate property" errors and blocking commits.
 
 ### Positive Consequences
 
-- Single toolchain for formatting, linting, and sorting.
-- Zero-drift between local development and CI environments.
-- High performance.
+- Prevents blocking commits due to experimental linter bugs.
+- Eliminates "Duplicate property" false positives on Windows.
 
 ### Negative Consequences
 
-- Limited support for custom Tailwind plugins or theme extensions in sorting logic.
-- If heavy customization is needed later, the toolset may need to be re-evaluated (potentially moving to Prettier).
+- Requires manual discipline/IDE plugins for class sorting.
+- Potential drift in class ordering between components.
 
 ## Architectural Context
 

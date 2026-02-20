@@ -3,8 +3,10 @@ import sensible from '@fastify/sensible';
 import websocket from '@fastify/websocket';
 import type { Client } from '@libsql/client';
 import fastify from 'fastify';
+import { authRoutes } from './routes/auth';
 import { boardRoutes } from './routes/boards';
 import { cardRoutes } from './routes/cards';
+import type { GitHubAuthService } from './services/GitHubAuthService';
 
 import { eventBus } from './ws/EventBus';
 
@@ -14,6 +16,8 @@ import { eventBus } from './ws/EventBus';
 export interface AppOptions {
   /** Optional database client instance to use (useful for testing) */
   db?: Client;
+  /** Optional GitHubAuthService instance (useful for testing) */
+  githubAuthService?: GitHubAuthService;
 }
 
 /**
@@ -43,6 +47,10 @@ export async function buildApp(options: AppOptions = {}) {
   // Register routes
   await app.register(boardRoutes, { prefix: '/boards', db: options.db });
   await app.register(cardRoutes, { db: options.db });
+  await app.register(authRoutes, {
+    prefix: '/auth/github',
+    githubAuthService: options.githubAuthService,
+  });
 
   // Health check
   app.get('/health', async () => {
