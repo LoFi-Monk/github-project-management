@@ -113,6 +113,36 @@ describe('GitHubAuthService', () => {
         username: 'lofi-monk',
       });
     });
+
+    it('should throw error if logout occurs during polling', async () => {
+      let resolveAuth: any;
+      const mockAuthPromise = new Promise((resolve) => {
+        resolveAuth = resolve;
+      });
+      const mockAuth = vi.fn().mockReturnValue(mockAuthPromise);
+      (mockAuth as any).hook = vi.fn();
+
+      vi.mocked(createOAuthDeviceAuth).mockImplementation((options: any) => {
+        // Capture onVerification but don't call it immediately if we don't need to
+        // Actually we need to call it so initiateDeviceFlow resolves
+        options.onVerification({ user_code: 'A' } as any);
+        return mockAuth as any;
+      });
+
+      await authService.initiateDeviceFlow();
+
+      const pollPromise = authService.completeDeviceFlow();
+
+      // Now logout while polling is active
+      await authService.logout();
+
+      // Resolve the auth poll
+      resolveAuth({ type: 'token', token: 'T' });
+
+      await expect(pollPromise).rejects.toThrow(
+        'Authentication flow was cancelled or user logged out',
+      );
+    });
   });
 
   describe('getAuthStatus', () => {

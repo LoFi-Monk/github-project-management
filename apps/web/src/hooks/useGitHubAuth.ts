@@ -2,13 +2,7 @@ import type { DeviceCodeResponse } from '@lofi-pm/core';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as authApi from '../lib/authApi';
 
-export type AuthStatus =
-  | 'idle'
-  | 'checking'
-  | 'awaiting_code'
-  | 'polling'
-  | 'authenticated'
-  | 'error';
+export type AuthStatus = 'idle' | 'checking' | 'awaiting_code' | 'authenticated' | 'error';
 
 /**
  * Intent: Provide a React hook for managing GitHub authentication state and flows.
@@ -26,6 +20,7 @@ export function useGitHubAuth() {
       setIsAuthenticated(authStatus.authenticated);
       setUsername(authStatus.username);
       setStatus(authStatus.authenticated ? 'authenticated' : 'idle');
+      setError(null);
     } catch (err) {
       console.error('Failed to check auth status:', err);
     }

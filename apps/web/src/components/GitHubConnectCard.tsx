@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export const GitHubConnectCard: React.FC<{ className?: string }> = ({ className }) => {
   const { status, isAuthenticated, username, deviceCode, error, connect, logout } = useGitHubAuth();
 
-  const isConnecting = status === 'checking' || status === 'polling' || status === 'awaiting_code';
+  const isConnecting = status === 'checking' || status === 'awaiting_code';
 
   return (
     <Card

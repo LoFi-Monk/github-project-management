@@ -77,6 +77,8 @@ export class GitHubAuthService {
       this.pendingAuth = pending as Promise<any>;
 
       // Use the local 'pending' promise to ensure null safety for .catch()
+      // This prevents unhandled rejections if the request fails before onVerification resolves the outer promise.
+      // Rejections will be properly caught and thrown when completeDeviceFlow awaits this.pendingAuth.
       pending.catch((err: unknown) => {
         // Only reject if it wasn't an abort
         if (err instanceof Error && err.name === 'AbortError') return;
@@ -102,6 +104,11 @@ export class GitHubAuthService {
 
     // Reset abort controller as flow is complete
     this.abortController = null;
+
+    // Guard against concurrent logout nullifying authInstance (PR #21 feedback)
+    if (!this.authInstance) {
+      throw new Error('Authentication flow was cancelled or user logged out');
+    }
 
     // Store the token
     await this.tokenStore.setToken(authResult.token);
