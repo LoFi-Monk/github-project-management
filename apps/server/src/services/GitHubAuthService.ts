@@ -17,9 +17,8 @@ import type { TokenStore } from './TokenStore';
  * - Maintains transient state (auth instances) during the flow.
  */
 export class GitHubAuthService {
-  // Octokit types for OAuth Device Auth are complex and variant based on config.
-  // Using any here to bypass type-narrowing issues while maintaining test-validated functionality.
   private authInstance: any | null = null;
+  private pendingAuth: Promise<any> | null = null;
 
   constructor(
     private tokenStore: TokenStore,
@@ -51,6 +50,9 @@ export class GitHubAuthService {
           });
         },
       });
+
+      // Trigger the auth flow in the background so onVerification can fire
+      this.pendingAuth = this.authInstance({ type: 'oauth' });
     });
   }
 
@@ -62,12 +64,12 @@ export class GitHubAuthService {
    * @throws Error if called before initiateDeviceFlow or if authentication fails.
    */
   async completeDeviceFlow(): Promise<GitHubAuthStatus> {
-    if (!this.authInstance) {
+    if (!this.pendingAuth) {
       throw new Error('Device flow not initiated');
     }
 
     // This polls until the user authorizes or the code expires
-    const authResult = await this.authInstance({ type: 'oauth' });
+    const authResult = await this.pendingAuth;
 
     // Store the token
     await this.tokenStore.setToken(authResult.token);

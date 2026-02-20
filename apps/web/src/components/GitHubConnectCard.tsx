@@ -48,35 +48,32 @@ export const GitHubConnectCard: React.FC<{ className?: string }> = ({ className 
           </div>
         )}
 
-        {status === 'awaiting_code' && deviceCode && (
-          <div className="space-y-3 rounded-lg border border-primary/30 bg-primary/5 p-4 text-center">
-            <p className="text-sm font-medium">Your verification code:</p>
-            <div className="bg-background py-2 text-3xl font-mono font-bold tracking-widest text-primary border rounded select-all">
-              {deviceCode.userCode}
+        {(status === 'awaiting_code' || status === 'polling') && deviceCode && (
+          <div className="space-y-4">
+            <div className="space-y-3 rounded-lg border border-primary/30 bg-primary/5 p-4 text-center">
+              <p className="text-sm font-medium">Your verification code:</p>
+              <div className="bg-background py-2 text-3xl font-mono font-bold tracking-widest text-primary border rounded select-all">
+                {deviceCode.userCode}
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Enter this code on GitHub to authorize the application.
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="mt-2 w-full gap-2 border-primary/30 hover:bg-primary/10"
+              >
+                <a href={deviceCode.verificationUri} target="_blank" rel="noopener noreferrer">
+                  Visit {deviceCode.verificationUri} <ExternalLink className="h-3 w-3" />
+                </a>
+              </Button>
             </div>
-            <p className="text-xs text-muted-foreground">
-              Enter this code on GitHub to authorize the application.
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="mt-2 w-full gap-2 border-primary/30 hover:bg-primary/10"
-            >
-              <a href={deviceCode.verificationUri} target="_blank" rel="noopener noreferrer">
-                Visit {deviceCode.verificationUri} <ExternalLink className="h-3 w-3" />
-              </a>
-            </Button>
-          </div>
-        )}
 
-        {status === 'polling' && (
-          <div className="flex flex-col items-center justify-center space-y-3 py-4 text-center">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <div className="space-y-1">
-              <p className="text-sm font-medium">Waiting for authorization...</p>
-              <p className="text-xs text-muted-foreground italic">
-                Finish authorization in your browser to continue.
+            <div className="flex flex-col items-center justify-center space-y-2 py-2 text-center">
+              <Loader2 className="h-5 w-5 animate-spin text-primary" />
+              <p className="text-xs font-medium text-muted-foreground">
+                Waiting for authorization...
               </p>
             </div>
           </div>

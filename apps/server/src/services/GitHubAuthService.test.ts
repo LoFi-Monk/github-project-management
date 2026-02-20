@@ -54,6 +54,7 @@ describe('GitHubAuthService', () => {
         interval: 5,
       });
 
+      expect(mockAuth).toHaveBeenCalledWith({ type: 'oauth' });
       expect(createOAuthDeviceAuth).toHaveBeenCalledWith(
         expect.objectContaining({
           clientType: 'oauth-app',
@@ -93,6 +94,7 @@ describe('GitHubAuthService', () => {
       } as any);
       await initiatePromise;
 
+      // Status should now be ready
       const status = await authService.completeDeviceFlow();
 
       expect(mockAuth).toHaveBeenCalledWith({ type: 'oauth' });

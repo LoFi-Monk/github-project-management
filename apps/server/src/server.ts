@@ -24,6 +24,12 @@ async function start() {
     console.log('Running migrations...');
     await runMigrations(db);
 
+    if (!githubClientId) {
+      console.warn(
+        'WARNING: GITHUB_CLIENT_ID is not set. GitHub integration features will be disabled.',
+      );
+    }
+
     // Initialize Auth Services
     const tokenStore = new TokenStore();
     const githubAuthService = new GitHubAuthService(tokenStore, githubClientId);

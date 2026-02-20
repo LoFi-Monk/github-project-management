@@ -37,8 +37,8 @@ describe('useGitHubAuth Hook', () => {
       await result.current.connect();
     });
 
-    // It should reach awaiting_code then transition to polling
-    await waitFor(() => expect(result.current.status).toBe('polling'));
+    // It should reach awaiting_code and stay there while polling
+    await waitFor(() => expect(result.current.status).toBe('awaiting_code'));
 
     expect(result.current.deviceCode).toEqual({
       userCode: 'CODE-123',
@@ -89,5 +89,18 @@ describe('useGitHubAuth Hook', () => {
     expect(result.current.isAuthenticated).toBe(false);
     expect(result.current.username).toBeUndefined();
     expect(authApi.logout).toHaveBeenCalled();
+  });
+
+  it('should show authenticated status if checkStatus finds valid session on mount', async () => {
+    vi.mocked(authApi.getAuthStatus).mockResolvedValue({
+      authenticated: true,
+      username: 'lofi-monk',
+    });
+
+    const { result } = renderHook(() => useGitHubAuth());
+
+    await waitFor(() => expect(result.current.status).toBe('authenticated'));
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.username).toBe('lofi-monk');
   });
 });

@@ -27,6 +27,9 @@ export function useGitHubAuth() {
       const authStatus = await authApi.getAuthStatus();
       setIsAuthenticated(authStatus.authenticated);
       setUsername(authStatus.username);
+      if (authStatus.authenticated) {
+        setStatus('authenticated');
+      }
     } catch (err) {
       console.error('Failed to check auth status:', err);
     }
@@ -57,7 +60,8 @@ export function useGitHubAuth() {
 
     const startPolling = async () => {
       pollingRef.current = true;
-      setStatus('polling');
+      // We don't immediately setStatus('polling') because we want to keep 'awaiting_code'
+      // visible so the user can see the verification code while we poll in the background.
       try {
         const pollResult = await authApi.pollAuthStatus();
         if (isMounted) {
