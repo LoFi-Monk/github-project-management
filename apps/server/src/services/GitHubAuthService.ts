@@ -36,7 +36,7 @@ export class GitHubAuthService {
       throw new Error('GitHub Client ID is required');
     }
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.authInstance = createOAuthDeviceAuth({
         clientType: 'oauth-app',
         clientId: this.clientId,
@@ -53,6 +53,7 @@ export class GitHubAuthService {
 
       // Trigger the auth flow in the background so onVerification can fire
       this.pendingAuth = this.authInstance({ type: 'oauth' });
+      this.pendingAuth?.catch((err: unknown) => reject(err));
     });
   }
 
@@ -117,5 +118,7 @@ export class GitHubAuthService {
    */
   async logout(): Promise<void> {
     await this.tokenStore.deleteToken();
+    this.authInstance = null;
+    this.pendingAuth = null;
   }
 }

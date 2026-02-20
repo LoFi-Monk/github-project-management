@@ -32,7 +32,9 @@ async function start() {
 
     // Initialize Auth Services
     const tokenStore = new TokenStore();
-    const githubAuthService = new GitHubAuthService(tokenStore, githubClientId);
+    const githubAuthService = githubClientId
+      ? new GitHubAuthService(tokenStore, githubClientId)
+      : undefined;
 
     const app = await buildApp({ db, githubAuthService });
 
