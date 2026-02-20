@@ -4,13 +4,12 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { GitHubAuthService } from './GitHubAuthService';
 import { TokenStore } from './TokenStore';
 
-vi.mock('@octokit/auth-oauth-device', () => ({
-  createOAuthDeviceAuth: vi.fn(),
-}));
-
-vi.mock('@octokit/request', () => ({
-  request: vi.fn(),
-}));
+vi.mock('@octokit/auth-oauth-device');
+vi.mock('@octokit/request', () => {
+  const req = vi.fn() as any;
+  req.defaults = vi.fn().mockReturnValue(req);
+  return { request: req, default: req };
+});
 
 describe('GitHubAuthService', () => {
   let authService: GitHubAuthService;
@@ -37,13 +36,18 @@ describe('GitHubAuthService', () => {
         device_code: 'device_123',
       };
 
-      const mockAuth = vi.fn();
-      vi.mocked(createOAuthDeviceAuth).mockReturnValue(mockAuth as any);
+      const mockAuth = vi.fn().mockReturnValue(new Promise(() => {}));
+      let capturedOnVerification: any;
+      vi.mocked(createOAuthDeviceAuth).mockImplementation((options: any) => {
+        capturedOnVerification = options.onVerification;
+        return mockAuth as any;
+      });
 
       const promise = authService.initiateDeviceFlow();
-
-      const onVerification = vi.mocked(createOAuthDeviceAuth).mock.calls[0][0].onVerification;
-      await onVerification(mockVerification);
+      if (!capturedOnVerification) {
+        throw new Error('onVerification was not provided to createOAuthDeviceAuth');
+      }
+      await capturedOnVerification(mockVerification);
 
       const result = await promise;
 
@@ -54,19 +58,13 @@ describe('GitHubAuthService', () => {
         interval: 5,
       });
 
-      expect(mockAuth).toHaveBeenCalledWith(
-        expect.objectContaining({
-          type: 'oauth',
-          request: expect.objectContaining({
-            signal: expect.any(AbortSignal),
-          }),
-        }),
-      );
+      expect(mockAuth).toHaveBeenCalledWith({ type: 'oauth' });
       expect(createOAuthDeviceAuth).toHaveBeenCalledWith(
         expect.objectContaining({
           clientType: 'oauth-app',
           clientId: clientId,
           scopes: ['repo', 'project'],
+          request: expect.any(Function),
         }),
       );
     });
@@ -89,11 +87,15 @@ describe('GitHubAuthService', () => {
         data: { login: 'lofi-monk' },
       });
       (mockAuth as any).hook = mockHook;
-      vi.mocked(createOAuthDeviceAuth).mockReturnValue(mockAuth as any);
+
+      let capturedOnVerification: any;
+      vi.mocked(createOAuthDeviceAuth).mockImplementation((options: any) => {
+        capturedOnVerification = options.onVerification;
+        return mockAuth as any;
+      });
 
       const initiatePromise = authService.initiateDeviceFlow();
-      const onVerification = vi.mocked(createOAuthDeviceAuth).mock.calls[0][0].onVerification;
-      await onVerification({
+      await capturedOnVerification({
         user_code: 'A',
         verification_uri: 'B',
         expires_in: 1,
@@ -104,14 +106,7 @@ describe('GitHubAuthService', () => {
       // Status should now be ready
       const status = await authService.completeDeviceFlow();
 
-      expect(mockAuth).toHaveBeenCalledWith(
-        expect.objectContaining({
-          type: 'oauth',
-          request: expect.objectContaining({
-            signal: expect.any(AbortSignal),
-          }),
-        }),
-      );
+      expect(mockAuth).toHaveBeenCalledWith({ type: 'oauth' });
       expect(tokenStore.setToken).toHaveBeenCalledWith('gho_test_token');
       expect(status).toEqual({
         authenticated: true,

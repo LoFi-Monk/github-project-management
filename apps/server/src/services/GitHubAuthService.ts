@@ -17,8 +17,8 @@ import type { TokenStore } from './TokenStore';
  * - Maintains transient state (auth instances) during the flow.
  */
 export class GitHubAuthService {
-  private authInstance: ReturnType<typeof createOAuthDeviceAuth> | null = null;
-  private pendingAuth: Promise<{ token: string; data: any }> | null = null;
+  private authInstance: any = null;
+  private pendingAuth: Promise<any> | null = null;
   private abortController: AbortController | null = null;
 
   constructor(
@@ -44,10 +44,19 @@ export class GitHubAuthService {
     this.abortController = new AbortController();
 
     return new Promise((resolve, reject) => {
-      this.authInstance = createOAuthDeviceAuth({
+      // Create a request instance that includes the abort signal
+      // This ensures all requests (initiation and polling) respect the signal
+      const requestWithSignal = request.defaults({
+        request: {
+          signal: this.abortController?.signal,
+        },
+      });
+
+      const auth = createOAuthDeviceAuth({
         clientType: 'oauth-app',
         clientId: this.clientId,
         scopes: ['repo', 'project'],
+        request: requestWithSignal,
         onVerification: (verification) => {
           resolve({
             userCode: verification.user_code,
@@ -58,14 +67,17 @@ export class GitHubAuthService {
         },
       });
 
+      this.authInstance = auth;
+
       // Trigger the auth flow in the background so onVerification can fire
-      this.pendingAuth = this.authInstance({
+      const pending = auth({
         type: 'oauth',
-        request: {
-          signal: this.abortController?.signal,
-        },
       });
-      this.pendingAuth?.catch((err: unknown) => {
+
+      this.pendingAuth = pending as Promise<any>;
+
+      // Use the local 'pending' promise to ensure null safety for .catch()
+      pending.catch((err: unknown) => {
         // Only reject if it wasn't an abort
         if (err instanceof Error && err.name === 'AbortError') return;
         reject(err);
@@ -81,7 +93,7 @@ export class GitHubAuthService {
    * @throws Error if called before initiateDeviceFlow or if authentication fails.
    */
   async completeDeviceFlow(): Promise<GitHubAuthStatus> {
-    if (!this.pendingAuth) {
+    if (!this.pendingAuth || !this.authInstance) {
       throw new Error('Device flow not initiated');
     }
 
